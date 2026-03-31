@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { IncidentActionRail } from '@/components/runtime/IncidentActionRail';
+import { TimelineTraceCorrelation } from '@/components/runtime/TimelineTraceCorrelation';
 
 export function RunDetailBlock() {
   const { t } = useTranslation();
@@ -21,6 +23,8 @@ export function RunDetailBlock() {
           </div>
         ))}
       </div>
+      <IncidentActionRail severity="S2" />
+      <TimelineTraceCorrelation />
     </Card>
   );
 }
