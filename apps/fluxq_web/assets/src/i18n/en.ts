@@ -345,6 +345,101 @@ export const englishResources = {
           componentFamilies: 'component families',
           laneSemantics: 'lane semantics'
         }
+      },
+      cx: {
+        kpi: {
+          title: 'KPI + Metric Card Family',
+          subtitle: 'Canonical operational KPIs for cross-journey status framing.',
+          metrics: {
+            incidentPressure: 'incident pressure',
+            retryRatio: 'retry ratio',
+            timeoutRisk: 'timeout risk',
+            fallbackReadiness: 'fallback readiness'
+          }
+        },
+        filterTable: {
+          title: 'Filters + Tabbed Table Family',
+          tabs: {
+            all: 'all rows',
+            degraded: 'degraded',
+            timeouts: 'timeouts'
+          },
+          queryLabel: 'workflow query',
+          queryPlaceholder: 'Filter by workflow id',
+          laneLabel: 'lane',
+          laneOptions: {
+            all: 'all lanes',
+            fixture: 'fixture',
+            live_smoke: 'live_smoke',
+            live: 'live'
+          },
+          headers: {
+            workflow: 'workflow',
+            lane: 'lane',
+            state: 'state',
+            latency: 'latency',
+            drift: 'drift narrative'
+          }
+        },
+        timelineTraceLogs: {
+          timelineTitle: 'Timeline events',
+          traceTitle: 'Trace tree',
+          logsTitle: 'Structured logs',
+          correlation: 'correlation',
+          events: {
+            stepQueued: {
+              title: 'Step queued',
+              span: 'control.run.queue',
+              logExcerpt: 'Queue wait started for run-042.'
+            },
+            retryTriggered: {
+              title: 'Retry triggered',
+              span: 'control.route.retry',
+              logExcerpt: 'Retry policy invoked after transient timeout signal.'
+            },
+            fallbackEngaged: {
+              title: 'Fallback engaged',
+              span: 'control.route.fallback',
+              logExcerpt: 'Fallback route selected based on current circuit state.'
+            }
+          },
+          trace: {
+            runExecute: 'run.execute',
+            queueWait: 'queue.wait',
+            routePrimary: 'route.primary',
+            retryHandler: 'retry.handler',
+            routeFallback: 'route.fallback'
+          },
+          logs: {
+            accepted: 'Run accepted into queue.',
+            retryBudget: 'Retry budget decremented.',
+            fallback: 'Primary route timed out; fallback engaged.'
+          }
+        },
+        actionInspector: {
+          title: 'Action Rail + Inspector Family',
+          severity: 'S2',
+          actionRail: 'action rail',
+          inspector: 'inspector',
+          actions: {
+            retry: 'retry now',
+            reroute: 'reroute safely',
+            cancel: 'cancel run',
+            bundle: 'export bundle'
+          },
+          fields: {
+            target: 'target',
+            lane: 'lane',
+            timeout: 'timeout',
+            retries: 'retries'
+          },
+          values: {
+            target: 'run-042/step-06',
+            lane: 'live_smoke',
+            timeout: '45s',
+            retries: '2 / 5'
+          }
+        }
       }
     }
   }

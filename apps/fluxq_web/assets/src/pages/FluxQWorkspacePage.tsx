@@ -6,6 +6,10 @@ import { CorePrimitivesShowcase } from '@/components/composition/CorePrimitivesS
 import { UnifiedFilterBar } from '@/components/composition/UnifiedFilterBar';
 import { DenseDataTable } from '@/components/composition/DenseDataTable';
 import { JourneyCompositionMatrix } from '@/components/composition/JourneyCompositionMatrix';
+import { KpiMetricCardFamily } from '@/components/families/KpiMetricCardFamily';
+import { FilterTabbedTableFamily } from '@/components/families/FilterTabbedTableFamily';
+import { TimelineTraceLogsFamily } from '@/components/families/TimelineTraceLogsFamily';
+import { ActionRailInspectorFamily } from '@/components/families/ActionRailInspectorFamily';
 import { RunDetailBlock } from '@/components/runtime/RunDetailBlock';
 import { ProviderHealthBlock } from '@/components/runtime/ProviderHealthBlock';
 import { PortabilityAnalyticsBlock } from '@/components/runtime/PortabilityAnalyticsBlock';
@@ -35,6 +39,10 @@ export default function FluxQWorkspacePage({
         <OperationalStatusStripV2 />
         <DenseDataTable />
         <JourneyCompositionMatrix />
+        <KpiMetricCardFamily lane={lane} />
+        <FilterTabbedTableFamily />
+        <TimelineTraceLogsFamily />
+        <ActionRailInspectorFamily />
         <OperationalStatePack />
         <CorePrimitivesShowcase />
         <RunDetailBlock />

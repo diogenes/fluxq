@@ -84,10 +84,10 @@ This track runs in parallel with product phases to convert approved Stitch asset
 | UI-CX02 | Token + Typography + Icon Contract | In Progress | Unified semantic token/icon wrapper contract for extracted families |
 | UI-CX03 | Shell Frame System | In Progress | Canonical top nav, left rail, right rail frame variants |
 | UI-CX04 | Lane + State Semantics Pack | In Progress | Canonical lane selectors and state-pack surface language |
-| UI-CX05 | KPI + Metric Card Family | Planned | Reusable KPI/status strip and metric card variants |
-| UI-CX06 | Filters + Tabbed Table System | Planned | Filter toolbars, tab controls, dense/sortable table primitives |
-| UI-CX07 | Timeline + Trace + Logs Blocks | Planned | Correlated timeline/trace/log composition suite |
-| UI-CX08 | Action Rail + Inspector Panels | Planned | Right-rail action groups and diagnostics inspector variants |
+| UI-CX05 | KPI + Metric Card Family | In Progress | Reusable KPI/status strip and metric card variants |
+| UI-CX06 | Filters + Tabbed Table System | In Progress | Filter toolbars, tab controls, dense/sortable table primitives |
+| UI-CX07 | Timeline + Trace + Logs Blocks | In Progress | Correlated timeline/trace/log composition suite |
+| UI-CX08 | Action Rail + Inspector Panels | In Progress | Right-rail action groups and diagnostics inspector variants |
 | UI-CX09 | Workflow Builder Kit | In Progress | Node palette, canvas, connector, inspector component kit |
 | UI-CX10 | Charting Primitive Set | In Progress | Trend/heatmap/distribution chart primitives for runtime surfaces |
 | UI-CX11 | Onboarding Flow Kit | Planned | Stepper/progress/readiness form components |
