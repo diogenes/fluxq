@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FXQ_MVP-P1_ComponentLibrary_v1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline-variant": "#484555",
+                        "surface-container-high": "#262a36",
+                        "primary-container": "#947dff",
+                        "tertiary-container": "#9185df",
+                        "surface-bright": "#353945",
+                        "tertiary-fixed-dim": "#c8bfff",
+                        "on-secondary-fixed-variant": "#3c00de",
+                        "on-primary-fixed": "#1c0062",
+                        "on-secondary": "#2800a0",
+                        "primary-fixed": "#e6deff",
+                        "on-background": "#dfe2f2",
+                        "on-tertiary-fixed": "#1a0063",
+                        "error-container": "#93000a",
+                        "background": "#0f131e",
+                        "on-primary-container": "#2a0088",
+                        "secondary-container": "#4006e8",
+                        "on-error": "#690005",
+                        "surface-container": "#1b1f2b",
+                        "on-primary": "#31009a",
+                        "on-secondary-container": "#bbb3ff",
+                        "inverse-primary": "#603ce2",
+                        "surface-tint": "#cabeff",
+                        "surface-container-low": "#171b27",
+                        "on-secondary-fixed": "#160066",
+                        "tertiary-fixed": "#e5deff",
+                        "surface-container-highest": "#313441",
+                        "inverse-surface": "#dfe2f2",
+                        "secondary-fixed-dim": "#c6bfff",
+                        "on-tertiary-container": "#291870",
+                        "error": "#ffb4ab",
+                        "surface": "#0f131e",
+                        "primary": "#cabeff",
+                        "inverse-on-surface": "#2c303c",
+                        "secondary-fixed": "#e4dfff",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#dfe2f2",
+                        "tertiary": "#c8bfff",
+                        "on-surface-variant": "#c9c4d8",
+                        "secondary": "#c6bfff",
+                        "surface-variant": "#313441",
+                        "primary-fixed-dim": "#cabeff",
+                        "outline": "#938ea1",
+                        "on-tertiary-fixed-variant": "#46398f",
+                        "surface-dim": "#0f131e",
+                        "surface-container-lowest": "#0a0e19",
+                        "on-tertiary": "#2f2077",
+                        "on-primary-fixed-variant": "#4816cb"
+                    },
+                    fontFamily: {
+                        "headline": ["Sora"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["IBM Plex Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(10, 14, 25, 0.8); backdrop-filter: blur(12px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30">
+<!-- TopNavBar (Shared Component) -->
+<header class="sticky top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0a0e19]/80 backdrop-blur-md border-b border-[#484555]/15 shadow-2xl shadow-black/40">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#cabeff] font-headline">QuantumOrchestra</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#c9c4d8] hover:text-[#cabeff] text-sm font-medium transition-colors" href="#">Primitives</a>
+<a class="text-[#c9c4d8] hover:text-[#cabeff] text-sm font-medium transition-colors" href="#">Patterns</a>
+<a class="text-[#c9c4d8] hover:text-[#cabeff] text-sm font-medium transition-colors" href="#">Mapping</a>
+<a class="text-[#cabeff] border-b-2 border-[#cabeff] pb-1 text-sm font-medium" href="#">Docs</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-lowest border border-outline-variant/15 rounded-lg">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">search</span>
+<input class="bg-transparent border-none text-xs focus:ring-0 w-48 text-on-surface" placeholder="Search components..." type="text"/>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-[#353945]/50 transition-colors rounded-lg"><span class="material-symbols-outlined">help</span></button>
+<button class="p-2 text-on-surface-variant hover:bg-[#353945]/50 transition-colors rounded-lg relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="close-up portrait of professional engineer in dark studio lighting with soft blue backlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0m3Xh00S3xAArTvYWw1ovi7Qa1-tbvYY_CQHZ1zz4y3S1MLAhol8bWUM0pl-uX353_mMo3b1AB4-noOKSKl74WempdEmUUqP_gETeubDRnK_bmmVl70t083w_-mJtOdDyyT9vM2fWm0sMNfV78k0iDcwCo55tRB3nM2511kttJA-BVF0JXmNv41UXVeZoG17zU_cKmAx6iYI6QycNbo-PBlr4jPB0NMKKGoU78In_aNZK6JPZb9T2XH2dZcTQZ_PYmztiCPBuEPM"/>
+</div>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-4rem)]">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 bg-[#171b27] flex flex-col justify-between py-4 z-40">
+<div class="px-4">
+<div class="flex items-center gap-3 mb-8 px-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-weight="fill">settings_input_component</span>
+</div>
+<div>
+<p class="text-[0.6875rem] font-semibold uppercase tracking-wider text-on-surface-variant leading-none">Core Engine</p>
+<p class="text-[10px] text-primary/70 font-mono mt-1">v4.2.0-Alpha</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined text-xl">account_tree</span>
+<span class="text-[0.6875rem] font-semibold uppercase tracking-wider">Orchestration</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined text-xl">monitoring</span>
+<span class="text-[0.6875rem] font-semibold uppercase tracking-wider">Observability</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined text-xl">donut_large</span>
+<span class="text-[0.6875rem] font-semibold uppercase tracking-wider">Workflows</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined text-xl">lan</span>
+<span class="text-[0.6875rem] font-semibold uppercase tracking-wider">Nodes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-[#1b1f2b] text-[#cabeff] border-r-2 border-[#7C5CFF] rounded-l-lg" href="#">
+<span class="material-symbols-outlined text-xl">tune</span>
+<span class="text-[0.6875rem] font-semibold uppercase tracking-wider">Settings</span>
+</a>
+</nav>
+</div>
+<div class="px-4 border-t border-outline-variant/10 pt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-[#c9c4d8] opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span class="text-[0.6875rem] font-semibold uppercase tracking-wider">Documentation</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#c9c4d8] opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined text-lg">contact_support</span>
+<span class="text-[0.6875rem] font-semibold uppercase tracking-wider">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 p-8 bg-surface">
+<!-- Header Section -->
+<div class="mb-10 flex justify-between items-end">
+<div>
+<h1 class="text-4xl font-headline font-semibold text-on-surface tracking-tight mb-2">FXQ_MVP-P1</h1>
+<p class="text-on-surface-variant max-w-2xl">High-density SRE/QML Component Library &amp; Incident Workflow Reference. Designed for low-latency engineering handoff.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface-container-highest border border-outline-variant/20 text-on-surface text-sm font-medium rounded-lg flex items-center gap-2 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Export Specs
+                    </button>
+<button class="px-4 py-2 bg-gradient-to-br from-primary to-primary-container text-on-primary-container text-sm font-bold rounded-lg shadow-lg shadow-primary/20 flex items-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+                        Deploy to Sandbox
+                    </button>
+</div>
+</div>
+<!-- Operational Status Strip (Action Pattern 3) -->
+<section class="mb-12">
+<div class="bg-surface-container-low rounded-xl p-1 flex items-center gap-1 border border-outline-variant/10 shadow-sm">
+<div class="flex items-center gap-3 px-4 py-2 bg-surface-container-high rounded-lg border border-outline-variant/15">
+<span class="w-2.5 h-2.5 bg-[#22C55E] rounded-full shadow-[0_0_8px_#22C55E]"></span>
+<span class="text-xs font-mono font-medium text-on-surface">LIVE_SMOKE: OK</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-2 hover:bg-surface-bright/50 rounded-lg transition-colors cursor-pointer">
+<span class="w-2.5 h-2.5 bg-[#F59E0B] rounded-full shadow-[0_0_8px_#F59E0B]"></span>
+<span class="text-xs font-mono font-medium text-on-surface-variant">RETRY_PRESSURE: 142ms</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-2 hover:bg-surface-bright/50 rounded-lg transition-colors cursor-pointer">
+<span class="w-2.5 h-2.5 bg-[#EF4444] rounded-full shadow-[0_0_8px_#EF4444]"></span>
+<span class="text-xs font-mono font-medium text-on-surface-variant">QUEUE_WAIT: CRITICAL</span>
+</div>
+<div class="flex-1"></div>
+<div class="flex gap-1 pr-1">
+<button class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider bg-surface-container-highest text-primary hover:text-on-primary-container hover:bg-primary transition-all rounded-md">Retry</button>
+<button class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider bg-surface-container-highest text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all rounded-md">Reroute</button>
+<button class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider bg-surface-container-highest text-error hover:bg-error-container hover:text-on-error-container transition-all rounded-md">Cancel</button>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-12 gap-8">
+<!-- Core Component Catalog & State Matrix (Combined Bento) -->
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<!-- Module 1: Component Catalog -->
+<div class="bg-surface-container rounded-xl p-6 border border-outline-variant/10">
+<h2 class="text-lg font-headline font-semibold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">category</span>
+                            Core Component Catalog
+                        </h2>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<!-- Card Primitive -->
+<div class="p-4 bg-surface-container-high rounded-lg border border-outline-variant/10 hover:border-primary/50 transition-colors group">
+<p class="text-[10px] font-bold text-primary uppercase mb-3">Card / Container</p>
+<div class="h-24 bg-surface-container-low rounded border border-dashed border-outline-variant/30 flex items-center justify-center">
+<span class="text-[10px] font-mono text-on-surface-variant">content_slot</span>
+</div>
+</div>
+<!-- Button Primitive -->
+<div class="p-4 bg-surface-container-high rounded-lg border border-outline-variant/10">
+<p class="text-[10px] font-bold text-primary uppercase mb-3">Buttons</p>
+<div class="flex flex-col gap-2">
+<div class="h-8 bg-primary rounded flex items-center justify-center text-[10px] font-bold text-on-primary uppercase">Primary</div>
+<div class="h-8 bg-surface-container-highest rounded border border-outline-variant/20 flex items-center justify-center text-[10px] font-bold text-on-surface uppercase">Secondary</div>
+</div>
+</div>
+<!-- Badge Primitive -->
+<div class="p-4 bg-surface-container-high rounded-lg border border-outline-variant/10">
+<p class="text-[10px] font-bold text-primary uppercase mb-3">Badges</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold">STABLE</span>
+<span class="px-2 py-0.5 rounded-full bg-error/10 text-error text-[10px] font-bold">FAILED</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-bright text-on-surface-variant text-[10px] font-bold">VOID</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Module 2: State Matrix -->
+<div class="bg-surface-container-low rounded-xl p-6">
+<h2 class="text-lg font-headline font-semibold mb-6">Interaction State Matrix</h2>
+<div class="overflow-x-auto no-scrollbar">
+<table class="w-full text-left border-separate border-spacing-y-2">
+<thead>
+<tr class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">
+<th class="pb-2">Component</th>
+<th class="pb-2">Default</th>
+<th class="pb-2">Hover</th>
+<th class="pb-2">Active/Focus</th>
+<th class="pb-2">Disabled</th>
+<th class="pb-2">Error</th>
+</tr>
+</thead>
+<tbody class="text-xs">
+<tr class="group">
+<td class="py-3 font-mono text-primary pr-4">Button.sm</td>
+<td class="py-3"><div class="w-20 h-7 bg-primary rounded flex items-center justify-center text-[9px] font-bold text-on-primary">CMD</div></td>
+<td class="py-3"><div class="w-20 h-7 bg-primary/80 rounded flex items-center justify-center text-[9px] font-bold text-on-primary">CMD</div></td>
+<td class="py-3"><div class="w-20 h-7 bg-primary ring-2 ring-primary/40 rounded flex items-center justify-center text-[9px] font-bold text-on-primary">CMD</div></td>
+<td class="py-3"><div class="w-20 h-7 bg-surface-bright rounded flex items-center justify-center text-[9px] font-bold text-on-surface-variant opacity-50">CMD</div></td>
+<td class="py-3"><div class="w-20 h-7 bg-error rounded flex items-center justify-center text-[9px] font-bold text-on-error">ERR</div></td>
+</tr>
+<tr class="group">
+<td class="py-3 font-mono text-primary pr-4">Input.tx</td>
+<td class="py-3"><div class="w-32 h-7 border border-outline-variant/30 rounded bg-surface-container-highest"></div></td>
+<td class="py-3"><div class="w-32 h-7 border border-primary/50 rounded bg-surface-container-highest"></div></td>
+<td class="py-3"><div class="w-32 h-7 border border-primary ring-1 ring-primary/20 rounded bg-surface-container-highest"></div></td>
+<td class="py-3"><div class="w-32 h-7 border border-outline-variant/10 rounded bg-surface-container opacity-40"></div></td>
+<td class="py-3"><div class="w-32 h-7 border border-error rounded bg-error-container/20"></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Module 4: High-Density & Inspector (Side Rail) -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<!-- Inspector Rail Card -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+<div class="p-4 bg-surface-container-high border-b border-outline-variant/15 flex justify-between items-center">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface">Inspector / Node_0x42</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">close</span>
+</div>
+<div class="p-4 space-y-4">
+<div class="space-y-1">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase">Workflow ID</label>
+<p class="font-mono text-xs text-primary truncate">fxq-772-prod-20231024-9981</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-2 bg-surface-container rounded border border-outline-variant/5">
+<label class="text-[9px] font-bold text-on-surface-variant uppercase">Latency</label>
+<p class="font-mono text-sm text-[#22C55E]">12.4ms</p>
+</div>
+<div class="p-2 bg-surface-container rounded border border-outline-variant/5">
+<label class="text-[9px] font-bold text-on-surface-variant uppercase">Retries</label>
+<p class="font-mono text-sm text-[#F59E0B]">03/10</p>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase">Structured Logs</label>
+<div class="bg-surface-container-lowest p-3 rounded font-mono text-[10px] text-on-surface-variant overflow-x-auto leading-relaxed border border-outline-variant/10">
+<p><span class="text-primary">[14:02:01]</span> <span class="text-[#22C55E]">INFO</span> fetch_kv_pair success</p>
+<p><span class="text-primary">[14:02:02]</span> <span class="text-[#F59E0B]">WARN</span> upstream_dep_slow: 400ms</p>
+<p><span class="text-primary">[14:02:05]</span> <span class="text-error">ERROR</span> quantum_handshake_fail</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Module 6: Accessibility Module -->
+<div class="bg-[#1b1f2b] rounded-xl p-5 border-l-4 border-primary">
+<h3 class="text-xs font-bold uppercase tracking-wider text-on-surface mb-4">Accessibility Checklist</h3>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm text-[#22C55E]" data-weight="fill">check_circle</span>
+<span class="text-[11px] leading-tight text-on-surface-variant">Contrast ratio ≥ 4.5:1 for all interactive labels (WCAG AA)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm text-[#22C55E]" data-weight="fill">check_circle</span>
+<span class="text-[11px] leading-tight text-on-surface-variant">Focus rings utilize high-contrast primary glow (#7C5CFF)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm text-primary">info</span>
+<span class="text-[11px] leading-tight text-on-surface-variant">Status signaling uses both color and literal icons for CVD safety</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Module 5: Technical Mapping Table -->
+<div class="col-span-12">
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<h2 class="text-lg font-headline font-semibold mb-6">Technical Mapping: MVP-P1 Contract</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant border-b border-outline-variant/20">
+<th class="py-3 px-4">Design Module</th>
+<th class="py-3 px-4">Shadcn Primitive</th>
+<th class="py-3 px-4">React Component</th>
+<th class="py-3 px-4">Phoenix Event Contract</th>
+<th class="py-3 px-4">Status</th>
+</tr>
+</thead>
+<tbody class="text-[11px] font-mono">
+<tr class="border-b border-outline-variant/10 hover:bg-surface-bright/20 transition-colors">
+<td class="py-4 px-4 text-on-surface font-body font-semibold">IncidentStrip</td>
+<td class="py-4 px-4 text-primary">Alert/Ribbon</td>
+<td class="py-4 px-4 text-on-surface-variant">&lt;IncidentRibbon /&gt;</td>
+<td class="py-4 px-4 text-on-surface-variant">phx-push: "incident_update"</td>
+<td class="py-4 px-4"><span class="px-2 py-0.5 rounded-full bg-[#22C55E]/10 text-[#22C55E] text-[9px] font-bold">READY</span></td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-bright/20 transition-colors">
+<td class="py-4 px-4 text-on-surface font-body font-semibold">WorkloadGrid</td>
+<td class="py-4 px-4 text-primary">Table/Sheet</td>
+<td class="py-4 px-4 text-on-surface-variant">&lt;DataTable /&gt;</td>
+<td class="py-4 px-4 text-on-surface-variant">phx-join: "metrics:all"</td>
+<td class="py-4 px-4"><span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[9px] font-bold">TESTING</span></td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-bright/20 transition-colors">
+<td class="py-4 px-4 text-on-surface font-body font-semibold">QuantumIDSelector</td>
+<td class="py-4 px-4 text-primary">Command/Combo</td>
+<td class="py-4 px-4 text-on-surface-variant">&lt;SearchBox /&gt;</td>
+<td class="py-4 px-4 text-on-surface-variant">phx-submit: "node_query"</td>
+<td class="py-4 px-4"><span class="px-2 py-0.5 rounded-full bg-[#F59E0B]/10 text-[#F59E0B] text-[9px] font-bold">DEGRADED</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Module 4: High Density Layout Example (Workload Table) -->
+<div class="col-span-12">
+<div class="bg-surface-container rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-6 border-b border-outline-variant/15 flex justify-between items-center">
+<h2 class="text-lg font-headline font-semibold">Workload Decision Matrix (High-Density)</h2>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Density:</span>
+<span class="px-2 py-1 bg-primary/20 text-primary rounded text-[10px] font-bold">MAX</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-high">
+<tr class="text-[9px] font-bold uppercase tracking-wider text-on-surface-variant">
+<th class="py-2 px-4 whitespace-nowrap">ID</th>
+<th class="py-2 px-4 whitespace-nowrap">Status</th>
+<th class="py-2 px-4 whitespace-nowrap">Latency</th>
+<th class="py-2 px-4 whitespace-nowrap">P99</th>
+<th class="py-2 px-4 whitespace-nowrap">Throughput</th>
+<th class="py-2 px-4 whitespace-nowrap">CPU_U</th>
+<th class="py-2 px-4 whitespace-nowrap">Mem_F</th>
+<th class="py-2 px-4 whitespace-nowrap">Disk_I</th>
+<th class="py-2 px-4 whitespace-nowrap">Network_O</th>
+<th class="py-2 px-4 whitespace-nowrap">Thread_C</th>
+<th class="py-2 px-4 whitespace-nowrap">Queue_L</th>
+<th class="py-2 px-4 whitespace-nowrap">Retry_C</th>
+<th class="py-2 px-4 whitespace-nowrap">Errors</th>
+<th class="py-2 px-4 whitespace-nowrap">Action</th>
+</tr>
+</thead>
+<tbody class="text-[10px] font-mono">
+<tr class="border-b border-outline-variant/10 hover:bg-surface-bright/30 transition-colors">
+<td class="py-2 px-4 text-primary">Q-8821</td>
+<td class="py-2 px-4"><span class="w-2 h-2 rounded-full bg-[#22C55E] inline-block"></span></td>
+<td class="py-2 px-4">12ms</td>
+<td class="py-2 px-4">18ms</td>
+<td class="py-2 px-4">4.2k/s</td>
+<td class="py-2 px-4">12%</td>
+<td class="py-2 px-4">1.2GB</td>
+<td class="py-2 px-4">Low</td>
+<td class="py-2 px-4">800Mb</td>
+<td class="py-2 px-4">122</td>
+<td class="py-2 px-4">0</td>
+<td class="py-2 px-4">0</td>
+<td class="py-2 px-4 text-[#22C55E]">0.0%</td>
+<td class="py-2 px-4"><span class="material-symbols-outlined text-[14px]">more_vert</span></td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-bright/30 transition-colors bg-[#EF4444]/5">
+<td class="py-2 px-4 text-error">Q-9912</td>
+<td class="py-2 px-4"><span class="w-2 h-2 rounded-full bg-[#EF4444] inline-block"></span></td>
+<td class="py-2 px-4">882ms</td>
+<td class="py-2 px-4">1.2s</td>
+<td class="py-2 px-4">122/s</td>
+<td class="py-2 px-4">98%</td>
+<td class="py-2 px-4">14GB</td>
+<td class="py-2 px-4">High</td>
+<td class="py-2 px-4">12Mb</td>
+<td class="py-2 px-4">2k</td>
+<td class="py-2 px-4">842</td>
+<td class="py-2 px-4">12</td>
+<td class="py-2 px-4 text-error">14.2%</td>
+<td class="py-2 px-4"><span class="material-symbols-outlined text-[14px]">more_vert</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Background Decoration -->
+<div class="fixed inset-0 pointer-events-none -z-10 opacity-30">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary-container/10 blur-[120px] rounded-full"></div>
+</div>
+</body></html>

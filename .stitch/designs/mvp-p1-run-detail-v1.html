@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FluxQ | Incident Root-Cause Investigation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@400;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#c8bfff",
+                        "surface-tint": "#cabeff",
+                        "on-tertiary": "#2f2077",
+                        "on-primary-container": "#2a0088",
+                        "background": "#0f131e",
+                        "secondary": "#c6bfff",
+                        "on-surface": "#dfe2f2",
+                        "on-secondary": "#2800a0",
+                        "on-surface-variant": "#c9c4d8",
+                        "surface-container-low": "#171b27",
+                        "secondary-fixed-dim": "#c6bfff",
+                        "secondary-fixed": "#e4dfff",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#bbb3ff",
+                        "primary-fixed-dim": "#cabeff",
+                        "on-error": "#690005",
+                        "tertiary": "#c8bfff",
+                        "surface-variant": "#313441",
+                        "primary-fixed": "#e6deff",
+                        "inverse-surface": "#dfe2f2",
+                        "on-tertiary-container": "#291870",
+                        "surface-dim": "#0f131e",
+                        "on-secondary-fixed": "#160066",
+                        "on-background": "#dfe2f2",
+                        "tertiary-container": "#9185df",
+                        "surface-container-lowest": "#0a0e19",
+                        "surface-bright": "#353945",
+                        "secondary-container": "#4006e8",
+                        "on-tertiary-fixed": "#1a0063",
+                        "outline": "#938ea1",
+                        "inverse-primary": "#603ce2",
+                        "surface-container": "#1b1f2b",
+                        "surface-container-high": "#262a36",
+                        "on-tertiary-fixed-variant": "#46398f",
+                        "surface-container-highest": "#313441",
+                        "on-primary-fixed-variant": "#4816cb",
+                        "surface": "#0f131e",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#3c00de",
+                        "primary": "#cabeff",
+                        "tertiary-fixed": "#e5deff",
+                        "inverse-on-surface": "#2c303c",
+                        "primary-container": "#947dff",
+                        "outline-variant": "#484555",
+                        "on-primary-fixed": "#1c0062",
+                        "on-primary": "#31009a"
+                    },
+                    fontFamily: {
+                        "headline": ["Sora", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["IBM Plex Mono", "monospace"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #484555; border-radius: 10px; }
+        .glow-error { box-shadow: inset 0 0 12px rgba(239, 68, 68, 0.2); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-[#0a0e19]/80 backdrop-blur-xl border-b border-[#484555]/15 shadow-2xl shadow-black/40 docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-6 h-14">
+<div class="flex items-center gap-8">
+<span class="font-['Sora'] text-xl font-semibold tracking-tighter text-[#cabeff]">FluxQ</span>
+<nav class="hidden md:flex items-center gap-6 font-['Inter'] text-sm tracking-wide">
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Global Filters</a>
+<a class="text-[#cabeff] border-b-2 border-[#7C5CFF] pb-1" href="#">System Health</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-[#c9c4d8] hover:bg-[#353945] p-2 rounded-full cursor-pointer transition-colors duration-200" data-icon="search">search</span>
+</div>
+<span class="material-symbols-outlined text-[#c9c4d8] hover:bg-[#353945] p-2 rounded-full cursor-pointer transition-colors duration-200" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-[#c9c4d8] hover:bg-[#353945] p-2 rounded-full cursor-pointer transition-colors duration-200" data-icon="settings">settings</span>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-3.5rem)]">
+<!-- SideNavBar -->
+<aside class="bg-[#171b27] fixed left-0 top-0 h-screen w-20 flex flex-col items-center py-8 space-y-8 z-40">
+<div class="mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary" data-icon="rocket_launch">rocket_launch</span>
+</div>
+</div>
+<nav class="flex flex-col gap-6">
+<button class="flex flex-col items-center gap-1 group text-[#c9c4d8] hover:bg-[#262a36] transition-all p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-wider group-hover:translate-x-1 transition-transform">Overview</span>
+</button>
+<button class="flex flex-col items-center gap-1 group text-[#cabeff] bg-[#1b1f2b] border-r-2 border-[#7C5CFF] p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-wider">Workflows</span>
+</button>
+<button class="flex flex-col items-center gap-1 group text-[#c9c4d8] hover:bg-[#262a36] transition-all p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-wider group-hover:translate-x-1 transition-transform">Runs</span>
+</button>
+<button class="flex flex-col items-center gap-1 group text-[#c9c4d8] hover:bg-[#262a36] transition-all p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="lan">lan</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-wider group-hover:translate-x-1 transition-transform">Nodes</span>
+</button>
+</nav>
+<div class="mt-auto flex flex-col gap-6">
+<button class="flex flex-col items-center gap-1 text-[#c9c4d8] hover:bg-[#262a36] p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#c9c4d8] hover:bg-[#262a36] p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+</aside>
+<!-- NavigationDrawer (Right Action Rail) -->
+<aside class="fixed right-0 top-14 h-[calc(100vh-3.5rem)] w-64 bg-[#171b27] border-l border-[#484555]/15 z-30 flex flex-col p-4 gap-4">
+<div class="mb-4">
+<h2 class="font-headline text-primary text-sm font-semibold tracking-wide">Remediation</h2>
+<p class="font-mono text-[10px] text-on-surface-variant/60 uppercase">Incident Actions</p>
+</div>
+<div class="space-y-3">
+<button class="w-full py-3 px-4 rounded bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span> Execute Workflow
+                </button>
+<div class="h-px bg-outline-variant/10 my-4"></div>
+<button class="w-full flex items-center gap-3 p-3 rounded bg-[#262a36] text-[#cabeff] transition-opacity duration-150">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+<span class="font-mono text-xs">Retry</span>
+</button>
+<button class="w-full flex items-center gap-3 p-3 rounded text-[#c9c4d8] hover:bg-[#313441] transition-opacity duration-150">
+<span class="material-symbols-outlined" data-icon="alt_route">alt_route</span>
+<span class="font-mono text-xs">Reroute</span>
+</button>
+<button class="w-full flex items-center gap-3 p-3 rounded text-[#c9c4d8] hover:bg-[#313441] transition-opacity duration-150">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+<span class="font-mono text-xs">Cancel</span>
+</button>
+<button class="w-full flex items-center gap-3 p-3 rounded text-[#c9c4d8] hover:bg-[#313441] transition-opacity duration-150">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+<span class="font-mono text-xs">Export</span>
+</button>
+</div>
+<div class="mt-auto bg-surface-container-highest/30 p-4 rounded-lg border border-outline-variant/10">
+<span class="text-[10px] text-on-surface-variant font-bold uppercase block mb-2 tracking-widest">Support Context</span>
+<p class="text-xs text-on-surface/70 leading-relaxed">Failed at ingress gate Azure-West-2. Latency spike detected (+240ms).</p>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-20 mr-64 flex-1 p-6 bg-surface-dim overflow-y-auto custom-scrollbar">
+<!-- Sticky Status Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<span class="px-2 py-0.5 rounded bg-error/10 text-error text-[10px] font-bold border border-error/20 uppercase tracking-tighter">Exception</span>
+<h1 class="font-headline text-3xl font-bold tracking-tight text-on-surface">QX-882-P1</h1>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm font-mono">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-xs" data-icon="architecture">architecture</span> Workflow v2.4.0-alpha</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-xs" data-icon="alt_route">alt_route</span> live_smoke</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary" data-icon="cloud_done">cloud_done</span>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Terminal Active</span>
+<span class="text-sm font-mono text-primary-fixed-dim">Azure-West-2</span>
+</div>
+</div>
+</div>
+<!-- Incident Pulse -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+<div class="bg-surface-container p-4 rounded-xl border-l-4 border-primary">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Retry Budget</span>
+<div class="flex items-end justify-between">
+<span class="text-2xl font-headline font-semibold">2/5</span>
+<span class="text-on-surface-variant/40 text-xs font-mono">Attempts</span>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-xl">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Timeout Policy</span>
+<div class="flex items-end justify-between">
+<span class="text-2xl font-headline font-semibold">15s</span>
+<span class="text-on-surface-variant/40 text-xs font-mono">Aggressive</span>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-xl">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Fallback Status</span>
+<div class="flex items-end justify-between text-primary">
+<span class="text-2xl font-headline font-semibold">Active</span>
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-xl glow-error border border-error/20">
+<span class="text-[10px] uppercase font-bold text-error block mb-1">Terminal Failover</span>
+<div class="flex items-end justify-between">
+<span class="text-sm font-mono text-on-surface">Azure-West-2</span>
+<span class="text-error material-symbols-outlined" data-icon="warning">warning</span>
+</div>
+</div>
+</div>
+<!-- Side-by-Side Analysis -->
+<div class="grid grid-cols-1 lg:grid-cols-10 gap-6 mb-8">
+<!-- Lifecycle Timeline -->
+<div class="lg:col-span-6 flex flex-col gap-4">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Lifecycle Timeline</h3>
+<div class="bg-surface-container-low rounded-xl p-6 relative">
+<div class="absolute left-9 top-8 bottom-8 w-0.5 bg-outline-variant/20"></div>
+<div class="space-y-8 relative">
+<!-- Step 1 -->
+<div class="flex gap-6 items-start">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest border border-outline-variant/30 flex items-center justify-center z-10">
+<div class="w-2 h-2 rounded-full bg-on-surface-variant"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="font-headline font-semibold text-on-surface">Queued</span>
+<span class="font-mono text-xs text-on-surface-variant">T-1.4s</span>
+</div>
+<p class="text-xs text-on-surface-variant/70 leading-relaxed">Workflow initiated. Awaiting resource allocation in live_smoke lane.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex gap-6 items-start">
+<div class="w-6 h-6 rounded-full bg-primary-container/20 border border-primary/30 flex items-center justify-center z-10">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="font-headline font-semibold text-on-surface">Executed</span>
+<span class="font-mono text-xs text-on-surface-variant">T+0ms</span>
+</div>
+<p class="text-xs text-on-surface-variant/70 leading-relaxed">Processing started at Azure-West-2 terminal. Load balanced: Round Robin.</p>
+</div>
+</div>
+<!-- Step 3 (Failed) -->
+<div class="flex gap-6 items-start">
+<div class="w-6 h-6 rounded-full bg-error-container/30 border border-error/50 flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-error" data-icon="close">close</span>
+</div>
+<div class="flex-1 p-3 rounded bg-error-container/10 border border-error/20">
+<div class="flex justify-between items-center mb-1">
+<span class="font-headline font-semibold text-error">Exception Detected</span>
+<span class="font-mono text-xs text-error">T+258ms</span>
+</div>
+<p class="text-xs text-error/80 leading-relaxed">503 Service Unavailable at terminal_atb_gateway. Threshold exceeded.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Trace Tree -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Trace Tree</h3>
+<div class="bg-surface-container-low rounded-xl p-4 font-mono text-[11px] h-full flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-xs" data-icon="subdirectory_arrow_right">subdirectory_arrow_right</span>
+<span class="bg-surface-container-highest px-2 py-0.5 rounded">root_ingress</span>
+<span class="text-[10px] text-success opacity-70">200 OK</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant ml-4">
+<span class="material-symbols-outlined text-xs" data-icon="subdirectory_arrow_right">subdirectory_arrow_right</span>
+<span class="bg-surface-container-highest px-2 py-0.5 rounded">auth_val</span>
+<span class="text-[10px] text-success opacity-70">200 OK</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant ml-8">
+<span class="material-symbols-outlined text-xs" data-icon="subdirectory_arrow_right">subdirectory_arrow_right</span>
+<span class="bg-surface-container-highest px-2 py-0.5 rounded">transform</span>
+<span class="text-[10px] text-success opacity-70">200 OK</span>
+</div>
+<div class="flex items-center gap-2 text-error ml-12 p-1 border-b border-error/30 bg-error/5">
+<span class="material-symbols-outlined text-xs" data-icon="bolt">bolt</span>
+<span class="font-bold">terminal_atb_gateway</span>
+<span class="text-[10px] font-bold">FAIL: 503</span>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant/10">
+<div class="flex justify-between text-[10px] text-on-surface-variant/50 mb-1">
+<span>CRITICAL PATH</span>
+<span>88% LOAD</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-error h-full w-[88%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Metric Shelf -->
+<div class="flex flex-wrap gap-4 mb-8">
+<div class="flex-1 min-w-[140px] bg-surface-container-high p-4 rounded-xl flex flex-col gap-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Queue Wait</span>
+<span class="text-xl font-mono text-on-surface">1.4s</span>
+</div>
+<div class="flex-1 min-w-[140px] bg-surface-container-high p-4 rounded-xl flex flex-col gap-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Execution Duration</span>
+<span class="text-xl font-mono text-on-surface">12.5s</span>
+</div>
+<div class="flex-[2] min-w-[200px] bg-surface-container-lowest border border-primary/20 p-4 rounded-xl flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<span class="text-[10px] font-bold text-primary uppercase">Total Run Duration</span>
+<span class="text-2xl font-mono font-bold text-primary-fixed-dim">13.9s</span>
+</div>
+<span class="material-symbols-outlined text-primary opacity-30 text-4xl" data-icon="timer">timer</span>
+</div>
+</div>
+<!-- Drift Narrative -->
+<div class="bg-surface-container-high rounded-xl p-6 mb-8 border border-outline-variant/10 overflow-hidden relative">
+<div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-8xl" data-icon="query_stats">query_stats</span>
+</div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+<h3 class="text-sm font-bold uppercase tracking-widest">Drift Narrative</h3>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Confidence</span>
+<span class="px-2 py-0.5 rounded bg-success/10 text-success text-xs font-mono font-bold">94.2%</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant font-bold mb-2 uppercase tracking-tight">Latency Deviation</span>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-mono font-bold">+240ms</span>
+<span class="text-error text-[10px] flex items-center"><span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span> CRITICAL</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant font-bold mb-2 uppercase tracking-tight">Expectation Δ</span>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-mono font-bold">0.12</span>
+<span class="text-on-surface-variant/40 text-[10px]">T-Baseline</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant font-bold mb-2 uppercase tracking-tight">KL Divergence</span>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-mono font-bold">0.088</span>
+<span class="text-on-surface-variant/40 text-[10px]">Probability Shift</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Structured Logs -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Pinned Investigation Logs</h3>
+<div class="flex gap-2">
+<button class="bg-surface-container p-1 rounded hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span></button>
+<button class="bg-surface-container p-1 rounded hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-sm" data-icon="search">search</span></button>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded border border-outline-variant/10 overflow-hidden">
+<div class="grid grid-cols-12 bg-surface-container-high/50 px-4 py-2 border-b border-outline-variant/10 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
+<div class="col-span-2">Timestamp</div>
+<div class="col-span-1">Level</div>
+<div class="col-span-2">Component</div>
+<div class="col-span-7">Message</div>
+</div>
+<div class="font-mono text-[11px] h-64 overflow-y-auto custom-scrollbar">
+<!-- Log Entry 1 -->
+<div class="grid grid-cols-12 px-4 py-2 border-b border-outline-variant/5 hover:bg-surface-bright/20 transition-colors">
+<div class="col-span-2 text-on-surface-variant/60">12:04:12.882</div>
+<div class="col-span-1 text-error font-bold">[CRIT]</div>
+<div class="col-span-2 text-primary-fixed-dim">GATEWAY_LB</div>
+<div class="col-span-7 text-on-surface/90">503 Service Unavailable for resource: terminal_atb_gateway at endpoint AZ-W2.</div>
+</div>
+<!-- Log Entry 2 -->
+<div class="grid grid-cols-12 px-4 py-2 border-b border-outline-variant/5 hover:bg-surface-bright/20 transition-colors bg-error/5">
+<div class="col-span-2 text-on-surface-variant/60">12:04:12.870</div>
+<div class="col-span-1 text-error">[ERROR]</div>
+<div class="col-span-2 text-primary-fixed-dim">INGRESS_AZ</div>
+<div class="col-span-7 text-error/90">Circuit breaker opened: terminal_atb_gateway. Success rate fell below 92%.</div>
+</div>
+<!-- Log Entry 3 -->
+<div class="grid grid-cols-12 px-4 py-2 border-b border-outline-variant/5 hover:bg-surface-bright/20 transition-colors">
+<div class="col-span-2 text-on-surface-variant/60">12:04:12.720</div>
+<div class="col-span-1 text-tertiary">[INFO]</div>
+<div class="col-span-2 text-primary-fixed-dim">TRANSFORM_N</div>
+<div class="col-span-7 text-on-surface-variant">Data transformation complete. Serialized 1.4mb in 12ms.</div>
+</div>
+<!-- Log Entry 4 -->
+<div class="grid grid-cols-12 px-4 py-2 border-b border-outline-variant/5 hover:bg-surface-bright/20 transition-colors">
+<div class="col-span-2 text-on-surface-variant/60">12:04:12.550</div>
+<div class="col-span-1 text-tertiary">[INFO]</div>
+<div class="col-span-2 text-primary-fixed-dim">AUTH_VAULT</div>
+<div class="col-span-7 text-on-surface-variant">Token validated. Permissions: write:smoke, read:all.</div>
+</div>
+<!-- Log Entry 5 -->
+<div class="grid grid-cols-12 px-4 py-2 border-b border-outline-variant/5 hover:bg-surface-bright/20 transition-colors">
+<div class="col-span-2 text-on-surface-variant/60">12:04:11.140</div>
+<div class="col-span-1 text-tertiary">[INFO]</div>
+<div class="col-span-2 text-primary-fixed-dim">SCHEDULER</div>
+<div class="col-span-7 text-on-surface-variant">Allocated worker: flux-node-p1-azure-229. Priority: High.</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

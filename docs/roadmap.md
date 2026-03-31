@@ -75,7 +75,7 @@ Implement reliable orchestration and an excellent run-detail debugging experienc
 - [ ] Oban queueing/scheduling baseline.
 - [ ] Run detail screen with correlated timeline/logs/traces/metrics.
 - [ ] Troubleshooting bundle export for single run.
-- [ ] Stitch assets for workflow builder, run detail, component library.
+- [x] Stitch assets for workflow builder, run detail, component library.
 - [ ] Execute TRIAD-01 remediation items `UXR-001`, `UXR-002`, `UXR-003`, `UXR-004`, `UXR-007`.
 
 ### Milestone F2 Gate

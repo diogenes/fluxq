@@ -97,6 +97,63 @@
       "localHtml": ".stitch/designs/mvp-p0-onboarding-wizard-v4.html",
       "localPng": ".stitch/designs/mvp-p0-onboarding-wizard-v4.png",
       "status": "approved"
+    },
+    "mvp-p1-workflow-builder-v1": {
+      "id": "ec4a1dd4f91646e0a571f85a627277b2",
+      "sourceScreen": "projects/5264572250204306984/screens/ec4a1dd4f91646e0a571f85a627277b2",
+      "width": 2560,
+      "height": 2048,
+      "localHtml": ".stitch/designs/mvp-p1-workflow-builder-v1.html",
+      "localPng": ".stitch/designs/mvp-p1-workflow-builder-v1.png",
+      "status": "superseded",
+      "supersededBy": "mvp-p1-workflow-builder-v2"
+    },
+    "mvp-p1-workflow-builder-v2": {
+      "id": "9b900f1a3dec478b9107cf27dc333725",
+      "sourceScreen": "projects/5264572250204306984/screens/9b900f1a3dec478b9107cf27dc333725",
+      "width": 2560,
+      "height": 2160,
+      "localHtml": ".stitch/designs/mvp-p1-workflow-builder-v2.html",
+      "localPng": ".stitch/designs/mvp-p1-workflow-builder-v2.png",
+      "status": "approved"
+    },
+    "mvp-p1-run-detail-v1": {
+      "id": "c5662953ab8f43bbb7d7a494d4cb2c84",
+      "sourceScreen": "projects/5264572250204306984/screens/c5662953ab8f43bbb7d7a494d4cb2c84",
+      "width": 2560,
+      "height": 2600,
+      "localHtml": ".stitch/designs/mvp-p1-run-detail-v1.html",
+      "localPng": ".stitch/designs/mvp-p1-run-detail-v1.png",
+      "status": "superseded",
+      "supersededBy": "mvp-p1-run-detail-v2"
+    },
+    "mvp-p1-run-detail-v2": {
+      "id": "df57d3d0ccc64e9ca545669795038735",
+      "sourceScreen": "projects/5264572250204306984/screens/df57d3d0ccc64e9ca545669795038735",
+      "width": 2560,
+      "height": 2884,
+      "localHtml": ".stitch/designs/mvp-p1-run-detail-v2.html",
+      "localPng": ".stitch/designs/mvp-p1-run-detail-v2.png",
+      "status": "approved"
+    },
+    "mvp-p1-component-library-v1": {
+      "id": "c8a01146c5034406a5ff112dfb0e1999",
+      "sourceScreen": "projects/5264572250204306984/screens/c8a01146c5034406a5ff112dfb0e1999",
+      "width": 2560,
+      "height": 2928,
+      "localHtml": ".stitch/designs/mvp-p1-component-library-v1.html",
+      "localPng": ".stitch/designs/mvp-p1-component-library-v1.png",
+      "status": "superseded",
+      "supersededBy": "mvp-p1-component-library-v2"
+    },
+    "mvp-p1-component-library-v2": {
+      "id": "855b07d3158742b896e20456398296d1",
+      "sourceScreen": "projects/5264572250204306984/screens/855b07d3158742b896e20456398296d1",
+      "width": 2816,
+      "height": 2742,
+      "localHtml": ".stitch/designs/mvp-p1-component-library-v2.html",
+      "localPng": ".stitch/designs/mvp-p1-component-library-v2.png",
+      "status": "approved"
     }
   }
 }

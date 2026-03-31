@@ -4,7 +4,7 @@ Version: `v0.3`
 Owner: `senior-design-specialist`
 Date: `2026-03-31`
 Inputs: `ux-architecture-brief.md`, `domain-input-packet.md`
-Related: `docs/process/triad-review-cycle-01.md`, `docs/process/triad-review-cycle-03-mvp-p0.md`, `docs/process/ui-remediation-backlog.md`
+Related: `docs/process/triad-review-cycle-01.md`, `docs/process/triad-review-cycle-03-mvp-p0.md`, `docs/process/triad-review-cycle-04-mvp-p1.md`, `docs/process/ui-remediation-backlog.md`
 
 ## 1) Delivery Scope
 Boards in scope:
@@ -14,6 +14,9 @@ Boards in scope:
 
 MVP-P0 delivered in this iteration:
 - moodboard, token board, typography board, onboarding wizard.
+
+MVP-P1 delivered in this iteration:
+- workflow builder, run detail, component/state library.
 
 ## 2) Design Quality Goals
 - Improve hierarchy for dense operational data.
@@ -35,9 +38,9 @@ Stitch flow aligned:
 - asset traceability through `.stitch/metadata.json` and `docs/stitch/asset-register.md`.
 
 ## 4) Remaining Gaps to Address in Next Iteration
-1. begin MVP-P1 screens: workflow builder, run detail, component/state library.
-2. preserve onboarding action language parity while integrating P1 observability surfaces.
-3. draft P1 interaction specs for policy validation and troubleshooting bundle export entry points.
+1. begin MVP-P2 screens: provider health, portability analytics, Livebook linkage, motion/state board.
+2. enforce comparability and sample-quality strips in every portability narrative surface.
+3. preserve one-click incident remediation patterns while expanding provider operations depth.
 
 ## 5) Handoff Mapping
 - asset register: `docs/stitch/asset-register.md`
@@ -63,3 +66,12 @@ Stitch flow aligned:
 | Operational state-pack (`empty/loading/degraded/error`) | `alert`, `skeleton`, `badge`, `card` | `OperationalStatePack` | `run.state.changed`, `runtime.health.degraded` |
 | Incident action rail | `sheet`, `button`, `dropdown-menu` | `IncidentActionRail` | `run.retry.requested`, `run.cancel.requested`, `bundle.export.requested` |
 | Token and typography references | `table`, `separator`, `badge` | `DesignTokenReference`, `TypographyReference` | N/A (design-time artifact) |
+
+## 8) MVP-P1 Handoff Map (shadcn + React + Phoenix)
+| Surface Module | shadcn Primitive | React Component Target | Phoenix Event / Contract Hint |
+|---|---|---|---|
+| Workflow builder canvas and node palette | `card`, `tabs`, `accordion`, `select`, `button` | `WorkflowBuilderCanvas`, `NodePalette`, `NodeInspector` | `workflow.node.updated`, `workflow.validation.requested` |
+| Validation and preflight tray | `alert`, `badge`, `separator`, `table` | `ValidationTray`, `PreflightStatus` | `workflow.preflight.completed` |
+| Run detail timeline + trace + logs | `tabs`, `card`, `table`, `badge`, `sheet` | `RunDetailTimeline`, `TraceTree`, `StructuredLogPanel` | `run.detail.loaded`, `run.trace.expanded` |
+| Incident action rail | `sheet`, `button`, `dropdown-menu`, `tooltip` | `IncidentActionRail` | `run.retry.requested`, `run.reroute.requested`, `bundle.export.requested` |
+| Component/state library matrix | `table`, `badge`, `alert`, `accordion` | `ComponentStateMatrix`, `OperationalStatusStripReference` | N/A (design-time artifact) |

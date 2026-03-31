@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FXQ_MVP-P1_WorkflowBuilder_v2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#e5deff",
+                        "surface-container-low": "#171b27",
+                        "on-secondary-fixed": "#160066",
+                        "surface-tint": "#cabeff",
+                        "surface-container": "#1b1f2b",
+                        "on-primary": "#31009a",
+                        "on-secondary-container": "#bbb3ff",
+                        "inverse-primary": "#603ce2",
+                        "secondary-container": "#4006e8",
+                        "on-error": "#690005",
+                        "background": "#0f131e",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#2a0088",
+                        "primary-fixed": "#e6deff",
+                        "on-background": "#dfe2f2",
+                        "on-secondary": "#2800a0",
+                        "on-tertiary-fixed": "#1a0063",
+                        "tertiary-container": "#9185df",
+                        "surface-bright": "#353945",
+                        "on-secondary-fixed-variant": "#3c00de",
+                        "on-primary-fixed": "#1c0062",
+                        "tertiary-fixed-dim": "#c8bfff",
+                        "surface-container-high": "#262a36",
+                        "outline-variant": "#484555",
+                        "primary-container": "#947dff",
+                        "on-primary-fixed-variant": "#4816cb",
+                        "surface-variant": "#313441",
+                        "secondary": "#c6bfff",
+                        "surface-dim": "#0f131e",
+                        "surface-container-lowest": "#0a0e19",
+                        "on-tertiary": "#2f2077",
+                        "primary-fixed-dim": "#cabeff",
+                        "outline": "#938ea1",
+                        "on-tertiary-fixed-variant": "#46398f",
+                        "on-surface-variant": "#c9c4d8",
+                        "tertiary": "#c8bfff",
+                        "secondary-fixed": "#e4dfff",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#dfe2f2",
+                        "surface": "#0f131e",
+                        "primary": "#cabeff",
+                        "inverse-on-surface": "#2c303c",
+                        "on-tertiary-container": "#291870",
+                        "secondary-fixed-dim": "#c6bfff",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#313441",
+                        "inverse-surface": "#dfe2f2"
+                    },
+                    fontFamily: {
+                        "headline": ["Sora"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["IBM Plex Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #0f131e;
+            color: #dfe2f2;
+            overflow: hidden;
+        }
+        .canvas-grid {
+            background-image: radial-gradient(circle, #484555 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="font-body">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-[#0a0e19]/80 backdrop-blur-xl border-b border-[#484555]/15 shadow-2xl shadow-black/40 flex justify-between items-center px-6 h-14 w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#cabeff] font-headline">ORCHESTRATOR_V1</span>
+<nav class="hidden md:flex gap-6 items-center h-full">
+<a class="text-[#cabeff] border-b-2 border-[#7C5CFF] pb-1 font-headline font-semibold tracking-tight text-sm" href="#">Workflows</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] font-headline font-semibold tracking-tight text-sm transition-colors" href="#">Executions</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] font-headline font-semibold tracking-tight text-sm transition-colors" href="#">Inventory</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] font-headline font-semibold tracking-tight text-sm transition-colors" href="#">Insights</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<!-- Deterministic Lane Selector -->
+<div class="flex items-center bg-surface-container-low p-1 rounded-lg border border-outline-variant/20">
+<button class="px-3 py-1 text-[10px] font-mono uppercase tracking-widest bg-primary text-on-primary rounded">fixture</button>
+<button class="px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-on-surface-variant hover:text-on-surface">live_smoke</button>
+<button class="px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-on-surface-variant hover:text-on-surface">live</button>
+<div class="h-4 w-[1px] bg-outline-variant/30 mx-2"></div>
+<button class="px-2 py-1 text-[10px] font-mono text-primary/70 italic">baseline comparison</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-4 py-1.5 bg-surface-container-highest text-on-surface text-xs font-semibold rounded hover:bg-surface-bright active:scale-95 duration-200">Validate</button>
+<button class="px-4 py-1.5 bg-gradient-to-br from-primary to-primary-container text-on-primary text-xs font-bold rounded shadow-lg shadow-primary/20 active:scale-95 duration-200">Deploy</button>
+</div>
+<div class="flex items-center gap-3 ml-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">help</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+</div>
+</div>
+</header>
+<!-- Side Navigation Bar (Left - Node Palette) -->
+<aside class="fixed left-0 top-14 bottom-0 w-64 bg-[#171b27] flex flex-col h-full border-r border-[#484555]/15 z-40">
+<div class="p-4 border-b border-outline-variant/10">
+<h2 class="text-[#dfe2f2] font-headline font-bold text-sm">Node Palette</h2>
+<p class="text-[10px] font-mono text-on-surface-variant uppercase tracking-tighter">v2.4.0-stable</p>
+</div>
+<div class="flex-1 overflow-y-auto py-4">
+<nav class="space-y-1">
+<div class="px-4 py-2 bg-[#1b1f2b] text-[#cabeff] border-l-2 border-[#7C5CFF] flex items-center gap-3 cursor-pointer">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span class="font-body text-[0.6875rem] font-semibold tracking-wider uppercase">Trigger</span>
+</div>
+<div class="px-4 py-2 text-[#c9c4d8] opacity-70 hover:bg-[#1b1f2b] hover:opacity-100 flex items-center gap-3 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-sm">mediation</span>
+<span class="font-body text-[0.6875rem] font-semibold tracking-wider uppercase">Logic</span>
+</div>
+<div class="px-4 py-2 text-[#c9c4d8] opacity-70 hover:bg-[#1b1f2b] hover:opacity-100 flex items-center gap-3 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span class="font-body text-[0.6875rem] font-semibold tracking-wider uppercase">Action</span>
+</div>
+<div class="px-4 py-2 text-[#c9c4d8] opacity-70 hover:bg-[#1b1f2b] hover:opacity-100 flex items-center gap-3 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-sm">database</span>
+<span class="font-body text-[0.6875rem] font-semibold tracking-wider uppercase">Data</span>
+</div>
+<div class="px-4 py-2 text-[#c9c4d8] opacity-70 hover:bg-[#1b1f2b] hover:opacity-100 flex items-center gap-3 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-sm">shield</span>
+<span class="font-body text-[0.6875rem] font-semibold tracking-wider uppercase">Security</span>
+</div>
+</nav>
+<div class="mt-8 px-4">
+<p class="text-[9px] font-mono text-on-surface-variant uppercase mb-3">Available Primitives</p>
+<div class="grid grid-cols-1 gap-2">
+<div class="p-3 bg-surface-container border border-outline-variant/10 rounded hover:bg-surface-bright transition-colors cursor-move group">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold text-primary">failover logic</span>
+<span class="material-symbols-outlined text-xs text-on-surface-variant group-hover:text-primary">drag_indicator</span>
+</div>
+<p class="text-[9px] text-on-surface-variant leading-tight">Conditional branch for operational continuity.</p>
+</div>
+<div class="p-3 bg-surface-container border border-outline-variant/10 rounded hover:bg-surface-bright transition-colors cursor-move group">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold text-primary">alternate route</span>
+<span class="material-symbols-outlined text-xs text-on-surface-variant group-hover:text-primary">drag_indicator</span>
+</div>
+<p class="text-[9px] text-on-surface-variant leading-tight">Fallback path for non-terminal errors.</p>
+</div>
+<div class="p-3 bg-surface-container border border-outline-variant/10 rounded hover:bg-surface-bright transition-colors cursor-move group">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold text-primary">terminal endpoint</span>
+<span class="material-symbols-outlined text-xs text-on-surface-variant group-hover:text-primary">drag_indicator</span>
+</div>
+<p class="text-[9px] text-on-surface-variant leading-tight">End of execution chain with state persistence.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 mt-auto border-t border-outline-variant/10">
+<button class="w-full py-2 bg-surface-container-high border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider rounded hover:bg-primary hover:text-on-primary transition-all">Add Custom Node</button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="fixed left-64 right-80 top-14 bottom-48 bg-background overflow-hidden">
+<div class="absolute inset-0 canvas-grid"></div>
+<div class="relative w-full h-full p-8 overflow-auto">
+<!-- Central Workflow Title -->
+<div class="mb-12">
+<h1 class="text-3xl font-bold font-headline text-on-surface">FXQ_MVP-P1_WorkflowBuilder_v2</h1>
+<div class="flex items-center gap-4 mt-2">
+<span class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-success/10 text-emerald-400 text-[10px] font-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                        SYNCHRONIZED
+                    </span>
+<span class="text-[10px] font-mono text-on-surface-variant italic">Last compiled: 14:02:44 UTC</span>
+</div>
+</div>
+<!-- Visual Nodes and Links -->
+<div class="relative min-h-[600px] w-full">
+<!-- Node 1 -->
+<div class="absolute top-10 left-10 w-48 bg-surface-container border-2 border-primary/40 rounded-lg p-3 shadow-xl z-10 hover:border-primary transition-all">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm">bolt</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Event_Ingress_01</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded text-[9px] font-mono text-on-surface-variant mb-2">
+                        Queue: <span class="text-primary">12ms</span><br/>
+                        Exec: <span class="text-primary">45ms</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[8px] px-1 bg-green-500/10 text-green-400 rounded">HEALTHY</span>
+<div class="w-2 h-2 rounded-full bg-primary ring-4 ring-primary/20 translate-x-4"></div>
+</div>
+</div>
+<!-- SVG Connector -->
+<svg class="absolute inset-0 pointer-events-none w-full h-full">
+<path d="M 232 80 L 350 150" fill="none" opacity="0.4" stroke="#7C5CFF" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M 542 150 L 650 80" fill="none" opacity="0.6" stroke="#7C5CFF" stroke-width="2"></path>
+<path d="M 542 180 L 650 250" fill="none" opacity="0.6" stroke="#EF4444" stroke-width="2"></path>
+</svg>
+<!-- Node 2 -->
+<div class="absolute top-32 left-80 w-48 bg-surface-container border border-outline-variant/30 rounded-lg p-3 shadow-xl z-10 hover:border-primary transition-all ring-2 ring-primary/20">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm">mediation</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">failover logic</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded text-[9px] font-mono text-on-surface-variant mb-2">
+                        Queue: <span class="text-primary">4ms</span><br/>
+                        Exec: <span class="text-primary">18ms</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[8px] px-1 bg-primary/10 text-primary rounded">ACTIVE</span>
+<div class="w-2 h-2 rounded-full bg-primary ring-4 ring-primary/20 translate-x-4"></div>
+</div>
+</div>
+<!-- Node 3 (Error State) -->
+<div class="absolute top-10 left-[600px] w-48 bg-surface-container border border-error/50 rounded-lg p-3 shadow-xl z-10 opacity-80">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-error text-sm">terminal</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">terminal endpoint</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded text-[9px] font-mono text-error mb-2">
+                        Queue: <span class="">-- ms</span><br/>
+                        Exec: <span class="">-- ms</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[8px] px-1 bg-error/10 text-error rounded font-bold uppercase">timeout</span>
+</div>
+</div>
+<!-- Node 4 (Fallback) -->
+<div class="absolute top-60 left-[600px] w-48 bg-surface-container border border-tertiary/30 rounded-lg p-3 shadow-xl z-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-tertiary text-sm">alt_route</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">alternate route</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded text-[9px] font-mono text-on-surface-variant mb-2">
+                        Queue: <span class="text-tertiary">204ms</span><br/>
+                        Exec: <span class="text-tertiary">12ms</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[8px] px-1 bg-tertiary/10 text-tertiary rounded font-bold uppercase">fallback engaged</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Side Navigation Bar (Right - Node Inspector) -->
+<aside class="fixed right-0 top-14 bottom-0 w-80 bg-[#171b27] flex flex-col h-full border-l border-[#484555]/15 z-40">
+<div class="p-4 border-b border-outline-variant/10">
+<h2 class="text-[#dfe2f2] font-headline font-bold text-sm">Node Inspector</h2>
+<p class="text-[10px] font-mono text-on-surface-variant italic">UUID: 8f2a-44b1</p>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-6">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-xs font-headline font-semibold text-primary">Configuration</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer hover:text-primary">settings_input_component</span>
+</div>
+<div class="space-y-2">
+<label class="block text-[10px] font-mono text-on-surface-variant uppercase tracking-wider">Metric Thresholds</label>
+<div class="grid grid-cols-2 gap-2">
+<div class="bg-surface-container p-2 rounded border border-outline-variant/10">
+<p class="text-[8px] text-on-surface-variant mb-1">Queue Wait (ms)</p>
+<input class="w-full bg-transparent border-none p-0 text-xs font-mono text-primary focus:ring-0" type="text" value="250"/>
+</div>
+<div class="bg-surface-container p-2 rounded border border-outline-variant/10">
+<p class="text-[8px] text-on-surface-variant mb-1">Execution Duration (ms)</p>
+<input class="w-full bg-transparent border-none p-0 text-xs font-mono text-primary focus:ring-0" type="text" value="1200"/>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-[10px] font-mono text-on-surface-variant uppercase tracking-wider">Operational Mode</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded text-xs font-body p-2 text-on-surface focus:border-primary outline-none">
+<option>failover logic</option>
+<option>alternate route</option>
+<option>terminal endpoint</option>
+</select>
+</div>
+</div>
+<div class="space-y-4 border-t border-outline-variant/10 pt-4">
+<div class="flex items-center justify-between">
+<span class="text-xs font-headline font-semibold text-primary">Reliability Logs</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer">terminal</span>
+</div>
+<div class="bg-surface-container-lowest rounded p-3 font-mono text-[9px] h-48 overflow-y-auto space-y-1 text-on-surface-variant">
+<p class="text-emerald-400">[14:02:11] Sync: Node_01 Initialized</p>
+<p>[14:02:12] Metric: Queue_Wait=4ms</p>
+<p>[14:02:14] Metric: Execution_Dur=18ms</p>
+<p class="text-error">[14:02:44] WARN: Fallback path active</p>
+<p>[14:02:45] Logic: Alternate_Route selected</p>
+<p class="animate-pulse">_</p>
+</div>
+</div>
+</div>
+<nav class="flex justify-between items-center p-2 bg-surface-container-low border-t border-outline-variant/10">
+<div class="flex-1 text-center py-2 text-[#cabeff] bg-[#1b1f2b] cursor-pointer">
+<span class="material-symbols-outlined text-base">settings_input_component</span>
+</div>
+<div class="flex-1 text-center py-2 text-[#c9c4d8] hover:text-[#dfe2f2] cursor-pointer">
+<span class="material-symbols-outlined text-base">refresh</span>
+</div>
+<div class="flex-1 text-center py-2 text-[#c9c4d8] hover:text-[#dfe2f2] cursor-pointer">
+<span class="material-symbols-outlined text-base">alt_route</span>
+</div>
+<div class="flex-1 text-center py-2 text-[#c9c4d8] hover:text-[#dfe2f2] cursor-pointer">
+<span class="material-symbols-outlined text-base">terminal</span>
+</div>
+</nav>
+</aside>
+<!-- Bottom Tray (Validation & State Legend) -->
+<footer class="fixed bottom-0 left-64 right-80 bg-surface-container-low border-t border-outline-variant/20 h-48 flex flex-col z-40">
+<!-- Validation Header -->
+<div class="flex items-center px-6 py-2 border-b border-outline-variant/10 gap-8">
+<span class="text-[10px] font-mono font-bold uppercase text-primary tracking-widest">Runtime Preflight</span>
+<div class="flex gap-6">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span class="text-[9px] font-mono text-on-surface-variant">Schema: VALID</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span class="text-[9px] font-mono text-on-surface-variant">Graph: CYCLIC_FREE</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span class="text-[9px] font-mono text-on-surface-variant">Semantic: CLEAN</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
+<span class="text-[9px] font-mono text-on-surface-variant">Runtime: 1 WARN (Fallback)</span>
+</div>
+</div>
+</div>
+<div class="flex-1 flex">
+<!-- Metric Summary -->
+<div class="w-1/3 p-4 border-r border-outline-variant/10">
+<h4 class="text-[10px] font-headline font-bold mb-3 uppercase tracking-tighter">Aggregate Performance</h4>
+<div class="space-y-3">
+<div class="flex justify-between items-end border-b border-outline-variant/5 pb-1">
+<span class="text-[9px] text-on-surface-variant">Avg Queue Wait</span>
+<span class="text-xs font-mono text-primary">34.2 ms</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant/5 pb-1">
+<span class="text-[9px] text-on-surface-variant">Avg Execution Duration</span>
+<span class="text-xs font-mono text-primary">156.8 ms</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant/5 pb-1">
+<span class="text-[9px] text-on-surface-variant">Failover Success Rate</span>
+<span class="text-xs font-mono text-emerald-400">99.98%</span>
+</div>
+</div>
+</div>
+<!-- Operational State-Pack Legend -->
+<div class="flex-1 p-4 bg-surface-container-lowest/30">
+<h4 class="text-[10px] font-headline font-bold mb-3 uppercase tracking-tighter">Operational State-Pack</h4>
+<div class="grid grid-cols-4 gap-y-3 gap-x-4">
+<div class="flex items-center gap-2 opacity-50">
+<span class="w-3 h-3 bg-outline-variant/20 border border-outline-variant/40 rounded-sm"></span>
+<span class="text-[9px] font-mono">empty</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-primary-container/20 border border-primary/40 rounded-sm animate-pulse"></span>
+<span class="text-[9px] font-mono">loading</span>
+</div>
+<div class="flex items-center gap-2 text-orange-400">
+<span class="w-3 h-3 bg-orange-400/20 border border-orange-400/60 rounded-sm"></span>
+<span class="text-[9px] font-mono">degraded</span>
+</div>
+<div class="flex items-center gap-2 text-error">
+<span class="w-3 h-3 bg-error/20 border border-error/60 rounded-sm"></span>
+<span class="text-[9px] font-mono">error</span>
+</div>
+<div class="flex items-center gap-2 text-primary">
+<span class="w-3 h-3 bg-primary/20 border border-primary/60 rounded-sm"></span>
+<span class="text-[9px] font-mono">retrying</span>
+</div>
+<div class="flex items-center gap-2 text-error/80">
+<span class="w-3 h-3 border border-error/40 rounded-sm border-dashed"></span>
+<span class="text-[9px] font-mono">timeout</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-3 h-3 bg-surface-bright/50 border border-outline-variant/20 rounded-sm"></span>
+<span class="text-[9px] font-mono">cancelled</span>
+</div>
+<div class="flex items-center gap-2 text-tertiary">
+<span class="w-3 h-3 bg-tertiary/20 border border-tertiary/60 rounded-sm shadow-[0_0_8px_rgba(200,191,255,0.3)]"></span>
+<span class="text-[9px] font-mono">fallback engaged</span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
