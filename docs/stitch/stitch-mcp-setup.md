@@ -140,3 +140,37 @@ For FluxQ design iterations:
 3. In Codex, run `list_projects` first; stop if it fails.
 4. Only then run generation/refinement tools (`edit_screens`, `generate_screen_from_text`, `generate_variants`).
 5. Record screen IDs and asset IDs in iteration notes for traceability.
+
+## 10) Fast Local Workflow (`stitch-sync`)
+Use local exports as high-fidelity working files and avoid repeated Stitch calls during implementation work.
+
+Command:
+```bash
+cd /Users/diogenes/Projects/diogenes/fluxq
+make stitch-sync
+```
+
+What it does:
+1. Reads `.stitch/metadata.json`.
+2. Selects screens with status in `approved,ready_for_review` (default).
+3. Pulls latest HTML (`get_screen_code`) and PNG (`get_screen_image`) into the mapped local files under `.stitch/designs/`.
+
+Runtime requirements:
+- `mise`, `node`, `npx`, `jq`, `gcloud`
+- Stitch auth via one of:
+  - `STITCH_API_KEY`, or
+  - `STITCH_ACCESS_TOKEN` + `GOOGLE_CLOUD_PROJECT`
+
+Useful overrides:
+```bash
+# Sync only approved screens (default is approved,ready_for_review)
+STITCH_SYNC_STATUSES=approved make stitch-sync
+
+# Explicit metadata path or Stitch project id
+STITCH_METADATA_PATH=.stitch/metadata.json STITCH_PROJECT_ID=5264572250204306984 make stitch-sync
+```
+
+If sync fails with auth/project errors:
+1. `gcloud auth application-default login`
+2. `gcloud config set project <YOUR_GCP_PROJECT_ID>`
+3. `npx @_davideast/stitch-mcp doctor --verbose`

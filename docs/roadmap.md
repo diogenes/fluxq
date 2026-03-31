@@ -19,6 +19,50 @@
 
 ---
 
+## Companion Track — UI Component Implementation (`0.x`)
+
+This track runs in parallel with product phases to convert approved Stitch assets into reusable React + shadcn/ui components (Phoenix + Inertia integration target).
+
+| Milestone | Label | Status | Primary Outcome |
+|---|---|---|---|
+| UI-M0 | v0.1 Foundation | Planned | Layout shell, navigation, typography/tokens, Storybook baseline |
+| UI-M1 | v0.2 Core Primitives | Planned | Forms, dialogs, tables, alerts, state-pack primitives |
+| UI-M2 | v0.3 Runtime Surfaces | Planned | Run detail, provider health, portability analytics composition |
+| UI-M3 | v0.4 Advanced Modules | Planned | Workflow builder canvas, provenance graph, motion/state contracts |
+| UI-M4 | v0.5 Hardening | Planned | Responsiveness, accessibility, i18n-by-default (`en` initial), visual regression |
+
+### UI-M0 — v0.1 Foundation
+- [ ] Storybook setup with layout and component catalog.
+- [ ] Inertia.js + inertia-phoenix + React baseline wiring.
+- [ ] App shell components: top nav, side nav (expanded/collapsed), right rail.
+- [ ] Token bridge from `.stitch` exports to CSS variables/theme.
+
+### UI-M1 — v0.2 Core Primitives
+- [ ] Foundational shadcn wrappers: button, input, select, textarea, checkbox, switch.
+- [ ] Operational primitives: badges, status chips, alerts, skeleton, empty/degraded/error states.
+- [ ] Dialog/sheet/dropdown/tooltip interaction primitives.
+- [ ] Data tables with density and mono-metric formatting contracts.
+
+### UI-M2 — v0.3 Runtime Surfaces
+- [ ] Run detail composition blocks (timeline, trace, logs, incident rail).
+- [ ] Provider health surface blocks (status strip, diagnostics rail, actions).
+- [ ] Portability analytics blocks (comparability matrix, confidence/sample-quality strips).
+- [ ] Livebook linkage blocks (provenance chain, reproducibility checklist, bundle actions).
+
+### UI-M3 — v0.4 Advanced Modules
+- [ ] Workflow builder foundational canvas + node palette + inspector.
+- [ ] Motion/state contract component set with reduced-motion fallback behavior.
+- [ ] Chart modules and telemetry visual primitives.
+- [ ] Domain-safe copy primitives for retries/timeouts/fallback/cancellation semantics.
+
+### UI-M4 — v0.5 Hardening
+- [ ] Responsive behavior validation (desktop/tablet/mobile breakpoints) for all catalog components.
+- [ ] i18n architecture enabled by default (English initial locale).
+- [ ] Storybook documentation coverage for component props/states/usage patterns.
+- [ ] Visual regression and interaction test baseline for critical surfaces.
+
+---
+
 ## Phase 0 — Foundation (Current)
 
 ### Goal

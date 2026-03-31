@@ -10,11 +10,31 @@
     "fxq-overview-operator-v1": {
       "id": "f9334355d2d341b5b17f0a5f2cd5f325",
       "sourceScreen": "projects/5264572250204306984/screens/f9334355d2d341b5b17f0a5f2cd5f325",
+      "status": "superseded",
+      "supersededBy": "fxq-overview-operator-v2"
+    },
+    "fxq-overview-operator-v2": {
+      "id": "8bbe44b229914626b2be300c8a8e5a9e",
+      "sourceScreen": "projects/5264572250204306984/screens/8bbe44b229914626b2be300c8a8e5a9e",
+      "width": 2816,
+      "height": 2252,
+      "localHtml": ".stitch/designs/fxq-overview-operator-v2.html",
+      "localPng": ".stitch/designs/fxq-overview-operator-v2.png",
       "status": "approved"
     },
     "fxq-investigation-operator-v1": {
       "id": "7a8dc05230324a999fd41c06cb9428c9",
       "sourceScreen": "projects/5264572250204306984/screens/7a8dc05230324a999fd41c06cb9428c9",
+      "status": "superseded",
+      "supersededBy": "fxq-investigation-operator-v2"
+    },
+    "fxq-investigation-operator-v2": {
+      "id": "cf27c838902041fe8747f15e5c68e90b",
+      "sourceScreen": "projects/5264572250204306984/screens/cf27c838902041fe8747f15e5c68e90b",
+      "width": 2560,
+      "height": 2048,
+      "localHtml": ".stitch/designs/fxq-investigation-operator-v2.html",
+      "localPng": ".stitch/designs/fxq-investigation-operator-v2.png",
       "status": "approved"
     },
     "fxq-system-operator-v1": {

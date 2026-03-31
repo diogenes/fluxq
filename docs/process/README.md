@@ -6,6 +6,7 @@ This folder contains the working documents exchanged by the multi-agent UX impro
 - `domain-input-packet.md` — produced by Quantum ML Specialist.
 - `ux-architecture-brief.md` — produced by UX Architect.
 - `design-delivery-packet.md` — produced by Senior Design Specialist.
+- `next-chat-prompt-ui-implementation-v0.1.md` — copy/paste prompt for component implementation track kickoff.
 - `triad-review-cycle-01.md` — integrated quality review with severity-ranked findings.
 - `triad-review-cycle-02.md` — Stitch proposal review and gate preparation.
 - `triad-review-cycle-03-mvp-p0.md` — MVP-P0 Stitch asset gate closure.
