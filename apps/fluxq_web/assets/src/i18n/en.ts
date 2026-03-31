@@ -378,6 +378,48 @@ export const englishResources = {
           laneSemantics: 'lane semantics'
         }
       },
+      cy: {
+        tablePro: {
+          title: 'TablePro',
+          queryLabel: 'table query',
+          queryPlaceholder: 'Filter by workflow id',
+          empty: 'No rows available for this surface.',
+          filterZero: 'No rows match the current filters.',
+          previous: 'Previous',
+          next: 'Next',
+          pagination: 'Page {{page}} of {{totalPages}}',
+          columns: {
+            workflow: 'workflow',
+            lane: 'lane',
+            state: 'state',
+            latencyMs: 'latency (ms)',
+            updated: 'updated'
+          },
+          states: {
+            healthy: 'healthy',
+            degraded: 'degraded',
+            timeout: 'timeout'
+          }
+        },
+        logViewer: {
+          title: 'LogViewer',
+          copy: 'Copy logs',
+          export: 'Export logs',
+          searchLabel: 'log search',
+          searchPlaceholder: 'Search log message',
+          levelLabel: 'severity level',
+          empty: 'No log records match the current filters.',
+          expand: 'Expand JSON',
+          collapse: 'Collapse JSON',
+          levels: {
+            all: 'all levels',
+            debug: 'debug',
+            info: 'info',
+            warning: 'warning',
+            error: 'error'
+          }
+        }
+      },
       cx: {
         kpi: {
           title: 'KPI + Metric Card Family',

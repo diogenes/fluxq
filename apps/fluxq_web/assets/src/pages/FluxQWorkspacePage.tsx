@@ -2,9 +2,12 @@ import { useTranslation } from 'react-i18next';
 import { AppShell } from '@/components/shell/AppShell';
 import { WorkspaceOverview } from '@/components/workspace/WorkspaceOverview';
 import { OperationalStatePack } from '@/components/state/OperationalStatePack';
+import { DataBoundary } from '@/components/state/DataBoundary';
 import { CorePrimitivesShowcase } from '@/components/composition/CorePrimitivesShowcase';
 import { UnifiedFilterBar } from '@/components/composition/UnifiedFilterBar';
 import { DenseDataTable } from '@/components/composition/DenseDataTable';
+import { TablePro } from '@/components/composition/TablePro';
+import { LogViewer } from '@/components/composition/LogViewer';
 import { JourneyCompositionMatrix } from '@/components/composition/JourneyCompositionMatrix';
 import { KpiMetricCardFamily } from '@/components/families/KpiMetricCardFamily';
 import { FilterTabbedTableFamily } from '@/components/families/FilterTabbedTableFamily';
@@ -39,12 +42,19 @@ export default function FluxQWorkspacePage({
         <UnifiedFilterBar />
         <OperationalStatusStripV2 />
         <DenseDataTable />
+        <TablePro />
+        <LogViewer />
         <JourneyCompositionMatrix />
         <KpiMetricCardFamily lane={lane} />
         <FilterTabbedTableFamily />
         <TimelineTraceLogsFamily />
         <ActionRailInspectorFamily />
         <OnboardingFlowKit />
+        <DataBoundary state="policy_blocked" lane={lane} actionLabelKey="actions.review">
+          <p className="text-sm text-[color:var(--fxq-text-secondary)]">
+            {t('workspace.description')}
+          </p>
+        </DataBoundary>
         <OperationalStatePack />
         <CorePrimitivesShowcase />
         <RunDetailBlock />

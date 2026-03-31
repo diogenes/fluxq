@@ -17,6 +17,7 @@ This folder contains the working documents exchanged by the multi-agent UX impro
 - `ui-quality-gated-process.md` — human approval gates and pass/fail quality contract.
 - `ui-cx-pattern-registry.md` — cross-journey component family registry extracted from Stitch HTML corpus.
 - `ui-cx-journey-mapping.md` — journey-to-component-family composition map for P0/P1/P2/operator surfaces.
+- `ui-contract-v0.1.md` — frozen UI contract baseline for pre-backend coupling.
 
 ## Process Order
 1. Update `domain-input-packet.md`
