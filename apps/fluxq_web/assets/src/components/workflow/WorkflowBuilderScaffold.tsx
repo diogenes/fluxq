@@ -1,19 +1,50 @@
 import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
-export function WorkflowBuilderScaffold() {
+export interface WorkflowBuilderScaffoldProps {
+  readonly validationState?: 'valid' | 'warning' | 'error';
+}
+
+const toneByState: Record<NonNullable<WorkflowBuilderScaffoldProps['validationState']>, 'success' | 'warning' | 'error'> = {
+  valid: 'success',
+  warning: 'warning',
+  error: 'error'
+};
+
+export function WorkflowBuilderScaffold({ validationState = 'warning' }: Readonly<WorkflowBuilderScaffoldProps>) {
   const { t } = useTranslation();
 
   return (
     <Card className="grid gap-3 md:grid-cols-[1fr_260px]">
       <div className="space-y-3">
-        <h3 className="fxq-display text-lg font-semibold">{t('runtime.workflowBuilder.title')}</h3>
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="fxq-display text-lg font-semibold">{t('runtime.workflowBuilder.title')}</h3>
+          <Badge tone={toneByState[validationState]}>{validationState}</Badge>
+        </div>
         <div className="rounded-[var(--fxq-radius-md)] border border-dashed border-white/20 p-6 text-sm text-[color:var(--fxq-text-secondary)]">
           {t('runtime.workflowBuilder.canvas')}
         </div>
-        <div className="rounded-[var(--fxq-radius-md)] border border-white/8 p-3 text-sm">{t('runtime.workflowBuilder.palette')}</div>
+        <div className="rounded-[var(--fxq-radius-md)] border border-white/8 p-3 text-sm">
+          <div className="font-medium">{t('runtime.workflowBuilder.palette')}</div>
+          <ul className="mt-2 space-y-1 text-xs text-[color:var(--fxq-text-secondary)]">
+            <li>• validate retries/backoff before publish</li>
+            <li>• surface timeout and fallback policies</li>
+            <li>• require deterministic baseline check</li>
+          </ul>
+        </div>
       </div>
-      <div className="rounded-[var(--fxq-radius-md)] border border-white/8 p-3 text-sm">{t('runtime.workflowBuilder.inspector')}</div>
+      <div className="rounded-[var(--fxq-radius-md)] border border-white/8 p-3 text-sm">
+        <div className="font-medium">{t('runtime.workflowBuilder.inspector')}</div>
+        <div className="mt-2 space-y-2 text-xs text-[color:var(--fxq-text-secondary)]">
+          <div>node type: quantum_step</div>
+          <div>timeout: 45s</div>
+          <div>fallback: simulator</div>
+          {validationState === 'error' ? (
+            <div className="text-[color:var(--fxq-semantic-error)]">validation failed: missing retry policy</div>
+          ) : null}
+        </div>
+      </div>
     </Card>
   );
 }

@@ -11,3 +11,11 @@ export default meta;
 type Story = StoryObj<typeof WorkflowBuilderScaffold>;
 
 export const Default: Story = {};
+
+export const Valid: Story = {
+  args: { validationState: 'valid' }
+};
+
+export const Error: Story = {
+  args: { validationState: 'error' }
+};
