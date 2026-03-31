@@ -2,6 +2,21 @@
 @import "tailwindcss";
 @import "./tokens.generated.css";
 
+@layer theme {
+  :root {
+    --fxq-density-row-subtle-bg: color-mix(in srgb, var(--fxq-background-surface-mid) 64%, transparent);
+    --fxq-density-row-focus-bg: color-mix(in srgb, var(--fxq-semantic-info) 18%, transparent);
+    --fxq-density-row-critical-bg: color-mix(in srgb, var(--fxq-semantic-error) 16%, transparent);
+    --fxq-density-row-border: color-mix(in srgb, var(--fxq-outline-variant) 32%, transparent);
+    --fxq-severity-s1: color-mix(in srgb, var(--fxq-semantic-error) 80%, black 20%);
+    --fxq-severity-s2: color-mix(in srgb, var(--fxq-semantic-warning) 84%, black 16%);
+    --fxq-severity-s3: color-mix(in srgb, var(--fxq-semantic-info) 78%, black 22%);
+    --fxq-diagnostic-contrast-low: color-mix(in srgb, var(--fxq-text-secondary) 72%, transparent);
+    --fxq-diagnostic-contrast-mid: color-mix(in srgb, var(--fxq-text-primary) 86%, transparent);
+    --fxq-diagnostic-contrast-high: color-mix(in srgb, white 94%, transparent);
+  }
+}
+
 @layer base {
   html,
   body,
@@ -59,6 +74,45 @@
 
   .fxq-gradient-action {
     background: linear-gradient(135deg, var(--fxq-action-primary-start), var(--fxq-action-primary-end));
+  }
+
+  .fxq-row-density-subtle {
+    background: var(--fxq-density-row-subtle-bg);
+    border-inline-start: 1px solid var(--fxq-density-row-border);
+  }
+
+  .fxq-row-density-focus {
+    background: var(--fxq-density-row-focus-bg);
+    border-inline-start: 2px solid color-mix(in srgb, var(--fxq-semantic-info) 60%, transparent);
+  }
+
+  .fxq-row-density-critical {
+    background: var(--fxq-density-row-critical-bg);
+    border-inline-start: 2px solid color-mix(in srgb, var(--fxq-semantic-error) 64%, transparent);
+  }
+
+  .fxq-severity-band-s1 {
+    border-inline-start: 3px solid var(--fxq-severity-s1);
+  }
+
+  .fxq-severity-band-s2 {
+    border-inline-start: 3px solid var(--fxq-severity-s2);
+  }
+
+  .fxq-severity-band-s3 {
+    border-inline-start: 3px solid var(--fxq-severity-s3);
+  }
+
+  .fxq-diagnostic-text-low {
+    color: var(--fxq-diagnostic-contrast-low);
+  }
+
+  .fxq-diagnostic-text-mid {
+    color: var(--fxq-diagnostic-contrast-mid);
+  }
+
+  .fxq-diagnostic-text-high {
+    color: var(--fxq-diagnostic-contrast-high);
   }
 
   .fxq-mono {

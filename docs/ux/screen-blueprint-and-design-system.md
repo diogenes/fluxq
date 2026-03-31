@@ -71,6 +71,18 @@ Benchmark-led update: [Design Guide v2](./design-guide-v2-benchmark.md)
 - Active edge motion and node pulse for running/retrying states.
 - Reduced-motion mode supported.
 
+### Dense Data + Severity Token Extensions
+- Density row emphasis tiers:
+  - `--fxq-density-row-subtle-bg` for passive context rows.
+  - `--fxq-density-row-focus-bg` for operator-focused rows.
+  - `--fxq-density-row-critical-bg` for urgent rows tied to incident pressure.
+- Severity lane markers:
+  - `--fxq-severity-s1`, `--fxq-severity-s2`, `--fxq-severity-s3`.
+  - Applied via utility classes `fxq-severity-band-s1|s2|s3`.
+- Diagnostic contrast ramps:
+  - `--fxq-diagnostic-contrast-low|mid|high`.
+  - Prevents unreadable telemetry text in high-density panels.
+
 ### Accessibility
 - WCAG AA contrast baseline.
 - Keyboard access for all critical actions.
