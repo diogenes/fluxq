@@ -2,3 +2,6 @@
 tmp/
 _build/
 deps/
+apps/fluxq_web/assets/node_modules/
+apps/fluxq_web/assets/dist/
+apps/fluxq_web/assets/storybook-static/

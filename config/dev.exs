@@ -25,8 +25,7 @@ config :fluxq_web, FluxQWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "Hk51k9eYs4C4GIkOYxi+LNANlsfFC6JLfIzFwXXtdOEw/VJD6bKkZUy43NeThNEV",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:fluxq_web, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:fluxq_web, ~w(--watch)]}
+    vite: {"npm", ["run", "dev"], cd: Path.expand("../apps/fluxq_web/assets", __DIR__)}
   ]
 
 # ## SSL Support

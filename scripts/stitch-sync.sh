@@ -64,7 +64,10 @@ EOF
 fi
 
 STATUS_REGEX="^($(echo "$SYNC_STATUSES" | tr ',' '|'))$"
-mapfile -t SCREENS < <(
+SCREENS=()
+while IFS= read -r row; do
+  SCREENS+=("$row")
+done < <(
   jq -r --arg status_re "$STATUS_REGEX" '
     .screens
     | to_entries[]

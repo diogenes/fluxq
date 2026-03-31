@@ -120,6 +120,10 @@ mise exec -- npx --version
 - Cause: this Stitch proxy does not implement resource listing endpoints.
 - Fix: use Stitch tool APIs (`list_projects`, `list_screens`, `edit_screens`, etc.) instead of MCP resource listing.
 
+6. `scripts/stitch-sync.sh: line XX: mapfile: command not found`
+- Cause: macOS ships bash 3.2, which does not support `mapfile`.
+- Fix: use the repository version of `scripts/stitch-sync.sh` (portable read-loop implementation).
+
 ## 7) Iteration Checklist (Before Design Work)
 1. `mise exec -- node --version` succeeds.
 2. Stitch MCP server block in `~/.codex/config.toml` matches this guide.

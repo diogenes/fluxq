@@ -7,6 +7,6 @@ defmodule FluxQWeb.PageController do
     |> assign_prop(:page_title, "FluxQ Overview")
     |> assign_prop(:runtime_profile, "fixture")
     |> assign_prop(:supported_lanes, ["fixture", "live_smoke", "live"])
-    |> render_inertia("DashboardPage")
+    |> render_inertia("FluxQWorkspacePage")
   end
 end
