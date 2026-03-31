@@ -12,6 +12,7 @@ import { JourneyCompositionMatrix } from '@/components/composition/JourneyCompos
 import { KpiMetricCardFamily } from '@/components/families/KpiMetricCardFamily';
 import { FilterTabbedTableFamily } from '@/components/families/FilterTabbedTableFamily';
 import { TimelineTraceLogsFamily } from '@/components/families/TimelineTraceLogsFamily';
+import { TraceTreePro } from '@/components/families/TraceTreePro';
 import { ActionRailInspectorFamily } from '@/components/families/ActionRailInspectorFamily';
 import { OnboardingFlowKit } from '@/components/onboarding/OnboardingFlowKit';
 import { RunDetailBlock } from '@/components/runtime/RunDetailBlock';
@@ -48,6 +49,7 @@ export default function FluxQWorkspacePage({
         <KpiMetricCardFamily lane={lane} />
         <FilterTabbedTableFamily />
         <TimelineTraceLogsFamily />
+        <TraceTreePro />
         <ActionRailInspectorFamily />
         <OnboardingFlowKit />
         <DataBoundary state="policy_blocked" lane={lane} actionLabelKey="actions.review">

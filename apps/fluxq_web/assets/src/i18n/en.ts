@@ -379,6 +379,37 @@ export const englishResources = {
         }
       },
       cy: {
+        traceTree: {
+          timelineTitle: 'Timeline to trace sync',
+          traceTitle: 'Trace tree pro',
+          syncEnabled: 'sync enabled',
+          expandAll: 'Expand all',
+          collapseAll: 'Collapse all',
+          depth: 'depth',
+          expandNode: 'Expand node',
+          collapseNode: 'Collapse node',
+          events: {
+            queued: {
+              title: 'Step queued',
+              log: 'Queue wait started for run-042.'
+            },
+            routePrimary: {
+              title: 'Primary route attempt',
+              log: 'Primary route exceeded timeout threshold.'
+            },
+            fallback: {
+              title: 'Fallback route selected',
+              log: 'Fallback engaged after timeout escalation.'
+            }
+          },
+          nodes: {
+            root: 'run.execute',
+            queueWait: 'queue.wait',
+            routePrimary: 'route.primary',
+            retry: 'retry.handler',
+            fallback: 'route.fallback'
+          }
+        },
         tablePro: {
           title: 'TablePro',
           queryLabel: 'table query',
