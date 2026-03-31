@@ -39,7 +39,7 @@ This track runs in parallel with product phases to convert approved Stitch asset
 
 ### UI-M1 — v0.2 Core Primitives
 - [x] Foundational shadcn wrappers: button, input, select, textarea, checkbox, switch.
-- [ ] Operational primitives: badges, status chips, alerts, skeleton, empty/degraded/error states.
+- [x] Operational primitives: badges, status chips, alerts, skeleton, empty/degraded/error states.
 - [x] Dialog/sheet/dropdown/tooltip interaction primitives.
 - [x] Data tables with density and mono-metric formatting contracts.
 
@@ -59,7 +59,22 @@ This track runs in parallel with product phases to convert approved Stitch asset
 - [x] Responsive behavior validation (desktop/tablet/mobile breakpoints) for all catalog components.
 - [x] i18n architecture enabled by default (English initial locale).
 - [x] Storybook documentation coverage for component props/states/usage patterns.
-- [ ] Visual regression and interaction test baseline for critical surfaces.
+- [x] Visual regression and interaction test baseline for critical surfaces.
+
+### UI-Next — Feature-Driven Design-System Milestones
+
+| Milestone | Label | Status | Primary Outcome |
+|---|---|---|---|
+| UI-X01 | Incident Alert Primitive | Completed | Reusable alert + skeleton primitives with operational semantics |
+| UI-X02 | Unified Filter/Query Bar | Completed | Cross-surface filtering contract for run/provider/portability views |
+| UI-X03 | Operational Status Strip v2 | Completed | Explicit retry/timeout/fallback/attribution first-order strip |
+| UI-X04 | Incident Action Rail v2 | Completed | Severity-aware grouped actions (`retry`, `reroute`, `cancel`, `export`) |
+| UI-X05 | Dense Data Table System | Completed | Sortable high-density incident/run table contracts |
+| UI-X06 | Timeline-Trace Correlation UX | Completed | Linked timeline/span/log drilldown components |
+| UI-X07 | Portability Decision Framing | Completed | Confidence/sample-quality/threshold action framing blocks |
+| UI-X08 | Workflow Builder Interaction States | Completed | Node validation/preflight/error state language |
+| UI-X09 | Motion Policy + Reduced Motion | Completed | Transition policy components with reduced-motion parity |
+| UI-X10 | Visual Regression Baseline | Completed | Storybook-based visual baseline artifacts + checks |
 
 ---
 
