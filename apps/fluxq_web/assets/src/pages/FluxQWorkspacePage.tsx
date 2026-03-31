@@ -5,6 +5,7 @@ import { OperationalStatePack } from '@/components/state/OperationalStatePack';
 import { CorePrimitivesShowcase } from '@/components/composition/CorePrimitivesShowcase';
 import { UnifiedFilterBar } from '@/components/composition/UnifiedFilterBar';
 import { DenseDataTable } from '@/components/composition/DenseDataTable';
+import { JourneyCompositionMatrix } from '@/components/composition/JourneyCompositionMatrix';
 import { RunDetailBlock } from '@/components/runtime/RunDetailBlock';
 import { ProviderHealthBlock } from '@/components/runtime/ProviderHealthBlock';
 import { PortabilityAnalyticsBlock } from '@/components/runtime/PortabilityAnalyticsBlock';
@@ -33,6 +34,7 @@ export default function FluxQWorkspacePage({
         <UnifiedFilterBar />
         <OperationalStatusStripV2 />
         <DenseDataTable />
+        <JourneyCompositionMatrix />
         <OperationalStatePack />
         <CorePrimitivesShowcase />
         <RunDetailBlock />

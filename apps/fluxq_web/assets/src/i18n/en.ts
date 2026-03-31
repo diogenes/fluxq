@@ -332,6 +332,19 @@ export const englishResources = {
         heatmapSubtitle: 'Step throughput density across workflow stages and recent windows.',
         heatmapWindow: 'window: last 24h',
         cellLabel: 'Cell'
+      },
+      journeyMatrix: {
+        title: 'UI-CX Journey Composition Matrix',
+        operatorOverview: 'Operator Overview',
+        runDetail: 'Run Detail',
+        workflowAuthoring: 'Workflow Authoring',
+        providerOperations: 'Provider Operations',
+        portabilityAnalytics: 'Portability Analytics',
+        headers: {
+          journey: 'journey',
+          componentFamilies: 'component families',
+          laneSemantics: 'lane semantics'
+        }
       }
     }
   }
