@@ -10,6 +10,8 @@ import { Sheet } from '@/components/ui/sheet';
 import { Dropdown } from '@/components/ui/dropdown';
 import { Tooltip } from '@/components/ui/tooltip';
 import { Table, DenseRow } from '@/components/ui/table';
+import { Alert } from '@/components/ui/alert';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export function CorePrimitivesShowcase() {
   const { t } = useTranslation();
@@ -73,6 +75,24 @@ export function CorePrimitivesShowcase() {
           </tbody>
         </Table>
       </Sheet>
+
+      <div className="grid gap-3 lg:grid-cols-3">
+        <Alert tone="info" title={t('primitives.alertInfoTitle')}>
+          {t('primitives.alertInfoBody')}
+        </Alert>
+        <Alert tone="warning" title={t('primitives.alertWarningTitle')}>
+          {t('primitives.alertWarningBody')}
+        </Alert>
+        <Alert tone="error" title={t('primitives.alertErrorTitle')}>
+          {t('primitives.alertErrorBody')}
+        </Alert>
+      </div>
+
+      <div className="grid gap-3 md:grid-cols-3">
+        <Skeleton className="h-7 w-24" />
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-20 w-full" />
+      </div>
     </div>
   );
 }
