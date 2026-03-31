@@ -1,0 +1,39 @@
+{
+  "name": "fluxq-web-assets",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "tokens:sync": "node scripts/generate-theme.mjs",
+    "dev": "npm run tokens:sync && vite",
+    "build": "npm run tokens:sync && vite build",
+    "storybook": "npm run tokens:sync && storybook dev -p 6006",
+    "build-storybook": "npm run tokens:sync && storybook build",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@inertiajs/react": "^2.3.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "i18next": "^24.2.3",
+    "lucide-react": "^0.542.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-i18next": "^15.7.3",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.6.18",
+    "@storybook/addon-essentials": "^8.6.18",
+    "@storybook/addon-viewport": "^8.6.18",
+    "@storybook/react-vite": "^8.6.18",
+    "@vitejs/plugin-react": "^5.2.0",
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/node": "^24.3.2",
+    "@types/react": "^19.1.11",
+    "@types/react-dom": "^19.1.7",
+    "storybook": "^8.6.18",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2",
+    "vite": "^6.4.1"
+  }
+}

@@ -1,0 +1,34 @@
+/* Auto-generated from .stitch/tokens.json. Do not edit by hand. */
+:root, .dark {
+  --fxq-background-base: #0B0F1A;
+  --fxq-background-surface-low: #171B27;
+  --fxq-background-surface-mid: #1B1F2B;
+  --fxq-background-surface-high: #262A36;
+  --fxq-text-primary: #DFE2F2;
+  --fxq-text-secondary: #C9C4D8;
+  --fxq-semantic-info: #3BA7FF;
+  --fxq-semantic-success: #22C55E;
+  --fxq-semantic-warning: #F59E0B;
+  --fxq-semantic-error: #EF4444;
+  --fxq-action-primary-start: #CABEFF;
+  --fxq-action-primary-end: #947DFF;
+  --fxq-outline-variant: #484555;
+  --fxq-font-display: "Sora", sans-serif;
+  --fxq-font-interface: "Inter", sans-serif;
+  --fxq-font-mono: "IBM Plex Mono", monospace;
+  --fxq-space-xs: 4px;
+  --fxq-space-sm: 8px;
+  --fxq-space-md: 12px;
+  --fxq-space-lg: 16px;
+  --fxq-space-xl: 24px;
+  --fxq-space-2xl: 32px;
+  --fxq-radius-sm: 6px;
+  --fxq-radius-md: 8px;
+  --fxq-radius-lg: 12px;
+  --fxq-motion-fast: 120ms;
+  --fxq-motion-normal: 180ms;
+  --fxq-motion-slow: 260ms;
+  --fxq-shadow-surface: 0 24px 64px rgba(0, 0, 0, 0.28);
+  --fxq-shadow-rail: 0 16px 40px rgba(0, 0, 0, 0.18);
+}
+
