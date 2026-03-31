@@ -1,15 +1,9 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
+import type { TimelineEventContract } from '@/lib/ui-cx';
 
-type CorrelatedEvent = {
-  readonly id: string;
-  readonly timestamp: string;
-  readonly title: string;
-  readonly span: string;
-  readonly logExcerpt: string;
-  readonly severity: 'info' | 'warning' | 'error';
-};
+type CorrelatedEvent = TimelineEventContract;
 
 export function TimelineTraceCorrelation() {
   const { t } = useTranslation();

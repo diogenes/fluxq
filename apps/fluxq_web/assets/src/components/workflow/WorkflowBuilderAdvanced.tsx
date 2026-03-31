@@ -2,23 +2,16 @@ import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import type { WorkflowEdgeContract, WorkflowNodeContract } from '@/lib/ui-cx';
 
-type WorkflowNode = {
-  id: string;
-  labelKey: string;
-  x: number;
-  y: number;
-  tone: 'info' | 'warning' | 'success';
-};
-
-const nodes: WorkflowNode[] = [
+const nodes: WorkflowNodeContract[] = [
   { id: 'n1', labelKey: 'runtime.workflowAdvanced.nodes.intake', x: 30, y: 24, tone: 'info' },
   { id: 'n2', labelKey: 'runtime.workflowAdvanced.nodes.quantumStep', x: 180, y: 24, tone: 'warning' },
   { id: 'n3', labelKey: 'runtime.workflowAdvanced.nodes.portabilityCheck', x: 340, y: 24, tone: 'info' },
   { id: 'n4', labelKey: 'runtime.workflowAdvanced.nodes.fallbackRoute', x: 340, y: 104, tone: 'success' }
 ];
 
-const edges = [
+const edges: WorkflowEdgeContract[] = [
   { from: 'n1', to: 'n2' },
   { from: 'n2', to: 'n3' },
   { from: 'n2', to: 'n4' }
