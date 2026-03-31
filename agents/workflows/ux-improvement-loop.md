@@ -15,6 +15,12 @@ Run a reliable multi-agent flow to improve FluxQ UX quality with strong domain g
 3. Visual Execution (`senior-design-specialist`)
 - update Stitch screens and exports
 - ensure component/state consistency and phase annotations
+- apply relevant supporting skills as needed:
+  - `taste-design` for anti-generic quality bars
+  - `enhance-prompt` for prompt quality upgrades
+  - `design-md` to refresh `.stitch/DESIGN.md`
+  - `stitch-loop` for iterative autonomous generation
+  - `react-components` and `shadcn-ui` when implementation artifacts are requested
 
 4. Triad Review
 - domain fidelity check (specialist)

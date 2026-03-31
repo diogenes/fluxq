@@ -17,9 +17,11 @@ These skills operationalize the agent loop used to improve FluxQ UX quality.
 ## Execution Order
 1. `quantum-ml-specialist`
 2. `ux-architect`
-3. `senior-design-specialist` (via `stitch-design`)
-4. `design-md` when `.stitch/DESIGN.md` needs synthesis/refresh
-5. `stitch-loop` for autonomous iteration loops
+3. `senior-design-specialist` (via `taste-design` + `stitch-design`)
+4. `enhance-prompt` when request quality is insufficient for direct generation
+5. `design-md` when `.stitch/DESIGN.md` needs synthesis/refresh
+6. `stitch-loop` for autonomous iteration loops
+7. `react-components` and/or `shadcn-ui` for implementation-ready handoff
 
 ## Quality Support Skills
 - `enhance-prompt`: upgrades vague requests into Stitch-optimized design prompts.

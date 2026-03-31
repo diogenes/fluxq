@@ -22,16 +22,17 @@ Build FluxQ as a trustworthy, observability-first, BEAM-native orchestration con
 ## Mandatory Execution Order
 1. `quantum-ml-specialist` produces domain packet before UX synthesis.
 2. `ux-architect` converts domain packet into IA + journeys + interaction model.
-3. `senior-design-specialist` produces visual execution through Stitch (`stitch-design`, `design-md`, and `stitch-loop` when iterative).
-4. Joint critique pass validates domain fidelity, usability, and implementation readiness.
-5. Publish handoff assets and update roadmap checklists.
+3. `senior-design-specialist` produces visual execution through Stitch (`taste-design`, `stitch-design`, `design-md`, and `stitch-loop` when iterative).
+4. When implementation-ready UI output is required, the triad may invoke `react-components` and `shadcn-ui` for componentized React handoff aligned to Stitch outputs.
+5. Joint critique pass validates domain fidelity, usability, and implementation readiness.
+6. Publish handoff assets and update roadmap checklists.
 
 ## Required Reading by Agent
 | Agent | Required reading |
 | --- | --- |
 | `quantum-ml-specialist` | `docs/plan/master-plan.md`, `docs/platform/config-api-identity-infra-observability-runtime.md`, `docs/roadmap.md` |
 | `ux-architect` | `docs/ux/information-architecture-and-journeys.md`, `docs/ux/screen-blueprint-and-design-system.md`, latest domain packet |
-| `senior-design-specialist` | `docs/process/design-delivery-packet.md`, `skills/stitch-design/SKILL.md`, `skills/design-md/SKILL.md`, latest UX architecture brief |
+| `senior-design-specialist` | `docs/process/design-delivery-packet.md`, `skills/taste-design/SKILL.md`, `skills/stitch-design/SKILL.md`, `skills/design-md/SKILL.md`, `skills/react-components/SKILL.md`, `skills/shadcn-ui/SKILL.md`, latest UX architecture brief |
 
 ## Quality Gates (Design Process)
 - No UX architecture accepted without explicit domain assumptions and confidence levels.

@@ -25,6 +25,7 @@ Stitch:
 - exported artifact traceability in register.
 
 Stitch flow aligned:
+- taste-design guardrails for premium, non-generic visual quality,
 - prompt-enhancement before generation/edit cycles,
 - token-first style choices with `.stitch/DESIGN.md` as source of truth,
 - iterative `edit_screens` refinement over broad regeneration,
@@ -43,3 +44,14 @@ Stitch flow aligned:
 - asset register: `docs/stitch/asset-register.md`
 - serialized source snapshot: `.stitch/metadata.json`
 - exported screens: `.stitch/designs/`
+
+## 6) Implementation Handoff (When Required)
+- Design quality guardrails: `skills/taste-design/SKILL.md`
+- Prompt uplift for ambiguous briefs: `skills/enhance-prompt/SKILL.md`
+- Iterative autonomous generation: `skills/stitch-loop/SKILL.md`
+- React component generation: `skills/react-components/SKILL.md`
+- shadcn/ui alignment and composition: `skills/shadcn-ui/SKILL.md`
+- Quality expectation:
+  - token fidelity with `.stitch/DESIGN.md`
+  - accessibility-safe interaction and form patterns
+  - state parity with designed operational states
