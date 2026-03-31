@@ -290,6 +290,16 @@ export const englishResources = {
         inspectorFallback: 'fallback route: simulator',
         validate: 'Run validation',
         preview: 'Preview execution',
+        legend: {
+          ready: 'ready',
+          requiresReview: 'requires review',
+          blocked: 'blocked'
+        },
+        checks: {
+          retryBudget: 'Retry budget nearing exhaustion on selected branch.',
+          timeoutFallback: 'Timeout exceeds lane policy; fallback recommended.',
+          deterministicBaseline: 'Deterministic baseline link verified.'
+        },
         palette: {
           quantumStep: 'quantum_step',
           classicalStep: 'classical_step',
@@ -331,7 +341,12 @@ export const englishResources = {
         heatmapTitle: 'Throughput heatmap',
         heatmapSubtitle: 'Step throughput density across workflow stages and recent windows.',
         heatmapWindow: 'window: last 24h',
-        cellLabel: 'Cell'
+        cellLabel: 'Cell',
+        legend: {
+          healthy: 'healthy',
+          degraded: 'degraded',
+          failed: 'failed'
+        }
       },
       journeyMatrix: {
         title: 'UI-CX Journey Composition Matrix',
