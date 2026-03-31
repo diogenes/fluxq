@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FXQ_MVP-P0_Tokens_v2 | FluxQ Design System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#dfe2f2",
+                        "secondary": "#c6bfff",
+                        "on-primary-container": "#2a0088",
+                        "surface-container-high": "#262a36",
+                        "surface": "#0f131e",
+                        "on-secondary": "#2800a0",
+                        "on-error": "#690005",
+                        "secondary-container": "#4006e8",
+                        "background": "#0f131e",
+                        "surface-bright": "#353945",
+                        "on-secondary-fixed-variant": "#3c00de",
+                        "secondary-fixed": "#e4dfff",
+                        "on-tertiary-fixed": "#1a0063",
+                        "surface-variant": "#313441",
+                        "surface-container": "#1b1f2b",
+                        "outline": "#938ea1",
+                        "on-background": "#dfe2f2",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#4816cb",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#291870",
+                        "inverse-primary": "#603ce2",
+                        "surface-container-highest": "#313441",
+                        "surface-dim": "#0f131e",
+                        "surface-tint": "#cabeff",
+                        "on-primary": "#31009a",
+                        "primary": "#cabeff",
+                        "surface-container-lowest": "#0a0e19",
+                        "on-tertiary-fixed-variant": "#46398f",
+                        "inverse-on-surface": "#2c303c",
+                        "primary-fixed-dim": "#cabeff",
+                        "on-primary-fixed": "#1c0062",
+                        "tertiary-fixed": "#e5deff",
+                        "primary-fixed": "#e6deff",
+                        "tertiary-fixed-dim": "#c8bfff",
+                        "on-tertiary": "#2f2077",
+                        "on-surface-variant": "#c9c4d8",
+                        "tertiary": "#c8bfff",
+                        "primary-container": "#947dff",
+                        "inverse-surface": "#dfe2f2",
+                        "outline-variant": "#484555",
+                        "on-secondary-container": "#bbb3ff",
+                        "surface-container-low": "#171b27",
+                        "secondary-fixed-dim": "#c6bfff",
+                        "on-secondary-fixed": "#160066",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#9185df"
+                    },
+                    fontFamily: {
+                        "headline": ["Sora"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["IBM Plex Mono"]
+                    },
+                    borderRadius: {
+                        "sm": "0.375rem",
+                        "md": "0.5rem",
+                        "lg": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0f131e;
+            color: #dfe2f2;
+        }
+        .flux-glow {
+            background: linear-gradient(135deg, #cabeff 0%, #947dff 100%);
+        }
+        .ghost-border {
+            outline: 1px solid rgba(72, 69, 85, 0.15);
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary/30 selection:text-primary">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0a0e19]/80 backdrop-blur-md border-b border-[#484555]/15 shadow-xl shadow-black/40 flex items-center justify-between px-6 h-14">
+<div class="flex items-center gap-8">
+<span class="font-['Sora'] font-semibold text-xl tracking-tighter text-[#dfe2f2]">FluxQ</span>
+<nav class="hidden md:flex items-center gap-6 font-['Inter'] text-sm tracking-wide">
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Lanes</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Execution</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Telemetry</a>
+<a class="text-[#cabeff] border-b-2 border-[#7C5CFF] pb-2 transition-all" href="#">System Tokens</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-[#c9c4d8] p-2 hover:bg-[#353945]/50 rounded-lg cursor-pointer transition-colors">notifications</span>
+</div>
+<span class="material-symbols-outlined text-[#c9c4d8] p-2 hover:bg-[#353945]/50 rounded-lg cursor-pointer transition-colors">terminal</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-[#484555]/30">
+<img alt="User Profile" data-alt="minimalist stylized avatar of a professional developer in a technical flat vector style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdAaeVqF2jItuvA9J0w2Lmfc1ZL1werBtuEkXvxtP0LVjCKwZImS40PWhC0JpcL_e1qLmrcDQSRika-7VBzCSsKcPZU2JcI0Wz2qZXRflTo3Vas32CyPKlLCgL3d7HlDcEFcgWUPozsR0kzsDToV5zzlfZ3_BIErOq3FOYNPXzwe5N5eZ85JVQBKQO6inxrriclAy4mZvqEv2f3dBQwzwpgaVjJvOmVQ662eTBE34Oq_c8OrCm_6UtePiy-6V3HufbeJ2EE6I9-Hs"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Left) -->
+<aside class="fixed left-0 top-14 h-[calc(100vh-3.5rem)] w-64 bg-[#171b27] border-r border-[#484555]/15 flex flex-col py-4 z-40">
+<div class="px-6 mb-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">token</span>
+</div>
+<div>
+<div class="font-['Sora'] text-sm font-bold text-[#dfe2f2]">FluxQ Design System</div>
+<div class="font-['Inter'] text-[0.625rem] text-on-surface-variant uppercase tracking-widest">v1.2.0-baseline</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center px-6 py-3 bg-[#1b1f2b] text-[#cabeff] border-l-4 border-[#7C5CFF] cursor-pointer">
+<span class="material-symbols-outlined mr-3 text-lg">category</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-widest">Global Tokens</span>
+</div>
+<div class="flex items-center px-6 py-3 text-[#c9c4d8] hover:bg-[#262a36] cursor-pointer transition-all">
+<span class="material-symbols-outlined mr-3 text-lg">palette</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-widest">Semantic Palette</span>
+</div>
+<div class="flex items-center px-6 py-3 text-[#c9c4d8] hover:bg-[#262a36] cursor-pointer transition-all">
+<span class="material-symbols-outlined mr-3 text-lg">layers</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-widest">Lanes &amp; States</span>
+</div>
+<div class="flex items-center px-6 py-3 text-[#c9c4d8] hover:bg-[#262a36] cursor-pointer transition-all">
+<span class="material-symbols-outlined mr-3 text-lg">extension</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-widest">Components</span>
+</div>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full flux-glow text-on-primary-container font-semibold py-2.5 rounded-md text-xs uppercase tracking-wider active:scale-95 transition-transform">
+                Generate Build
+            </button>
+<div class="mt-4 space-y-1">
+<div class="flex items-center px-4 py-2 text-[#c9c4d8] hover:text-[#dfe2f2] cursor-pointer text-[0.6875rem] font-semibold uppercase tracking-widest">
+<span class="material-symbols-outlined mr-2 text-base">book</span>
+                    Architecture
+                </div>
+</div>
+</div>
+</aside>
+<!-- SideNavBar (Right Inspector) -->
+<aside class="fixed right-0 top-14 h-[calc(100vh-3.5rem)] w-72 bg-[#171b27] border-l border-[#484555]/15 flex flex-col p-4 z-40">
+<div class="mb-6">
+<div class="font-['Sora'] text-sm font-bold text-[#dfe2f2]">System Metadata</div>
+<div class="font-['IBM_Plex_Mono'] text-[10px] text-on-surface-variant">Core Baseline Definition</div>
+</div>
+<div class="flex-1 space-y-6 overflow-y-auto pr-2">
+<section>
+<h4 class="font-mono text-[10px] text-primary uppercase tracking-widest mb-3 border-b border-outline-variant/30 pb-1">Validation Checklist</h4>
+<div class="space-y-4">
+<div class="bg-surface-container rounded-md p-3 ghost-border">
+<div class="flex items-start gap-2 mb-2">
+<span class="material-symbols-outlined text-green-400 text-sm">verified</span>
+<span class="text-xs font-semibold">Token Compliance</span>
+</div>
+<p class="text-[10px] text-on-surface-variant leading-relaxed">
+                            Verify that all lane colors align with the flux_telemetry_v2 specification. No custom HEX values allowed.
+                        </p>
+</div>
+</div>
+</section>
+<section>
+<h4 class="font-mono text-[10px] text-primary uppercase tracking-widest mb-3 border-b border-outline-variant/30 pb-1">Quick Links</h4>
+<div class="space-y-2">
+<div class="flex items-center gap-2 p-2 rounded hover:bg-surface-container cursor-pointer transition-all">
+<span class="material-symbols-outlined text-sm">code</span>
+<span class="font-mono text-[10px] text-on-surface-variant">Tailwind Config</span>
+</div>
+<div class="flex items-center gap-2 p-2 rounded hover:bg-surface-container cursor-pointer transition-all">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+<span class="font-mono text-[10px] text-on-surface-variant">npm Package</span>
+</div>
+</div>
+</section>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 mr-72 mt-14 p-8 min-h-screen bg-surface">
+<header class="mb-10 flex items-end justify-between">
+<div>
+<h1 class="font-headline text-3xl font-bold tracking-tight mb-2">FXQ_MVP-P0_Tokens_v2</h1>
+<div class="flex items-center gap-4">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-mono border border-primary/20 uppercase">SYSTEM BASELINE</span>
+<span class="text-on-surface-variant font-mono text-[10px]">Registry: flux-core-tokens</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-highest px-4 py-2 rounded-md text-xs font-semibold ghost-border flex items-center gap-2 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm">download</span> Export Tokens
+                </button>
+</div>
+</header>
+<div class="grid grid-cols-12 gap-6">
+<!-- Deterministic Lanes (New Module) -->
+<section class="col-span-12 bg-surface-container-low rounded-lg p-6 border border-outline-variant/10">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-lg font-semibold">Deterministic Lanes</h3>
+<span class="font-mono text-[10px] text-on-surface-variant opacity-50">LANE_CONTEXT_TOKENS</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Fixture Lane -->
+<div class="p-4 bg-[#64748b]/10 border border-[#64748b]/30 rounded-md">
+<div class="flex items-center gap-2 mb-3">
+<div class="w-2 h-2 rounded-full bg-[#94a3b8]"></div>
+<span class="text-xs font-bold text-on-surface">fixture</span>
+</div>
+<div class="space-y-2">
+<p class="text-[10px] font-mono text-[#94a3b8]">--color-lane-fixture</p>
+<p class="text-[9px] text-on-surface-variant">Non-volatile historical data lane.</p>
+</div>
+</div>
+<!-- Live Smoke Lane -->
+<div class="p-4 bg-[#f59e0b]/10 border border-[#f59e0b]/30 rounded-md">
+<div class="flex items-center gap-2 mb-3">
+<div class="w-2 h-2 rounded-full bg-[#f59e0b]"></div>
+<span class="text-xs font-bold text-on-surface">live_smoke</span>
+</div>
+<div class="space-y-2">
+<p class="text-[10px] font-mono text-[#fbbf24]">--color-lane-smoke</p>
+<p class="text-[9px] text-on-surface-variant">Unvalidated real-time telemetry stream.</p>
+</div>
+</div>
+<!-- Live Lane -->
+<div class="p-4 bg-[#22c55e]/10 border border-[#22c55e]/30 rounded-md shadow-[0_0_15px_-5px_rgba(34,197,94,0.3)]">
+<div class="flex items-center gap-2 mb-3">
+<div class="w-2 h-2 rounded-full bg-[#22c55e]"></div>
+<span class="text-xs font-bold text-on-surface">live</span>
+</div>
+<div class="space-y-2">
+<p class="text-[10px] font-mono text-[#4ade80]">--color-lane-live</p>
+<p class="text-[9px] text-on-surface-variant">Validated production-grade stream.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Operational State-Pack (New Module) -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-low rounded-lg p-6 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-semibold mb-6">Operational State-Pack</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Loading -->
+<div class="flex flex-col items-center justify-center p-4 bg-surface-container rounded-md ghost-border text-center">
+<span class="material-symbols-outlined text-primary mb-2 animate-spin">refresh</span>
+<span class="text-[10px] font-bold block mb-1">Loading</span>
+<span class="font-mono text-[9px] text-primary">--state-loading</span>
+</div>
+<!-- Empty -->
+<div class="flex flex-col items-center justify-center p-4 bg-surface-container rounded-md ghost-border text-center">
+<span class="material-symbols-outlined text-on-surface-variant mb-2">inbox</span>
+<span class="text-[10px] font-bold block mb-1">Empty</span>
+<span class="font-mono text-[9px] text-on-surface-variant">--state-empty</span>
+</div>
+<!-- Degraded -->
+<div class="flex flex-col items-center justify-center p-4 bg-amber-500/10 border border-amber-500/20 rounded-md text-center">
+<span class="material-symbols-outlined text-amber-500 mb-2">warning</span>
+<span class="text-[10px] font-bold block mb-1 text-amber-400">Degraded</span>
+<span class="font-mono text-[9px] text-amber-500">--state-degraded</span>
+</div>
+<!-- Error -->
+<div class="flex flex-col items-center justify-center p-4 bg-red-500/10 border border-red-500/20 rounded-md text-center">
+<span class="material-symbols-outlined text-red-500 mb-2">error</span>
+<span class="text-[10px] font-bold block mb-1 text-red-400">Error</span>
+<span class="font-mono text-[9px] text-red-500">--state-error</span>
+</div>
+</div>
+</section>
+<!-- Radius & Elevation Board (Normalized) -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container-low rounded-lg p-6 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-semibold mb-6">Radius &amp; Elevation</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-surface-container rounded-sm border border-outline-variant/20">
+<span class="text-[10px] font-bold">Small (sm)</span>
+<span class="font-mono text-[10px] text-primary">--radius-sm: 6px</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container rounded-md border border-outline-variant/20">
+<span class="text-[10px] font-bold">Medium (md)</span>
+<span class="font-mono text-[10px] text-primary">--radius-md: 8px</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container rounded-lg border border-outline-variant/20">
+<span class="text-[10px] font-bold">Large (lg)</span>
+<span class="font-mono text-[10px] text-primary">--radius-lg: 12px</span>
+</div>
+</div>
+</section>
+<!-- Spacing Scale Board (Preserved) -->
+<section class="col-span-12 lg:col-span-6 bg-surface-container-low rounded-lg p-6 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-semibold mb-6">Spacing Scale Board</h3>
+<div class="space-y-6">
+<div class="grid grid-cols-6 gap-2 items-end">
+<div class="flex flex-col items-center gap-2">
+<div class="w-1 h-1 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">4px</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-2 h-2 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">8px</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-3 h-3 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">12px</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-4 h-4 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">16px</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-6 h-6 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">24px</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">32px</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Motion Token Board (Preserved) -->
+<section class="col-span-12 lg:col-span-6 bg-surface-container-low rounded-lg p-6 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-semibold mb-6">Motion Token Board</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-3 bg-surface-container rounded-md ghost-border flex items-center justify-between">
+<div>
+<div class="text-primary font-mono text-sm">120ms</div>
+<div class="text-[10px] font-bold">Fast (T1)</div>
+</div>
+<div class="w-10 h-1 bg-primary/20 rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-1/2"></div>
+</div>
+</div>
+<div class="p-3 bg-surface-container rounded-md ghost-border flex items-center justify-between">
+<div>
+<div class="text-primary font-mono text-sm">180ms</div>
+<div class="text-[10px] font-bold">Normal (T2)</div>
+</div>
+<div class="w-10 h-1 bg-primary/20 rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-3/4"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<footer class="mt-12 py-8 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">settings_input_component</span>
+</div>
+<div>
+<p class="text-[10px] font-bold">FluxQ Design System Core</p>
+<p class="text-[9px] text-on-surface-variant uppercase tracking-tighter">Baseline Registry v1.2.0</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-mono">system-tokens-prod-01</p>
+<p class="text-[9px] text-on-surface-variant uppercase">Classification: System/Internal</p>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB -->
+<div class="fixed bottom-6 right-80 z-50">
+<button class="w-14 h-14 rounded-full flux-glow shadow-2xl flex items-center justify-center text-on-primary-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+</body></html>

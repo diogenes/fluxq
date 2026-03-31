@@ -5,15 +5,31 @@
   "visibility": "PRIVATE",
   "deviceType": "DESKTOP",
   "designSystemAsset": "assets/c80ad6919d624325bb2d50ff1ab74113",
-  "updateTime": "2026-03-31T03:46:53.209809Z",
+  "updateTime": "2026-03-31T04:02:37.515774Z",
   "screens": {
+    "fxq-overview-operator-v1": {
+      "id": "f9334355d2d341b5b17f0a5f2cd5f325",
+      "sourceScreen": "projects/5264572250204306984/screens/f9334355d2d341b5b17f0a5f2cd5f325",
+      "status": "approved"
+    },
+    "fxq-investigation-operator-v1": {
+      "id": "7a8dc05230324a999fd41c06cb9428c9",
+      "sourceScreen": "projects/5264572250204306984/screens/7a8dc05230324a999fd41c06cb9428c9",
+      "status": "approved"
+    },
+    "fxq-system-operator-v1": {
+      "id": "2fade35f253844ccadca32aecb59fe7f",
+      "sourceScreen": "projects/5264572250204306984/screens/2fade35f253844ccadca32aecb59fe7f",
+      "status": "approved"
+    },
     "mvp-p0-moodboard-v1": {
       "id": "3265cf789b784da5bf587b618ff0cda4",
       "sourceScreen": "projects/5264572250204306984/screens/3265cf789b784da5bf587b618ff0cda4",
       "width": 2560,
       "height": 3636,
       "localHtml": ".stitch/designs/mvp-p0-moodboard-v1.html",
-      "localPng": ".stitch/designs/mvp-p0-moodboard-v1.png"
+      "localPng": ".stitch/designs/mvp-p0-moodboard-v1.png",
+      "status": "approved"
     },
     "mvp-p0-tokens-v1": {
       "id": "d0ff264d54fd426ba66d48a6ef79dcef",
@@ -21,7 +37,18 @@
       "width": 2560,
       "height": 2784,
       "localHtml": ".stitch/designs/mvp-p0-tokens-v1.html",
-      "localPng": ".stitch/designs/mvp-p0-tokens-v1.png"
+      "localPng": ".stitch/designs/mvp-p0-tokens-v1.png",
+      "status": "superseded",
+      "supersededBy": "mvp-p0-tokens-v2"
+    },
+    "mvp-p0-tokens-v2": {
+      "id": "ef96988c03af4481887aa7d0854baadc",
+      "sourceScreen": "projects/5264572250204306984/screens/ef96988c03af4481887aa7d0854baadc",
+      "width": 2560,
+      "height": 2254,
+      "localHtml": ".stitch/designs/mvp-p0-tokens-v2.html",
+      "localPng": ".stitch/designs/mvp-p0-tokens-v2.png",
+      "status": "approved"
     },
     "mvp-p0-typography-v1": {
       "id": "c4cb98d99d064ddd9de92c6aeb8e0747",
@@ -29,7 +56,8 @@
       "width": 2560,
       "height": 4012,
       "localHtml": ".stitch/designs/mvp-p0-typography-v1.html",
-      "localPng": ".stitch/designs/mvp-p0-typography-v1.png"
+      "localPng": ".stitch/designs/mvp-p0-typography-v1.png",
+      "status": "approved"
     },
     "mvp-p0-onboarding-wizard-v1": {
       "id": "3353a8d055d249298ba656d4e6da90c7",
@@ -37,7 +65,38 @@
       "width": 2560,
       "height": 2048,
       "localHtml": ".stitch/designs/mvp-p0-onboarding-wizard-v1.html",
-      "localPng": ".stitch/designs/mvp-p0-onboarding-wizard-v1.png"
+      "localPng": ".stitch/designs/mvp-p0-onboarding-wizard-v1.png",
+      "status": "superseded",
+      "supersededBy": "mvp-p0-onboarding-wizard-v3"
+    },
+    "mvp-p0-onboarding-wizard-v2": {
+      "id": "6d83cdd2527644f39ed32f88630d3672",
+      "sourceScreen": "projects/5264572250204306984/screens/6d83cdd2527644f39ed32f88630d3672",
+      "width": 2560,
+      "height": 2056,
+      "localHtml": ".stitch/designs/mvp-p0-onboarding-wizard-v2.html",
+      "localPng": ".stitch/designs/mvp-p0-onboarding-wizard-v2.png",
+      "status": "superseded",
+      "supersededBy": "mvp-p0-onboarding-wizard-v3"
+    },
+    "mvp-p0-onboarding-wizard-v3": {
+      "id": "ec1ef3ea371f4b899ce70349cb0e97c1",
+      "sourceScreen": "projects/5264572250204306984/screens/ec1ef3ea371f4b899ce70349cb0e97c1",
+      "width": 2560,
+      "height": 2056,
+      "localHtml": ".stitch/designs/mvp-p0-onboarding-wizard-v3.html",
+      "localPng": ".stitch/designs/mvp-p0-onboarding-wizard-v3.png",
+      "status": "superseded",
+      "supersededBy": "mvp-p0-onboarding-wizard-v4"
+    },
+    "mvp-p0-onboarding-wizard-v4": {
+      "id": "3626fbf60e7a4a76b8d2a5bbd8c26b52",
+      "sourceScreen": "projects/5264572250204306984/screens/3626fbf60e7a4a76b8d2a5bbd8c26b52",
+      "width": 2560,
+      "height": 2056,
+      "localHtml": ".stitch/designs/mvp-p0-onboarding-wizard-v4.html",
+      "localPng": ".stitch/designs/mvp-p0-onboarding-wizard-v4.png",
+      "status": "approved"
     }
   }
 }

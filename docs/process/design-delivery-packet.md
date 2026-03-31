@@ -35,11 +35,9 @@ Stitch flow aligned:
 - asset traceability through `.stitch/metadata.json` and `docs/stitch/asset-register.md`.
 
 ## 4) Remaining Gaps to Address in Next Iteration
-1. add explicit in-screen state-pack variants (`empty/loading/degraded/error`) to onboarding wizard.
-2. instrument measurable `<= 10 minute` onboarding path checkpoints to run detail.
-3. add explicit 3-step symptom-to-root-cause path annotation in onboarding.
-4. align onboarding navigation labels to IA contracts for continuity.
-5. keep provider-neutral domain-safe copy for onboarding fallback examples.
+1. begin MVP-P1 screens: workflow builder, run detail, component/state library.
+2. preserve onboarding action language parity while integrating P1 observability surfaces.
+3. draft P1 interaction specs for policy validation and troubleshooting bundle export entry points.
 
 ## 5) Handoff Mapping
 - asset register: `docs/stitch/asset-register.md`
@@ -56,3 +54,12 @@ Stitch flow aligned:
   - token fidelity with `.stitch/DESIGN.md`
   - accessibility-safe interaction and form patterns
   - state parity with designed operational states
+
+## 7) MVP-P0 Handoff Map (shadcn + React + Phoenix)
+| Surface Module | shadcn Primitive | React Component Target | Phoenix Event / Contract Hint |
+|---|---|---|---|
+| Onboarding stepper + health checklist | `card`, `progress`, `badge`, `button` | `OnboardingWizard`, `OnboardingChecklist` | `onboarding.step.changed`, `onboarding.health.checked` |
+| Deterministic lane primer | `tabs`, `badge`, `tooltip` | `LanePrimerPanel` | `runtime_profile.selected` (`fixture`, `live_smoke`, `live`) |
+| Operational state-pack (`empty/loading/degraded/error`) | `alert`, `skeleton`, `badge`, `card` | `OperationalStatePack` | `run.state.changed`, `runtime.health.degraded` |
+| Incident action rail | `sheet`, `button`, `dropdown-menu` | `IncidentActionRail` | `run.retry.requested`, `run.cancel.requested`, `bundle.export.requested` |
+| Token and typography references | `table`, `separator`, `badge` | `DesignTokenReference`, `TypographyReference` | N/A (design-time artifact) |

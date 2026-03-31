@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FXQ_MVP-P0_Onboarding_v3 (Gate-Closed)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#603ce2",
+                        "on-secondary-fixed-variant": "#3c00de",
+                        "inverse-surface": "#dfe2f2",
+                        "surface": "#0f131e",
+                        "on-surface": "#dfe2f2",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#2f2077",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c8bfff",
+                        "on-background": "#dfe2f2",
+                        "inverse-on-surface": "#2c303c",
+                        "on-primary": "#31009a",
+                        "tertiary": "#c8bfff",
+                        "on-primary-fixed": "#1c0062",
+                        "on-tertiary-container": "#291870",
+                        "on-secondary-container": "#bbb3ff",
+                        "tertiary-fixed": "#e5deff",
+                        "surface-container-high": "#262a36",
+                        "surface-container": "#1b1f2b",
+                        "on-error": "#690005",
+                        "surface-container-low": "#171b27",
+                        "tertiary-container": "#9185df",
+                        "secondary-container": "#4006e8",
+                        "primary-fixed-dim": "#cabeff",
+                        "outline-variant": "#484555",
+                        "surface-bright": "#353945",
+                        "outline": "#938ea1",
+                        "primary-fixed": "#e6deff",
+                        "on-secondary": "#2800a0",
+                        "secondary-fixed": "#e4dfff",
+                        "on-tertiary-fixed": "#1a0063",
+                        "secondary": "#c6bfff",
+                        "surface-container-highest": "#313441",
+                        "background": "#0f131e",
+                        "surface-variant": "#313441",
+                        "on-secondary-fixed": "#160066",
+                        "on-primary-container": "#2a0088",
+                        "surface-dim": "#0f131e",
+                        "on-tertiary-fixed-variant": "#46398f",
+                        "on-surface-variant": "#c9c4d8",
+                        "surface-container-lowest": "#0a0e19",
+                        "primary-container": "#947dff",
+                        "surface-tint": "#cabeff",
+                        "secondary-fixed-dim": "#c6bfff",
+                        "primary": "#cabeff",
+                        "on-primary-fixed-variant": "#4816cb"
+                    },
+                    fontFamily: {
+                        "headline": ["Sora"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["IBM Plex Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .glass-header {
+            background: rgba(10, 14, 25, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .flux-glow {
+            background: linear-gradient(135deg, #cabeff 0%, #947dff 100%);
+        }
+        .loading-pulse {
+            animation: pulse-op 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-op {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f131e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #313441;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30 antialiased overflow-hidden">
+<!-- Top Navigation -->
+<header class="docked full-width top-0 sticky z-50 flex justify-between items-center px-6 h-14 w-full bg-[#0a0e19]/80 backdrop-blur-xl border-b border-[#484555]/15 shadow-2xl shadow-black/40">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold bg-gradient-to-br from-[#cabeff] to-[#947dff] bg-clip-text text-transparent font-headline tracking-tight">FluxQ</span>
+<nav class="hidden md:flex items-center gap-6 font-headline font-semibold tracking-tight text-sm">
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Workflows</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Observability</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Documentation</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Systems</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3 py-1.5 rounded border border-outline-variant/10">
+<span class="material-symbols-outlined text-sm text-primary">search</span>
+<span class="text-xs text-on-surface-variant font-mono">CMD + K</span>
+</div>
+<button class="material-symbols-outlined p-1.5 rounded hover:bg-[#353945]/50 transition-colors text-on-surface-variant">notifications</button>
+<button class="material-symbols-outlined p-1.5 rounded hover:bg-[#353945]/50 transition-colors text-on-surface-variant">settings</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-high border border-outline-variant/20 overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcI8RZC9aNhhcNjoOVAKtCKSd0qKrSbkhbyjN3AOEl20kHyS0D2S_bdwqG-Mv1vetoq2GT-G1ACsRGb6MfJNzpUyaoLhVOoTWrsSJW5coxGmPHxrZ7u02KwsvyLI8EIXGZFeWzj5SA4nzo5xE4kQBSAQh1esk8RncI9EVHPSHbgV4XKIEMmJFIMHoDsHkq2sKUNsywlSZKHdvnHpmYWAdwdRi2sjgREMwDHoHNrj0MvoZ66R8jcyl05p8mL4655NOeyNSndq-bUXc"/>
+</div>
+</div>
+</header>
+<!-- Global Progress Timer -->
+<div class="h-1 w-full bg-surface-container-lowest relative">
+<div class="absolute inset-y-0 left-0 bg-primary w-[68%] transition-all duration-1000"></div>
+<div class="absolute right-4 -bottom-6 text-[0.625rem] font-mono text-primary/60 flex items-center gap-2">
+<span class="material-symbols-outlined text-[10px]">timer</span>
+            TIME TO FIRST RUN: 04:12 / 10:00 (ESTIMATED)
+        </div>
+</div>
+<div class="flex h-[calc(100vh-3.5rem)] overflow-hidden">
+<!-- Side Navigation -->
+<aside class="hidden md:flex flex-col h-full w-64 bg-[#171b27] py-4 border-r border-[#484555]/10">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-xl">account_tree</span>
+</div>
+<div>
+<div class="text-[#dfe2f2] font-headline font-bold text-sm">FluxQ Engine</div>
+<div class="text-[0.65rem] font-mono text-on-surface-variant/60 uppercase tracking-widest">Quantum v2.4</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-[#1b1f2b] text-[#cabeff] border-r-2 border-[#cabeff] transition-all duration-150 group" href="#">
+<span class="material-symbols-outlined text-xl">account_tree</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Workflows</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">reorder</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Runs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">analytics</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Lanes Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">swap_horiz</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Portability</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">notifications_active</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Alerts</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-surface-dim p-8">
+<div class="max-w-5xl mx-auto">
+<header class="mb-8 flex justify-between items-start">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-primary/10 text-primary text-[0.625rem] px-2 py-0.5 font-mono font-bold tracking-widest border border-primary/20 rounded">MVP-P0</span>
+<span class="text-on-surface-variant/40 font-mono text-[0.625rem]">FXQ_MVP-P0_Onboarding_v3 (Gate-Closed)</span>
+</div>
+<h1 class="text-3xl font-headline font-bold text-on-surface tracking-tight">Operator Onboarding</h1>
+<p class="text-on-surface-variant text-sm mt-1">Initialize local environment and synchronize orchestration lanes.</p>
+</div>
+<!-- Onboarding Milestone Checkpoint -->
+<div class="bg-surface-container-high border border-primary/20 p-4 rounded-xl flex items-center gap-4 shadow-lg shadow-black/20">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<div class="text-[0.625rem] font-mono text-primary font-bold uppercase tracking-widest mb-1">Milestone Reached</div>
+<h4 class="text-xs font-bold text-on-surface">First successful Run Detail reached</h4>
+<div class="text-[0.65rem] font-mono text-on-surface-variant mt-1">Elapsed: 04:12 / 10:00 (ESTIMATED)</div>
+</div>
+</div>
+</header>
+<div class="space-y-10">
+<!-- Step 1: Quantum State Hydration -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                Step 1: Quantum State Hydration
+                                <span class="text-[0.6rem] font-mono text-on-surface-variant/40 ml-2">TARGET: 2m</span>
+</h2>
+<span class="text-on-surface-variant/50 font-mono text-[0.625rem]">STATUS: PARTIAL_DEGRADATION</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- [EMPTY STATE] -->
+<div class="bg-surface-container/30 border-2 border-dashed border-outline-variant/20 p-4 rounded-xl flex flex-col items-center justify-center text-center min-h-[140px]">
+<span class="material-symbols-outlined text-on-surface-variant/20 text-3xl mb-2">inbox</span>
+<span class="text-[0.625rem] font-mono text-on-surface-variant/40">EMPTY: NO CACHE</span>
+</div>
+<!-- [LOADING STATE] -->
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/10 group relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 loading-pulse"></div>
+<div class="flex items-start justify-between mb-3 relative z-10">
+<div class="p-2 rounded bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-xl">sync</span>
+</div>
+<span class="text-[0.6rem] font-mono text-primary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary loading-pulse"></span> HYDRATING
+                                    </span>
+</div>
+<h3 class="font-headline font-bold text-sm text-on-surface relative z-10">Local Mirror</h3>
+<p class="text-[0.6875rem] text-on-surface-variant mt-1 relative z-10">Hydrating quantum state...</p>
+</div>
+<!-- [DEGRADED STATE] -->
+<div class="bg-surface-container p-4 rounded-xl border border-amber-500/20 group hover:bg-surface-container-high transition-colors">
+<div class="flex items-start justify-between mb-3">
+<div class="p-2 rounded bg-amber-500/10 text-amber-500">
+<span class="material-symbols-outlined text-xl">warning</span>
+</div>
+<span class="text-[0.6rem] font-mono text-amber-500 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> DEGRADED
+                                    </span>
+</div>
+<h3 class="font-headline font-bold text-sm text-on-surface">Lane-4-A</h3>
+<p class="text-[0.6875rem] text-on-surface-variant mt-1">Divergence detected in lane-4-A sync.</p>
+</div>
+<!-- [ERROR STATE] -->
+<div class="bg-surface-container p-4 rounded-xl border border-error/40 group hover:bg-surface-container-high transition-all ring-1 ring-error/20 ring-inset">
+<div class="flex items-start justify-between mb-3">
+<div class="p-2 rounded bg-error/10 text-error">
+<span class="material-symbols-outlined text-xl">hub</span>
+</div>
+<span class="text-[0.6rem] font-mono text-error flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> ERROR
+                                    </span>
+</div>
+<h3 class="font-headline font-bold text-sm text-on-surface">Quantum Node</h3>
+<button class="text-[0.625rem] text-primary hover:underline font-mono mt-2 flex items-center gap-1">
+                                    RETRY CONNECTION <span class="material-symbols-outlined text-xs">refresh</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Step 2: Deterministic Lane Primer -->
+<section>
+<h2 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant flex items-center gap-2 mb-4">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                            Step 2: Deterministic Lane Primer
+                            <span class="text-[0.6rem] font-mono text-on-surface-variant/40 ml-2">TARGET: 3m</span>
+</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Fixture Lane -->
+<div class="relative bg-surface-container p-6 rounded-xl border-l-4 border-l-blue-400 border-outline-variant/10 h-full flex flex-col">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-[0.6rem] font-mono text-blue-400 font-bold uppercase tracking-widest">LANE: FIXTURE</span>
+<div class="h-px flex-1 bg-outline-variant/10"></div>
+</div>
+<h3 class="font-headline font-bold text-lg mb-2">Static Fixture</h3>
+<p class="text-xs text-on-surface-variant flex-1 leading-relaxed font-mono">Isolated data sets for component sanity. Zero-dependency environment for pure algorithmic validation.</p>
+<div class="mt-6 flex items-center justify-between">
+<span class="text-[0.625rem] font-mono text-on-surface-variant/40">NON-PRODUCTION</span>
+<span class="material-symbols-outlined text-blue-400/40">science</span>
+</div>
+</div>
+<!-- Live Smoke Lane -->
+<div class="relative bg-surface-container-high p-6 rounded-xl border-l-4 border-l-amber-400 border-primary/20 h-full flex flex-col shadow-lg shadow-amber-900/10">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-[0.6rem] font-mono text-amber-400 font-bold uppercase tracking-widest">LANE: LIVE_SMOKE</span>
+<div class="h-px flex-1 bg-primary/20"></div>
+</div>
+<h3 class="font-headline font-bold text-lg mb-2 text-amber-100">Synchronized Smoke</h3>
+<p class="text-xs text-on-surface-variant flex-1 leading-relaxed font-mono">Real-time streams validating orchestration health. Shadow-traffic mirror enabled for safe testing.</p>
+<div class="mt-6 flex items-center justify-between">
+<span class="text-[0.625rem] font-mono text-amber-400/60">VALIDATION ACTIVE</span>
+<span class="material-symbols-outlined text-amber-400">check_circle</span>
+</div>
+</div>
+<!-- Live Lane -->
+<div class="relative bg-surface-container p-6 rounded-xl border-l-4 border-l-red-500 border-outline-variant/10 h-full flex flex-col opacity-60 grayscale">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-[0.6rem] font-mono text-red-500 font-bold uppercase tracking-widest">LANE: LIVE</span>
+<div class="h-px flex-1 bg-outline-variant/10"></div>
+</div>
+<h3 class="font-headline font-bold text-lg mb-2">Live Orchestration</h3>
+<p class="text-xs text-on-surface-variant flex-1 leading-relaxed font-mono">Real-world traffic flows. Highest criticality. Production-grade safeguards active.</p>
+<div class="mt-6 flex items-center justify-between">
+<span class="text-[0.625rem] font-mono text-red-500/60">LOCKED BY ADMIN</span>
+<span class="material-symbols-outlined text-on-surface-variant/20">lock</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Demo Run Path Module -->
+<section>
+<h2 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant flex items-center gap-2 mb-4">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                            Demo Run Path Execution
+                            <span class="text-[0.6rem] font-mono text-on-surface-variant/40 ml-2">SIMULATION MODE</span>
+</h2>
+<div class="space-y-4">
+<!-- Success Case -->
+<div class="bg-surface-container-low border border-outline-variant/10 rounded-xl p-4 flex items-center gap-6 group hover:bg-surface-container transition-colors">
+<div class="w-10 h-10 rounded bg-green-500/10 flex items-center justify-center text-green-500">
+<span class="material-symbols-outlined">play_arrow</span>
+</div>
+<div class="flex-1 grid grid-cols-4 items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[0.6rem] font-mono text-on-surface-variant/50 uppercase">Workflow</span>
+<span class="text-xs font-mono font-bold">Demo_Workflow_Alpha</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[0.6rem] font-mono text-on-surface-variant/50 uppercase">Target Lane</span>
+<span class="text-xs font-mono text-blue-400">fixture</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[0.6rem] font-mono text-on-surface-variant/50 uppercase">Result</span>
+<span class="text-xs font-bold text-green-500 flex items-center gap-1">
+<span class="w-1 h-1 rounded-full bg-green-500"></span> SUCCESS
+                                        </span>
+</div>
+<div class="flex flex-col text-right">
+<span class="text-[0.6rem] font-mono text-on-surface-variant/50 uppercase">Latency</span>
+<span class="text-xs font-mono text-on-surface">42ms</span>
+</div>
+</div>
+</div>
+<!-- Failure/Fallback Case -->
+<div class="bg-surface-container-low border border-amber-500/20 rounded-xl p-4 flex items-center gap-6 group hover:bg-surface-container transition-colors">
+<div class="w-10 h-10 rounded bg-amber-500/10 flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined">route</span>
+</div>
+<div class="flex-1 grid grid-cols-4 items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[0.6rem] font-mono text-on-surface-variant/50 uppercase">Workflow</span>
+<span class="text-xs font-mono font-bold">Demo_Workflow_Beta</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[0.6rem] font-mono text-on-surface-variant/50 uppercase">Target Lane</span>
+<span class="text-xs font-mono text-amber-400">live_smoke</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[0.6rem] font-mono text-on-surface-variant/50 uppercase">Event Transition</span>
+<div class="flex items-center gap-1.5">
+<span class="text-[0.65rem] font-bold text-error px-1 bg-error/10 rounded">TIMEOUT</span>
+<span class="material-symbols-outlined text-[10px] text-on-surface-variant">trending_flat</span>
+<span class="text-[0.65rem] font-bold text-blue-400">Fallback Active (Azure-E2)</span>
+</div>
+</div>
+<div class="flex flex-col text-right">
+<span class="text-[0.6rem] font-mono text-on-surface-variant/50 uppercase">Total Time</span>
+<span class="text-xs font-mono text-amber-500">3200ms</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 3: Root-Cause Investigation Protocol -->
+<section>
+<h2 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant flex items-center gap-2 mb-4">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                            Step 3: Root-Cause Investigation Protocol
+                            <span class="text-[0.6rem] font-mono text-on-surface-variant/40 ml-2">TARGET: 5m</span>
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-outline-variant/20 rounded-xl overflow-hidden divide-x divide-outline-variant/20">
+<!-- 1. Alert Signal -->
+<div class="p-6 bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-6 h-6 rounded-full bg-error/20 flex items-center justify-center text-error font-mono text-xs">1</div>
+<h4 class="text-xs font-bold uppercase tracking-wider text-on-surface">Alert Signal</h4>
+</div>
+<div class="p-3 bg-error/5 border border-error/20 rounded mb-3">
+<div class="text-[0.65rem] font-mono text-error font-bold mb-1">SIGNAL: LATENCY_SPIKE</div>
+<div class="h-12 w-full bg-error/10 rounded flex items-end gap-[1px] p-1">
+<div class="h-1/3 bg-error w-full"></div>
+<div class="h-1/2 bg-error w-full"></div>
+<div class="h-4/5 bg-error w-full"></div>
+<div class="h-full bg-error w-full animate-pulse"></div>
+</div>
+</div>
+<p class="text-[0.7rem] text-on-surface-variant italic">"Symptom identified at edge ingress."</p>
+</div>
+<!-- 2. Run Detail -->
+<div class="p-6 bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary font-mono text-xs">2</div>
+<h4 class="text-xs font-bold uppercase tracking-wider text-on-surface">Run Detail</h4>
+</div>
+<div class="space-y-2">
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[40%]"></div>
+</div>
+<div class="flex justify-between font-mono text-[0.6rem] text-on-surface-variant">
+<span>INIT: 12ms</span>
+<span class="text-error">EXEC: 2400ms</span>
+</div>
+<button class="w-full py-1.5 border border-primary/20 text-primary text-[0.65rem] font-bold rounded flex items-center justify-center gap-2">
+                                        Inspect Trace <span class="material-symbols-outlined text-xs">search</span>
+</button>
+</div>
+</div>
+<!-- 3. Action Rail -->
+<div class="p-6 bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 font-mono text-xs">3</div>
+<h4 class="text-xs font-bold uppercase tracking-wider text-on-surface">Action Rail</h4>
+</div>
+<div class="flex flex-col gap-2">
+<button class="bg-green-500/10 border border-green-500/20 text-green-400 text-[0.65rem] font-bold py-2 rounded flex items-center px-3 gap-2">
+<span class="material-symbols-outlined text-xs">alt_route</span> REROUTE TRAFFIC
+                                    </button>
+<button class="bg-surface-container-highest border border-outline-variant/20 text-on-surface-variant text-[0.65rem] py-2 rounded flex items-center px-3 gap-2">
+<span class="material-symbols-outlined text-xs">restart_alt</span> REBOOT NODE
+                                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Persistent Action Bar -->
+<section class="flex flex-wrap items-center gap-4 pt-6 border-t border-outline-variant/10">
+<button class="flux-glow text-on-primary px-6 py-2.5 rounded font-headline font-bold text-sm flex items-center gap-2 shadow-lg shadow-primary/20 transition-transform hover:scale-[1.02] active:scale-[0.98]">
+                            Open Run Detail <span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+<button class="bg-surface-container-highest border border-outline-variant/20 text-on-surface px-4 py-2.5 rounded font-headline font-bold text-sm flex items-center gap-2 hover:bg-surface-bright transition-colors">
+                            Reroute <span class="material-symbols-outlined text-sm">alt_route</span>
+</button>
+<button class="bg-surface-container-highest border border-outline-variant/20 text-on-surface px-4 py-2.5 rounded font-headline font-bold text-sm flex items-center gap-2 hover:bg-surface-bright transition-colors">
+                            Retry <span class="material-symbols-outlined text-sm">refresh</span>
+</button>
+<div class="h-6 w-px bg-outline-variant/20 mx-2"></div>
+<button class="text-on-surface-variant hover:text-on-surface px-4 py-2.5 rounded font-headline font-bold text-sm flex items-center gap-2 transition-colors">
+                            Cancel <span class="material-symbols-outlined text-sm">close</span>
+</button>
+<button class="ml-auto text-on-surface-variant/60 hover:text-primary px-4 py-2.5 rounded font-headline font-bold text-xs flex items-center gap-2 transition-colors">
+                            Export Troubleshooting Bundle <span class="material-symbols-outlined text-sm">file_download</span>
+</button>
+</section>
+</div>
+</div>
+</main>
+<!-- Right Inspector Rail -->
+<aside class="hidden xl:flex flex-col w-80 bg-surface-container-low border-l border-[#484555]/10 p-6 overflow-y-auto">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Onboarding Progress</h3>
+<span class="material-symbols-outlined text-on-surface-variant/40">info</span>
+</div>
+<div class="space-y-8">
+<!-- Progress Checklist -->
+<div class="space-y-6">
+<div class="relative pl-6 pb-6 border-l border-outline-variant/20">
+<div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-on-primary">check</span>
+</div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-xs font-bold text-on-surface">Environment Setup</span>
+<span class="text-[0.625rem] font-mono text-primary">75%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-primary h-full w-[75%]"></div>
+</div>
+</div>
+<div class="relative pl-6 pb-6 border-l border-outline-variant/20">
+<div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-on-primary">check</span>
+</div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-xs font-bold text-on-surface">Lane Definitions</span>
+<span class="text-[0.625rem] font-mono text-primary">100%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-primary h-full w-full"></div>
+</div>
+</div>
+<div class="relative pl-6 border-l border-outline-variant/20">
+<div class="absolute -left-2 top-0 w-4 h-4 rounded-full border border-outline-variant/40 bg-surface-container"></div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-xs font-bold text-on-surface-variant">Demo Execution</span>
+<span class="text-[0.625rem] font-mono text-on-surface-variant/40">Pending</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-primary h-full w-0"></div>
+</div>
+</div>
+</div>
+<!-- Tips Section -->
+<div class="bg-surface-container p-5 rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-3 text-primary">
+<span class="material-symbols-outlined text-sm">lightbulb</span>
+<h4 class="text-[0.6875rem] font-bold uppercase tracking-wider text-primary">Operational Insights</h4>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                        Verify <span class="text-on-surface font-mono">retry budget</span> against current <span class="text-on-surface font-mono">timeout pressure</span>. When migrating to Live, ensure fallback lanes are pre-hydrated to mitigate cold-start latency.
+                    </p>
+</div>
+<!-- Identity Summary -->
+<div class="mt-auto pt-8 border-t border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest border border-outline-variant/20 flex items-center justify-center grayscale opacity-50">
+<span class="material-symbols-outlined text-primary">hub</span>
+</div>
+<div>
+<div class="text-[0.625rem] font-mono text-on-surface-variant/40 uppercase">LOCAL_OPERATOR_NODE</div>
+<div class="text-xs font-mono text-on-surface">q-alpha-local-77b</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Mobile Navigation -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-low border-t border-outline-variant/10 flex justify-around p-3 z-50">
+<button class="material-symbols-outlined text-primary">dashboard</button>
+<button class="material-symbols-outlined text-on-surface-variant">account_tree</button>
+<button class="material-symbols-outlined text-on-surface-variant">reorder</button>
+<button class="material-symbols-outlined text-on-surface-variant">settings</button>
+</div>
+</body></html>
