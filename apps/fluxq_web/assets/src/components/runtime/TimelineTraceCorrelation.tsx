@@ -53,7 +53,8 @@ export function TimelineTraceCorrelation() {
               key={event.id}
               type="button"
               onClick={() => setSelectedId(event.id)}
-              className="flex min-w-0 w-full items-start justify-between gap-3 rounded-[var(--fxq-radius-md)] border border-white/8 p-2 text-left hover:bg-white/4"
+              aria-pressed={selectedId === event.id}
+              className="flex min-w-0 w-full items-start justify-between gap-3 rounded-[var(--fxq-radius-md)] border border-white/8 p-2 text-left hover:bg-white/4 aria-pressed:border-[color:var(--fxq-semantic-info)]"
             >
               <div className="min-w-0 flex-1">
                 <div className="text-sm font-medium break-words">{event.title}</div>

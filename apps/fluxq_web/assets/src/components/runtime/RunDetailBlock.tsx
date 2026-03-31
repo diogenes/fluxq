@@ -14,7 +14,7 @@ export function RunDetailBlock() {
           <h3 className="fxq-display text-lg font-semibold">{t('runtime.runDetail.title')}</h3>
           <p className="text-sm text-[color:var(--fxq-text-secondary)]">{t('runtime.runDetail.subtitle')}</p>
         </div>
-        <Badge tone="warning">live_smoke</Badge>
+        <Badge tone="warning">{t('app.lane.liveSmoke')}</Badge>
       </div>
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
         {[t('runtime.runDetail.timeline'), t('runtime.runDetail.trace'), t('runtime.runDetail.logs'), t('runtime.runDetail.incidentRail')].map((item) => (

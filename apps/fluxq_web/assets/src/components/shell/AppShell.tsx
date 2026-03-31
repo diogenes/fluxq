@@ -39,7 +39,13 @@ export function AppShell({
         lane={lane}
         onToggleSidebar={() => setSidebarCollapsed((value) => !value)}
         rightActions={
-          <Button size="sm" variant="ghost" onClick={() => setDiagnosticsCollapsed((value) => !value)}>
+          <Button
+            size="sm"
+            variant="ghost"
+            aria-pressed={!diagnosticsCollapsed}
+            aria-label={t('actions.toggleDiagnostics')}
+            onClick={() => setDiagnosticsCollapsed((value) => !value)}
+          >
             {t('actions.diagnostics')}
           </Button>
         }

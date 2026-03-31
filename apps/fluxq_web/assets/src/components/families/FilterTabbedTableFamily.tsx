@@ -51,14 +51,35 @@ export function FilterTabbedTableFamily() {
     <section className="space-y-3 rounded-[var(--fxq-radius-lg)] border border-white/10 bg-[color:var(--fxq-background-surface-low)] p-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="fxq-display text-base font-semibold">{t('runtime.cx.filterTable.title')}</h3>
-        <div className="flex flex-wrap gap-2">
-          <Button type="button" variant={tab === 'all' ? 'secondary' : 'ghost'} size="sm" onClick={() => setTab('all')}>
+        <div className="flex flex-wrap gap-2" role="tablist" aria-label={t('runtime.cx.filterTable.tabsLabel')}>
+          <Button
+            type="button"
+            role="tab"
+            aria-pressed={tab === 'all'}
+            variant={tab === 'all' ? 'secondary' : 'ghost'}
+            size="sm"
+            onClick={() => setTab('all')}
+          >
             {t('runtime.cx.filterTable.tabs.all')}
           </Button>
-          <Button type="button" variant={tab === 'degraded' ? 'secondary' : 'ghost'} size="sm" onClick={() => setTab('degraded')}>
+          <Button
+            type="button"
+            role="tab"
+            aria-pressed={tab === 'degraded'}
+            variant={tab === 'degraded' ? 'secondary' : 'ghost'}
+            size="sm"
+            onClick={() => setTab('degraded')}
+          >
             {t('runtime.cx.filterTable.tabs.degraded')}
           </Button>
-          <Button type="button" variant={tab === 'timeouts' ? 'secondary' : 'ghost'} size="sm" onClick={() => setTab('timeouts')}>
+          <Button
+            type="button"
+            role="tab"
+            aria-pressed={tab === 'timeouts'}
+            variant={tab === 'timeouts' ? 'secondary' : 'ghost'}
+            size="sm"
+            onClick={() => setTab('timeouts')}
+          >
             {t('runtime.cx.filterTable.tabs.timeouts')}
           </Button>
         </div>
@@ -94,9 +115,9 @@ export function FilterTabbedTableFamily() {
             <DenseRow key={row.id}>
               <td className="px-3 py-2 font-medium">{row.workflow}</td>
               <td className="px-3 py-2">{row.lane}</td>
-              <td className="px-3 py-2"><Badge tone={toneByState[row.state]}>{row.state}</Badge></td>
+              <td className="px-3 py-2"><Badge tone={toneByState[row.state]}>{t(`runtime.cx.filterTable.stateOptions.${row.state}`)}</Badge></td>
               <td className="px-3 py-2 fxq-mono">{row.latencyMs}ms</td>
-              <td className="px-3 py-2">{row.drift}</td>
+              <td className="px-3 py-2">{t(`runtime.cx.filterTable.driftOptions.${row.drift}`)}</td>
             </DenseRow>
           ))}
         </tbody>

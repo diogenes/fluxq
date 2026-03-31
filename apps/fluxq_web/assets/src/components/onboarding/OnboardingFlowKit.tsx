@@ -74,7 +74,7 @@ export function OnboardingFlowKit({ degraded = false }: Readonly<OnboardingFlowK
               <div className="flex min-w-0 flex-wrap items-center gap-2">
                 <span className="fxq-mono text-xs text-[color:var(--fxq-text-secondary)]">{index + 1}</span>
                 <h4 className="text-sm font-semibold">{t(step.titleKey)}</h4>
-                <Badge tone={toneByState[step.state]}>{step.state}</Badge>
+                <Badge tone={toneByState[step.state]}>{t(`runtime.onboarding.stepStates.${step.state}`)}</Badge>
               </div>
               <p className="mt-1 text-sm text-[color:var(--fxq-text-secondary)]">{t(step.descriptionKey)}</p>
             </article>
@@ -87,7 +87,9 @@ export function OnboardingFlowKit({ degraded = false }: Readonly<OnboardingFlowK
             {readiness.map((item) => (
               <li key={item.id} className="flex min-w-0 items-start justify-between gap-2 text-sm">
                 <span className="min-w-0 break-words">{item.text}</span>
-                <Badge tone={item.ok ? 'success' : 'warning'}>{item.ok ? 'ok' : 'review'}</Badge>
+                <Badge tone={item.ok ? 'success' : 'warning'}>
+                  {item.ok ? t('runtime.onboarding.readinessState.ok') : t('runtime.onboarding.readinessState.review')}
+                </Badge>
               </li>
             ))}
           </ul>

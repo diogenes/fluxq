@@ -93,6 +93,7 @@ export const englishResources = {
       compare: 'Compare runs',
       export: 'Export bundle',
       diagnostics: 'Diagnostics',
+      toggleDiagnostics: 'Toggle diagnostics rail',
       toggleSidebar: 'Toggle sidebar',
       collapseSidebar: 'Collapse sidebar',
       expandSidebar: 'Expand sidebar',
@@ -374,6 +375,7 @@ export const englishResources = {
         },
         filterTable: {
           title: 'Filters + Tabbed Table Family',
+          tabsLabel: 'table state tabs',
           tabs: {
             all: 'all rows',
             degraded: 'degraded',
@@ -394,6 +396,16 @@ export const englishResources = {
             state: 'state',
             latency: 'latency',
             drift: 'drift narrative'
+          },
+          stateOptions: {
+            healthy: 'healthy',
+            degraded: 'degraded',
+            timeout: 'timeout'
+          },
+          driftOptions: {
+            low: 'low',
+            medium: 'medium',
+            high: 'high'
           }
         },
         timelineTraceLogs: {
@@ -464,6 +476,16 @@ export const englishResources = {
           needsReview: 'needs review'
         },
         readinessTitle: 'readiness checks',
+        readinessState: {
+          ok: 'ok',
+          review: 'review'
+        },
+        stepStates: {
+          pending: 'pending',
+          active: 'active',
+          completed: 'completed',
+          blocked: 'blocked'
+        },
         readiness: {
           deterministic: 'Deterministic fixture lane configured.',
           traceCorrelation: 'Trace and logs correlation enabled.',

@@ -93,7 +93,7 @@ This track runs in parallel with product phases to convert approved Stitch asset
 | UI-CX11 | Onboarding Flow Kit | Completed | Stepper/progress/readiness form components |
 | UI-CX12 | Journey Composition Blueprints | In Progress | Journey-to-family mapping and composition contracts |
 | UI-CX13 | Storybook Variant Matrix | Completed | Desktop/tablet/mobile + state-variant story coverage |
-| UI-CX14 | Hardening + Gate Closure | Planned | A11y/responsiveness/i18n/visual gate closure for extracted families |
+| UI-CX14 | Hardening + Gate Closure | Completed | A11y/responsiveness/i18n/visual gate closure for extracted families |
 
 ### Design Front Follow-through (Operator UX)
 - [x] DF-03 Expand semantic density token layer (row emphasis, severity bands, diagnostic contrast ramps).

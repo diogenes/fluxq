@@ -105,7 +105,8 @@ export function WorkflowBuilderAdvanced() {
                 key={node.id}
                 type="button"
                 onClick={() => setSelectedNodeId(node.id)}
-                className="absolute w-[92px] rounded-[var(--fxq-radius-md)] border border-white/8 bg-[color:var(--fxq-background-surface-low)] p-2 text-left"
+                aria-pressed={selectedNodeId === node.id}
+                className="absolute w-[92px] rounded-[var(--fxq-radius-md)] border border-white/8 bg-[color:var(--fxq-background-surface-low)] p-2 text-left aria-pressed:border-[color:var(--fxq-semantic-info)]"
                 style={{ left: node.x, top: node.y }}
               >
                 <div className="text-[10px] uppercase text-[color:var(--fxq-text-secondary)]">{node.id}</div>

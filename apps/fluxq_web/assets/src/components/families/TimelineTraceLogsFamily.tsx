@@ -116,7 +116,8 @@ export function TimelineTraceLogsFamily() {
             <button
               key={event.id}
               type="button"
-              className="flex w-full min-w-0 items-start justify-between gap-2 rounded-[var(--fxq-radius-md)] border border-white/8 p-2 text-left hover:bg-white/4"
+              aria-pressed={selectedId === event.id}
+              className="flex w-full min-w-0 items-start justify-between gap-2 rounded-[var(--fxq-radius-md)] border border-white/8 p-2 text-left hover:bg-white/4 aria-pressed:border-[color:var(--fxq-semantic-info)]"
               onClick={() => setSelectedId(event.id)}
             >
               <div className="min-w-0">
