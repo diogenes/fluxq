@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FXQ_MVP-P0_OnboardingWizard_v1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#603ce2",
+                        "on-secondary-fixed-variant": "#3c00de",
+                        "inverse-surface": "#dfe2f2",
+                        "surface": "#0f131e",
+                        "on-surface": "#dfe2f2",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#2f2077",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c8bfff",
+                        "on-background": "#dfe2f2",
+                        "inverse-on-surface": "#2c303c",
+                        "on-primary": "#31009a",
+                        "tertiary": "#c8bfff",
+                        "on-primary-fixed": "#1c0062",
+                        "on-tertiary-container": "#291870",
+                        "on-secondary-container": "#bbb3ff",
+                        "tertiary-fixed": "#e5deff",
+                        "surface-container-high": "#262a36",
+                        "surface-container": "#1b1f2b",
+                        "on-error": "#690005",
+                        "surface-container-low": "#171b27",
+                        "tertiary-container": "#9185df",
+                        "secondary-container": "#4006e8",
+                        "primary-fixed-dim": "#cabeff",
+                        "outline-variant": "#484555",
+                        "surface-bright": "#353945",
+                        "outline": "#938ea1",
+                        "primary-fixed": "#e6deff",
+                        "on-secondary": "#2800a0",
+                        "secondary-fixed": "#e4dfff",
+                        "on-tertiary-fixed": "#1a0063",
+                        "secondary": "#c6bfff",
+                        "surface-container-highest": "#313441",
+                        "background": "#0f131e",
+                        "surface-variant": "#313441",
+                        "on-secondary-fixed": "#160066",
+                        "on-primary-container": "#2a0088",
+                        "surface-dim": "#0f131e",
+                        "on-tertiary-fixed-variant": "#46398f",
+                        "on-surface-variant": "#c9c4d8",
+                        "surface-container-lowest": "#0a0e19",
+                        "primary-container": "#947dff",
+                        "surface-tint": "#cabeff",
+                        "secondary-fixed-dim": "#c6bfff",
+                        "primary": "#cabeff",
+                        "on-primary-fixed-variant": "#4816cb"
+                    },
+                    fontFamily: {
+                        "headline": ["Sora"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["IBM Plex Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .glass-header {
+            background: rgba(10, 14, 25, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .flux-glow {
+            background: linear-gradient(135deg, #cabeff 0%, #947dff 100%);
+        }
+        .soft-success-glow {
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.1);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f131e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #313441;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30 antialiased overflow-hidden">
+<!-- Top Navigation -->
+<header class="docked full-width top-0 sticky z-50 flex justify-between items-center px-6 h-14 w-full bg-[#0a0e19]/80 backdrop-blur-xl border-b border-[#484555]/15 shadow-2xl shadow-black/40">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold bg-gradient-to-br from-[#cabeff] to-[#947dff] bg-clip-text text-transparent font-headline tracking-tight">FluxQ</span>
+<nav class="hidden md:flex items-center gap-6 font-headline font-semibold tracking-tight text-sm">
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Workflows</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Observability</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Documentation</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Systems</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3 py-1.5 rounded border border-outline-variant/10">
+<span class="material-symbols-outlined text-sm text-primary">search</span>
+<span class="text-xs text-on-surface-variant font-mono">CMD + K</span>
+</div>
+<button class="material-symbols-outlined p-1.5 rounded hover:bg-[#353945]/50 transition-colors text-on-surface-variant">notifications</button>
+<button class="material-symbols-outlined p-1.5 rounded hover:bg-[#353945]/50 transition-colors text-on-surface-variant">settings</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-high border border-outline-variant/20 overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="User profile avatar close up with professional lighting and blurred tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcI8RZC9aNhhcNjoOVAKtCKSd0qKrSbkhbyjN3AOEl20kHyS0D2S_bdwqG-Mv1vetoq2GT-G1ACsRGb6MfJNzpUyaoLhVOoTWrsSJW5coxGmPHxrZ7u02KwsvyLI8EIXGZFeWzj5SA4nzo5xE4kQBSAQh1esk8RncI9EVHPSHbgV4XKIEMmJFIMHoDsHkq2sKUNsywlSZKHdvnHpmYWAdwdRi2sjgREMwDHoHNrj0MvoZ66R8jcyl05p8mL4655NOeyNSndq-bUXc"/>
+</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-3.5rem)] overflow-hidden">
+<!-- Side Navigation -->
+<aside class="hidden md:flex flex-col h-full w-64 bg-[#171b27] py-4 border-r border-[#484555]/10">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-xl">account_tree</span>
+</div>
+<div>
+<div class="text-[#dfe2f2] font-headline font-bold text-sm">FluxQ Engine</div>
+<div class="text-[0.65rem] font-mono text-on-surface-variant/60 uppercase tracking-widest">Quantum v2.4</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-[#1b1f2b] text-[#cabeff] border-r-2 border-[#cabeff] transition-all duration-150 group" href="#">
+<span class="material-symbols-outlined text-xl">account_tree</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Workflows</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">reorder</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Runs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">analytics</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Provider Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">swap_horiz</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Portability</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">notifications_active</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Alerts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">menu_book</span>
+<span class="font-['Inter'] text-[0.75rem] font-semibold uppercase tracking-wider">Livebook</span>
+</a>
+</nav>
+<div class="px-3 py-4 border-t border-[#484555]/10 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+<span class="font-['Inter'] text-[0.7rem] font-semibold uppercase tracking-wider">Help</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#c9c4d8] opacity-70 hover:bg-[#262a36] hover:opacity-100 transition-all duration-150 rounded group" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span class="font-['Inter'] text-[0.7rem] font-semibold uppercase tracking-wider">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-surface-dim p-8">
+<div class="max-w-5xl mx-auto">
+<header class="mb-10">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-primary/10 text-primary text-[0.625rem] px-2 py-0.5 font-mono font-bold tracking-widest border border-primary/20 rounded">MVP-P0</span>
+<span class="text-on-surface-variant/40 font-mono text-[0.625rem]">FXQ_MVP-P0_OnboardingWizard_v1</span>
+</div>
+<h1 class="text-3xl font-headline font-bold text-on-surface tracking-tight">Local-First Onboarding</h1>
+<p class="text-on-surface-variant text-sm mt-1">Initialize your local environment and validate quantum orchestration lanes.</p>
+</header>
+<div class="space-y-12">
+<!-- Step 1: Environment Health Check -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                Step 1: Environment Health Check
+                            </h2>
+<span class="text-on-surface-variant/50 font-mono text-[0.625rem]">STATUS: PARTIAL_FAILURE</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Docker -->
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/10 group hover:bg-surface-container-high transition-colors">
+<div class="flex items-start justify-between mb-3">
+<div class="p-2 rounded bg-green-500/10 text-green-400">
+<span class="material-symbols-outlined text-xl">database</span>
+</div>
+<span class="text-[0.6rem] font-mono text-green-400 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> OPERATIONAL
+                                    </span>
+</div>
+<h3 class="font-headline font-bold text-sm text-on-surface">Docker</h3>
+<p class="text-[0.6875rem] text-on-surface-variant mt-1">Engine v24.0.5 running locally.</p>
+</div>
+<!-- Dependencies -->
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/10 group hover:bg-surface-container-high transition-colors">
+<div class="flex items-start justify-between mb-3">
+<div class="p-2 rounded bg-green-500/10 text-green-400">
+<span class="material-symbols-outlined text-xl">sync</span>
+</div>
+<span class="text-[0.6rem] font-mono text-green-400 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> SYNCED
+                                    </span>
+</div>
+<h3 class="font-headline font-bold text-sm text-on-surface">Dependencies</h3>
+<p class="text-[0.6875rem] text-on-surface-variant mt-1">NPM registry fully mirrored.</p>
+</div>
+<!-- API Identity -->
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/10 group hover:bg-surface-container-high transition-colors">
+<div class="flex items-start justify-between mb-3">
+<div class="p-2 rounded bg-green-500/10 text-green-400">
+<span class="material-symbols-outlined text-xl">fingerprint</span>
+</div>
+<span class="text-[0.6rem] font-mono text-green-400 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> VERIFIED
+                                    </span>
+</div>
+<h3 class="font-headline font-bold text-sm text-on-surface">API Identity</h3>
+<p class="text-[0.6875rem] text-on-surface-variant mt-1">Session token x-922 valid.</p>
+</div>
+<!-- Quantum Node -->
+<div class="bg-surface-container p-4 rounded-xl border border-error/20 group hover:bg-surface-container-high transition-all ring-1 ring-error/30 ring-inset">
+<div class="flex items-start justify-between mb-3">
+<div class="p-2 rounded bg-error/10 text-error">
+<span class="material-symbols-outlined text-xl">hub</span>
+</div>
+<span class="text-[0.6rem] font-mono text-error flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> ERROR
+                                    </span>
+</div>
+<h3 class="font-headline font-bold text-sm text-on-surface">Quantum Node</h3>
+<button class="text-[0.625rem] text-primary hover:underline font-mono mt-2 flex items-center gap-1">
+                                    RE-AUTHENTICATE <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Step 2: Deterministic Lane Primer -->
+<section>
+<h2 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant flex items-center gap-2 mb-4">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                            Step 2: Deterministic Lane Primer
+                        </h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="relative group">
+<div class="absolute inset-0 bg-primary/5 rounded-xl blur-lg transition-opacity opacity-0 group-hover:opacity-100"></div>
+<div class="relative bg-surface-container p-6 rounded-xl border border-outline-variant/10 h-full flex flex-col">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-[0.6rem] font-mono text-on-surface-variant/60">ID: FIX-01</span>
+<div class="h-px flex-1 bg-outline-variant/10"></div>
+</div>
+<h3 class="font-headline font-bold text-lg mb-2">Fixture</h3>
+<p class="text-xs text-on-surface-variant flex-1 leading-relaxed">Isolated data sets for component sanity. Zero-dependency environment for pure algorithmic validation.</p>
+<div class="mt-6 flex items-center justify-between">
+<span class="text-[0.625rem] font-mono text-on-surface-variant/40">LOW CRITICALITY</span>
+<span class="material-symbols-outlined text-on-surface-variant/20">arrow_outward</span>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute inset-0 bg-primary/10 rounded-xl blur-lg opacity-40"></div>
+<div class="relative bg-surface-container-high p-6 rounded-xl border border-primary/20 h-full flex flex-col">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-[0.6rem] font-mono text-primary/80">ID: SMK-02</span>
+<div class="h-px flex-1 bg-primary/20"></div>
+</div>
+<h3 class="font-headline font-bold text-lg mb-2 text-primary">Live_Smoke</h3>
+<p class="text-xs text-on-surface-variant flex-1 leading-relaxed">Pre-production streams validating integration health. Shadow-traffic mirror enabled.</p>
+<div class="mt-6 flex items-center justify-between">
+<span class="text-[0.625rem] font-mono text-primary/60">MEDIUM CRITICALITY</span>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="relative bg-surface-container p-6 rounded-xl border border-outline-variant/10 h-full flex flex-col grayscale opacity-60">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-[0.6rem] font-mono text-on-surface-variant/60">ID: LIVE-03</span>
+<div class="h-px flex-1 bg-outline-variant/10"></div>
+</div>
+<h3 class="font-headline font-bold text-lg mb-2">Live</h3>
+<p class="text-xs text-on-surface-variant flex-1 leading-relaxed">Real-world quantum orchestration. Highest criticality. Production-grade safeguards active.</p>
+<div class="mt-6 flex items-center justify-between">
+<span class="text-[0.625rem] font-mono text-error/60">HIGH CRITICALITY</span>
+<span class="material-symbols-outlined text-on-surface-variant/20">lock</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 3: First Demo Workflow -->
+<section>
+<h2 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant flex items-center gap-2 mb-4">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                            Step 3: First Demo Workflow
+                        </h2>
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+<!-- Success Case -->
+<div class="p-5 border-b border-outline-variant/5 hover:bg-surface-container transition-colors">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="font-mono text-xs text-on-surface font-semibold">Demo_Workflow_Alpha</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/20">trending_flat</span>
+<div class="bg-surface-container-high px-2 py-1 rounded border border-outline-variant/20 text-[0.625rem] font-mono text-on-surface-variant">Live_Smoke</div>
+<span class="material-symbols-outlined text-on-surface-variant/20">trending_flat</span>
+<div class="flex items-center gap-2 text-[0.625rem] font-mono text-green-400">
+<span class="material-symbols-outlined text-xs">task_alt</span>
+                                            SUCCESS
+                                        </div>
+</div>
+<span class="font-mono text-[0.625rem] text-on-surface-variant">42ms</span>
+</div>
+</div>
+<!-- Controlled Failure -->
+<div class="p-5 bg-surface-container-high/30 hover:bg-surface-container transition-colors">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-amber-500"></div>
+<span class="font-mono text-xs text-on-surface font-semibold">Demo_Workflow_Beta</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/20">trending_flat</span>
+<div class="bg-surface-container-high px-2 py-1 rounded border border-outline-variant/20 text-[0.625rem] font-mono text-on-surface-variant">Live</div>
+<span class="material-symbols-outlined text-on-surface-variant/20">trending_flat</span>
+<div class="flex items-center gap-2 text-[0.625rem] font-mono text-error">
+<span class="material-symbols-outlined text-xs">timer_off</span>
+                                            TIMEOUT
+                                        </div>
+<span class="material-symbols-outlined text-on-surface-variant/20">subdirectory_arrow_right</span>
+<div class="bg-primary/10 px-2 py-1 rounded border border-primary/20 text-[0.625rem] font-mono text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">security</span> Fallback Active (Azure-E2)
+                                        </div>
+</div>
+<span class="font-mono text-[0.625rem] text-on-surface-variant">3200ms</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 4: Next Steps -->
+<section class="flex flex-wrap items-center gap-4 pt-4">
+<button class="flux-glow text-on-primary px-6 py-2.5 rounded font-headline font-bold text-sm flex items-center gap-2 shadow-lg shadow-primary/20 transition-transform hover:scale-[1.02] active:scale-[0.98]">
+                            Open Run Detail <span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+<button class="bg-surface-container-highest border border-outline-variant/20 text-on-surface px-6 py-2.5 rounded font-headline font-bold text-sm flex items-center gap-2 hover:bg-surface-bright transition-colors">
+                            Export Troubleshooting Bundle <span class="material-symbols-outlined text-sm">file_download</span>
+</button>
+</section>
+</div>
+</div>
+</main>
+<!-- Right Inspector Rail -->
+<aside class="hidden xl:flex flex-col w-80 bg-surface-container-low border-l border-[#484555]/10 p-6 overflow-y-auto">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Onboarding Progress</h3>
+<span class="material-symbols-outlined text-on-surface-variant/40">info</span>
+</div>
+<div class="space-y-8">
+<!-- Progress Checklist -->
+<div class="space-y-6">
+<div class="relative pl-6 pb-6 border-l border-outline-variant/20">
+<div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-on-primary">check</span>
+</div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-xs font-bold text-on-surface">Environment Setup</span>
+<span class="text-[0.625rem] font-mono text-primary">75%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-primary h-full w-[75%]"></div>
+</div>
+</div>
+<div class="relative pl-6 pb-6 border-l border-outline-variant/20">
+<div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-on-primary">check</span>
+</div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-xs font-bold text-on-surface">Lane Definitions</span>
+<span class="text-[0.625rem] font-mono text-primary">100%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-primary h-full w-full"></div>
+</div>
+</div>
+<div class="relative pl-6 border-l border-outline-variant/20">
+<div class="absolute -left-2 top-0 w-4 h-4 rounded-full border border-outline-variant/40 bg-surface-container"></div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-xs font-bold text-on-surface-variant">Demo Execution</span>
+<span class="text-[0.625rem] font-mono text-on-surface-variant/40">Pending</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-primary h-full w-0"></div>
+</div>
+</div>
+</div>
+<!-- Tips Section -->
+<div class="bg-surface-container p-5 rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-3 text-primary">
+<span class="material-symbols-outlined text-sm">lightbulb</span>
+<h4 class="text-[0.6875rem] font-bold uppercase tracking-wider">Incident Action Tips</h4>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                        Check <span class="text-on-surface font-mono">retry budget</span> vs <span class="text-on-surface font-mono">timeout pressure</span>. When moving to Live, ensure your fallback regions are warmed up to prevent cold-start latency.
+                    </p>
+</div>
+<!-- Identity Summary -->
+<div class="mt-auto pt-8 border-t border-outline-variant/10">
+<div class="flex items-center gap-3">
+<img alt="Quantum Node" class="w-10 h-10 rounded-lg object-cover grayscale opacity-50" data-alt="Cybersecurity server farm with blue lights and technical atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEhVAIbpyL4nR47M8x3OWeuBunDPbpkAlCtsrJOAeAKhAVLBDgl5mmoSbYacEkf8dOmt24ZesXRUjiUdU1nsz_cc1EuZ4BUsfe7mICJOGfYJKfKNtY4taRFj61z9_EQt0_AR8E8oCAhgVZ-PmuFP-9slziVQiOzaPQquXMGWMbnCYfpa1gcP0JU6WfklvtNllaX-iEzEHPAfG-660x2562p9oS4U7U6dfvJnl0nOcfxZBfCZ6Tu7WVtxvf74OFLMuRX9oTAFGu5mM"/>
+<div>
+<div class="text-[0.625rem] font-mono text-on-surface-variant/40">NODE_IDENTITY</div>
+<div class="text-xs font-mono text-on-surface">q-alpha-local-77b</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Bottom Mobile Nav (Supressed per rules, but showing context) -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-low border-t border-outline-variant/10 flex justify-around p-3 z-50">
+<button class="material-symbols-outlined text-primary">dashboard</button>
+<button class="material-symbols-outlined text-on-surface-variant">account_tree</button>
+<button class="material-symbols-outlined text-on-surface-variant">reorder</button>
+<button class="material-symbols-outlined text-on-surface-variant">settings</button>
+</div>
+</body></html>

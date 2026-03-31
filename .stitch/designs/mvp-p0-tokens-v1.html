@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FXQ_MVP-P0_Tokens_v1 | Digital Observatory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#dfe2f2",
+                        "secondary": "#c6bfff",
+                        "on-primary-container": "#2a0088",
+                        "surface-container-high": "#262a36",
+                        "surface": "#0f131e",
+                        "on-secondary": "#2800a0",
+                        "on-error": "#690005",
+                        "secondary-container": "#4006e8",
+                        "background": "#0f131e",
+                        "surface-bright": "#353945",
+                        "on-secondary-fixed-variant": "#3c00de",
+                        "secondary-fixed": "#e4dfff",
+                        "on-tertiary-fixed": "#1a0063",
+                        "surface-variant": "#313441",
+                        "surface-container": "#1b1f2b",
+                        "outline": "#938ea1",
+                        "on-background": "#dfe2f2",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#4816cb",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#291870",
+                        "inverse-primary": "#603ce2",
+                        "surface-container-highest": "#313441",
+                        "surface-dim": "#0f131e",
+                        "surface-tint": "#cabeff",
+                        "on-primary": "#31009a",
+                        "primary": "#cabeff",
+                        "surface-container-lowest": "#0a0e19",
+                        "on-tertiary-fixed-variant": "#46398f",
+                        "inverse-on-surface": "#2c303c",
+                        "primary-fixed-dim": "#cabeff",
+                        "on-primary-fixed": "#1c0062",
+                        "tertiary-fixed": "#e5deff",
+                        "primary-fixed": "#e6deff",
+                        "tertiary-fixed-dim": "#c8bfff",
+                        "on-tertiary": "#2f2077",
+                        "on-surface-variant": "#c9c4d8",
+                        "tertiary": "#c8bfff",
+                        "primary-container": "#947dff",
+                        "inverse-surface": "#dfe2f2",
+                        "outline-variant": "#484555",
+                        "on-secondary-container": "#bbb3ff",
+                        "surface-container-low": "#171b27",
+                        "secondary-fixed-dim": "#c6bfff",
+                        "on-secondary-fixed": "#160066",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#9185df"
+                    },
+                    fontFamily: {
+                        "headline": ["Sora"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["IBM Plex Mono"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0f131e;
+            color: #dfe2f2;
+        }
+        .flux-glow {
+            background: linear-gradient(135deg, #cabeff 0%, #947dff 100%);
+        }
+        .ghost-border {
+            outline: 1px solid rgba(72, 69, 85, 0.15);
+        }
+        .telemetry-pulse {
+            position: relative;
+        }
+        .telemetry-pulse::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border: 1px solid #cabeff;
+            border-radius: inherit;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary/30 selection:text-primary">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0a0e19]/80 backdrop-blur-md border-b border-[#484555]/15 shadow-xl shadow-black/40 flex items-center justify-between px-6 h-14">
+<div class="flex items-center gap-8">
+<span class="font-['Sora'] font-semibold text-xl tracking-tighter text-[#dfe2f2]">Digital Observatory</span>
+<nav class="hidden md:flex items-center gap-6 font-['Inter'] text-sm tracking-wide">
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Workflows</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Observability</a>
+<a class="text-[#c9c4d8] hover:text-[#dfe2f2] transition-colors duration-200" href="#">Infrastructure</a>
+<a class="text-[#cabeff] border-b-2 border-[#7C5CFF] pb-2 transition-all" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-[#c9c4d8] p-2 hover:bg-[#353945]/50 rounded-lg cursor-pointer transition-colors">notifications</span>
+</div>
+<span class="material-symbols-outlined text-[#c9c4d8] p-2 hover:bg-[#353945]/50 rounded-lg cursor-pointer transition-colors">help_outline</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-[#484555]/30">
+<img alt="User Profile" data-alt="minimalist stylized avatar of a professional developer in a technical flat vector style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdAaeVqF2jItuvA9J0w2Lmfc1ZL1werBtuEkXvxtP0LVjCKwZImS40PWhC0JpcL_e1qLmrcDQSRika-7VBzCSsKcPZU2JcI0Wz2qZXRflTo3Vas32CyPKlLCgL3d7HlDcEFcgWUPozsR0kzsDToV5zzlfZ3_BIErOq3FOYNPXzwe5N5eZ85JVQBKQO6inxrriclAy4mZvqEv2f3dBQwzwpgaVjJvOmVQ662eTBE34Oq_c8OrCm_6UtePiy-6V3HufbeJ2EE6I9-Hs"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Left) -->
+<aside class="fixed left-0 top-14 h-[calc(100vh-3.5rem)] w-64 bg-[#171b27] border-r border-[#484555]/15 flex flex-col py-4 z-40">
+<div class="px-6 mb-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">architecture</span>
+</div>
+<div>
+<div class="font-['Sora'] text-sm font-bold text-[#dfe2f2]">Observatory SDK</div>
+<div class="font-['Inter'] text-[0.625rem] text-on-surface-variant uppercase tracking-widest">v2.4.0-alpha</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center px-6 py-3 bg-[#1b1f2b] text-[#cabeff] border-l-4 border-[#7C5CFF] cursor-pointer">
+<span class="material-symbols-outlined mr-3 text-lg">architecture</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-widest">Design System</span>
+</div>
+<div class="flex items-center px-6 py-3 text-[#c9c4d8] hover:bg-[#262a36] cursor-pointer transition-all">
+<span class="material-symbols-outlined mr-3 text-lg">palette</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-widest">Color Palette</span>
+</div>
+<div class="flex items-center px-6 py-3 text-[#c9c4d8] hover:bg-[#262a36] cursor-pointer transition-all">
+<span class="material-symbols-outlined mr-3 text-lg">match_case</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-widest">Typography</span>
+</div>
+<div class="flex items-center px-6 py-3 text-[#c9c4d8] hover:bg-[#262a36] cursor-pointer transition-all">
+<span class="material-symbols-outlined mr-3 text-lg">extension</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-widest">Components</span>
+</div>
+<div class="flex items-center px-6 py-3 text-[#c9c4d8] hover:bg-[#262a36] cursor-pointer transition-all">
+<span class="material-symbols-outlined mr-3 text-lg">account_tree</span>
+<span class="font-['Inter'] text-[0.6875rem] font-semibold uppercase tracking-widest">Patterns</span>
+</div>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full flux-glow text-on-primary-container font-semibold py-2.5 rounded-lg text-xs uppercase tracking-wider active:scale-95 transition-transform">
+                New Specification
+            </button>
+<div class="mt-4 space-y-1">
+<div class="flex items-center px-4 py-2 text-[#c9c4d8] hover:text-[#dfe2f2] cursor-pointer text-[0.6875rem] font-semibold uppercase tracking-widest">
+<span class="material-symbols-outlined mr-2 text-base">menu_book</span>
+                    Documentation
+                </div>
+<div class="flex items-center px-4 py-2 text-[#c9c4d8] hover:text-[#dfe2f2] cursor-pointer text-[0.6875rem] font-semibold uppercase tracking-widest">
+<span class="material-symbols-outlined mr-2 text-base">contact_support</span>
+                    Support
+                </div>
+</div>
+</div>
+</aside>
+<!-- SideNavBar (Right Inspector) -->
+<aside class="fixed right-0 top-14 h-[calc(100vh-3.5rem)] w-72 bg-[#171b27] border-l border-[#484555]/15 flex flex-col p-4 z-40">
+<div class="mb-6">
+<div class="font-['Sora'] text-sm font-bold text-[#dfe2f2]">Contextual Info</div>
+<div class="font-['IBM_Plex_Mono'] text-[10px] text-on-surface-variant">Component Metadata</div>
+</div>
+<div class="flex-1 space-y-6 overflow-y-auto pr-2">
+<!-- Accessibility Checklist -->
+<section>
+<h4 class="font-mono text-[10px] text-primary uppercase tracking-widest mb-3 border-b border-outline-variant/30 pb-1">Accessibility Checklist</h4>
+<div class="space-y-4">
+<div class="bg-surface-container rounded p-3 ghost-border">
+<div class="flex items-start gap-2 mb-2">
+<span class="material-symbols-outlined text-green-400 text-sm">verified</span>
+<span class="text-xs font-semibold">Contrast Ratio</span>
+</div>
+<p class="text-[10px] text-on-surface-variant leading-relaxed">
+                            Ensure all text meets WCAG 2.1 AA (4.5:1) minimum. Interactive elements should maintain 3:1 contrast.
+                        </p>
+</div>
+<div class="bg-surface-container rounded p-3 ghost-border">
+<div class="flex items-start gap-2 mb-2">
+<span class="material-symbols-outlined text-green-400 text-sm">info</span>
+<span class="text-xs font-semibold">Icon Pairing</span>
+</div>
+<p class="text-[10px] text-on-surface-variant leading-relaxed">
+                            Every status icon MUST be paired with a text label. Do not rely on color alone for critical status signaling.
+                        </p>
+</div>
+</div>
+</section>
+<!-- Quick Actions -->
+<section>
+<h4 class="font-mono text-[10px] text-primary uppercase tracking-widest mb-3 border-b border-outline-variant/30 pb-1">Quick Links</h4>
+<div class="space-y-2">
+<div class="flex items-center gap-2 p-2 rounded hover:bg-surface-container cursor-pointer transition-all">
+<span class="material-symbols-outlined text-sm">link</span>
+<span class="font-mono text-[10px] text-on-surface-variant">Figma Specs</span>
+</div>
+<div class="flex items-center gap-2 p-2 rounded hover:bg-surface-container cursor-pointer transition-all">
+<span class="material-symbols-outlined text-sm">picture_as_pdf</span>
+<span class="font-mono text-[10px] text-on-surface-variant">Export PDF</span>
+</div>
+<div class="flex items-center gap-2 p-2 rounded hover:bg-surface-container cursor-pointer transition-all">
+<span class="material-symbols-outlined text-sm">share</span>
+<span class="font-mono text-[10px] text-on-surface-variant">Share Spec</span>
+</div>
+<div class="flex items-center gap-2 p-2 rounded hover:bg-surface-container cursor-pointer transition-all">
+<span class="material-symbols-outlined text-sm">history</span>
+<span class="font-mono text-[10px] text-on-surface-variant">Audit Log</span>
+</div>
+</div>
+</section>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 mr-72 mt-14 p-8 min-h-screen bg-surface">
+<header class="mb-10 flex items-end justify-between">
+<div>
+<h1 class="font-headline text-3xl font-bold tracking-tight mb-2">FXQ_MVP-P0_Tokens_v1</h1>
+<div class="flex items-center gap-4">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-mono border border-primary/20 uppercase">MVP-P0 TOKEN BASELINE</span>
+<span class="text-on-surface-variant font-mono text-[10px]">Updated: 2024-10-24 14:02 UTC</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-highest px-4 py-2 rounded-lg text-xs font-semibold ghost-border flex items-center gap-2 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm">download</span> JSON Export
+                </button>
+</div>
+</header>
+<div class="grid grid-cols-12 gap-6">
+<!-- Color Token Matrix -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-lg font-semibold">Color Token Matrix</h3>
+<span class="font-mono text-[10px] text-on-surface-variant opacity-50">SC-CSS-VARIABLES</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<!-- Background Role -->
+<div class="space-y-2">
+<div class="h-16 rounded-lg bg-surface flex flex-col justify-end p-2 border border-outline-variant/10">
+<span class="font-mono text-[10px]">#0F131E</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-primary">--background</p>
+<p class="text-[9px] text-on-surface-variant">Main app background</p>
+</div>
+</div>
+<!-- Surface Role -->
+<div class="space-y-2">
+<div class="h-16 rounded-lg bg-surface-container-low flex flex-col justify-end p-2 border border-outline-variant/10">
+<span class="font-mono text-[10px]">#171B27</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-primary">--surface-low</p>
+<p class="text-[9px] text-on-surface-variant">Side rails, secondary areas</p>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="space-y-2">
+<div class="h-16 rounded-lg flux-glow flex flex-col justify-end p-2 border border-outline-variant/10">
+<span class="font-mono text-[10px] text-on-primary-container">#CABEFF</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-primary">--primary</p>
+<p class="text-[9px] text-on-surface-variant">Primary actions &amp; accents</p>
+</div>
+</div>
+<!-- Semantic Success -->
+<div class="space-y-2">
+<div class="h-16 rounded-lg bg-[#22C55E]/10 flex flex-col justify-end p-2 border border-[#22C55E]/20">
+<div class="flex items-center gap-1 mb-1">
+<div class="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></div>
+<span class="font-mono text-[10px] text-[#22C55E]">#22C55E</span>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-bold text-green-400">--success</p>
+<p class="text-[9px] text-on-surface-variant">Valid states &amp; uptime</p>
+</div>
+</div>
+<!-- Semantic Error -->
+<div class="space-y-2">
+<div class="h-16 rounded-lg bg-[#EF4444]/10 flex flex-col justify-end p-2 border border-[#EF4444]/20">
+<div class="flex items-center gap-1 mb-1">
+<div class="w-1.5 h-1.5 rounded-full bg-[#EF4444]"></div>
+<span class="font-mono text-[10px] text-[#EF4444]">#EF4444</span>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-bold text-red-400">--error</p>
+<p class="text-[9px] text-on-surface-variant">System failure &amp; alerts</p>
+</div>
+</div>
+<!-- Semantic Warning -->
+<div class="space-y-2">
+<div class="h-16 rounded-lg bg-[#F59E0B]/10 flex flex-col justify-end p-2 border border-[#F59E0B]/20">
+<div class="flex items-center gap-1 mb-1">
+<div class="w-1.5 h-1.5 rounded-full bg-[#F59E0B]"></div>
+<span class="font-mono text-[10px] text-[#F59E0B]">#F59E0B</span>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-bold text-amber-400">--warning</p>
+<p class="text-[9px] text-on-surface-variant">Degraded performance</p>
+</div>
+</div>
+</div>
+</section>
+<!-- State Pack Tokens -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-semibold mb-6">State Pack Tokens</h3>
+<div class="space-y-4">
+<!-- Loading State -->
+<div class="p-3 bg-surface-container rounded-lg ghost-border">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-mono text-primary">STATE_LOADING</span>
+<div class="w-12 h-2 bg-surface-bright animate-pulse rounded"></div>
+</div>
+<div class="space-y-2">
+<div class="w-full h-3 bg-surface-bright/50 animate-pulse rounded"></div>
+<div class="w-2/3 h-3 bg-surface-bright/50 animate-pulse rounded"></div>
+</div>
+</div>
+<!-- Error State -->
+<div class="p-3 bg-error-container/20 rounded-lg border border-error/30">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-error text-sm">report</span>
+<span class="text-[10px] font-mono text-error">STATE_ERROR_CRITICAL</span>
+</div>
+<p class="text-[9px] text-on-error-container">Critical system disconnect.</p>
+</div>
+<!-- Empty State -->
+<div class="p-4 border-2 border-dashed border-outline-variant/30 rounded-lg flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline-variant mb-2">database_off</span>
+<span class="text-[10px] font-mono text-on-surface-variant">STATE_EMPTY_NULL</span>
+</div>
+</div>
+</section>
+<!-- Spacing Scale Board -->
+<section class="col-span-12 lg:col-span-6 bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-semibold mb-6">Spacing Scale Board</h3>
+<div class="space-y-6">
+<div class="grid grid-cols-6 gap-2 items-end">
+<div class="flex flex-col items-center gap-2">
+<div class="w-1 h-1 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">4px</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-2 h-2 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">8px</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-3 h-3 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">12px</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-4 h-4 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">16px</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-6 h-6 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">24px</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 bg-primary"></div>
+<span class="font-mono text-[9px] text-on-surface-variant">32px</span>
+</div>
+</div>
+<div class="p-4 bg-surface-container rounded-xl ghost-border">
+<div class="flex items-center gap-4">
+<div class="bg-surface-bright/20 border border-primary/30 rounded p-4 flex gap-4">
+<div class="w-8 h-8 bg-primary/20 border border-primary/40 rounded"></div>
+<div class="w-8 h-8 bg-primary/20 border border-primary/40 rounded"></div>
+</div>
+<div class="text-[10px]">
+<p class="font-bold text-on-surface">Layout Example</p>
+<p class="text-on-surface-variant font-mono">GAP: 16px (4) | PAD: 16px (4)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Radius & Elevation Board -->
+<section class="col-span-12 lg:col-span-6 bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-semibold mb-6">Radius &amp; Elevation Board</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<div class="p-4 bg-surface-container rounded-none ghost-border">
+<span class="text-[10px] font-mono">--radius-none: 0px</span>
+</div>
+<div class="p-4 bg-surface-container rounded-lg ghost-border">
+<span class="text-[10px] font-mono">--radius-card: 4px</span>
+</div>
+<div class="p-4 bg-surface-container rounded-xl ghost-border">
+<span class="text-[10px] font-mono">--radius-modal: 12px</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-surface-container rounded-xl shadow-none ghost-border">
+<span class="text-[10px] font-mono">EL-0 (Flat)</span>
+</div>
+<div class="p-4 bg-surface-container-high rounded-xl shadow-lg shadow-black/20 ghost-border">
+<span class="text-[10px] font-mono">EL-1 (Raised)</span>
+</div>
+<div class="p-4 bg-surface-container-highest rounded-xl shadow-2xl shadow-black/50 border border-primary/10">
+<span class="text-[10px] font-mono">EL-2 (Floating)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Motion Token Board -->
+<section class="col-span-12 bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-semibold mb-6">Motion Token Board</h3>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="p-4 bg-surface-container rounded-lg ghost-border">
+<div class="text-primary font-mono text-xl mb-1">120ms</div>
+<div class="text-[10px] font-bold">Fast (T1)</div>
+<div class="text-[9px] text-on-surface-variant">Hover states, icons, micro-interactions</div>
+</div>
+<div class="p-4 bg-surface-container rounded-lg ghost-border">
+<div class="text-primary font-mono text-xl mb-1">180ms</div>
+<div class="text-[10px] font-bold">Normal (T2)</div>
+<div class="text-[9px] text-on-surface-variant">Standard page transitions, dropdowns</div>
+</div>
+<div class="p-4 bg-surface-container rounded-lg ghost-border">
+<div class="text-primary font-mono text-xl mb-1">260ms</div>
+<div class="text-[10px] font-bold">Slow (T3)</div>
+<div class="text-[9px] text-on-surface-variant">Complex layout shifts, modal entry</div>
+</div>
+<div class="p-4 bg-surface-container-high rounded-lg border border-primary/20 relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/5"></div>
+<div class="relative z-10 flex flex-col items-center justify-center h-full">
+<div class="w-3 h-3 bg-primary rounded-full animate-ping mb-2"></div>
+<div class="text-[10px] font-mono text-primary">TELEMETRY_PULSE</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<footer class="mt-12 py-8 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">terminal</span>
+</div>
+<div>
+<p class="text-[10px] font-bold">FluxQ Design System Core</p>
+<p class="text-[9px] text-on-surface-variant uppercase tracking-tighter">Maintainer: Core Architecture Team</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-mono">v1.0.0-PROD</p>
+<p class="text-[9px] text-on-surface-variant uppercase">Classification: Internal/Technical</p>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB (Only for specification/editing screens as per shell rules) -->
+<div class="fixed bottom-6 right-80 z-50">
+<button class="w-14 h-14 rounded-full flux-glow shadow-2xl flex items-center justify-center text-on-primary-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+</body></html>

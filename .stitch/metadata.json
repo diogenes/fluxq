@@ -1,0 +1,43 @@
+{
+  "name": "projects/5264572250204306984",
+  "projectId": "5264572250204306984",
+  "title": "FluxQ Design Requirements",
+  "visibility": "PRIVATE",
+  "deviceType": "DESKTOP",
+  "designSystemAsset": "assets/c80ad6919d624325bb2d50ff1ab74113",
+  "updateTime": "2026-03-31T03:46:53.209809Z",
+  "screens": {
+    "mvp-p0-moodboard-v1": {
+      "id": "3265cf789b784da5bf587b618ff0cda4",
+      "sourceScreen": "projects/5264572250204306984/screens/3265cf789b784da5bf587b618ff0cda4",
+      "width": 2560,
+      "height": 3636,
+      "localHtml": ".stitch/designs/mvp-p0-moodboard-v1.html",
+      "localPng": ".stitch/designs/mvp-p0-moodboard-v1.png"
+    },
+    "mvp-p0-tokens-v1": {
+      "id": "d0ff264d54fd426ba66d48a6ef79dcef",
+      "sourceScreen": "projects/5264572250204306984/screens/d0ff264d54fd426ba66d48a6ef79dcef",
+      "width": 2560,
+      "height": 2784,
+      "localHtml": ".stitch/designs/mvp-p0-tokens-v1.html",
+      "localPng": ".stitch/designs/mvp-p0-tokens-v1.png"
+    },
+    "mvp-p0-typography-v1": {
+      "id": "c4cb98d99d064ddd9de92c6aeb8e0747",
+      "sourceScreen": "projects/5264572250204306984/screens/c4cb98d99d064ddd9de92c6aeb8e0747",
+      "width": 2560,
+      "height": 4012,
+      "localHtml": ".stitch/designs/mvp-p0-typography-v1.html",
+      "localPng": ".stitch/designs/mvp-p0-typography-v1.png"
+    },
+    "mvp-p0-onboarding-wizard-v1": {
+      "id": "3353a8d055d249298ba656d4e6da90c7",
+      "sourceScreen": "projects/5264572250204306984/screens/3353a8d055d249298ba656d4e6da90c7",
+      "width": 2560,
+      "height": 2048,
+      "localHtml": ".stitch/designs/mvp-p0-onboarding-wizard-v1.html",
+      "localPng": ".stitch/designs/mvp-p0-onboarding-wizard-v1.png"
+    }
+  }
+}

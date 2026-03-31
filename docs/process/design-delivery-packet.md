@@ -1,16 +1,19 @@
 # Design Delivery Packet
 
-Version: `v0.2`
+Version: `v0.3`
 Owner: `senior-design-specialist`
-Date: `2026-03-30`
+Date: `2026-03-31`
 Inputs: `ux-architecture-brief.md`, `domain-input-packet.md`
-Related: `docs/process/triad-review-cycle-01.md`, `docs/process/ui-remediation-backlog.md`
+Related: `docs/process/triad-review-cycle-01.md`, `docs/process/triad-review-cycle-03-mvp-p0.md`, `docs/process/ui-remediation-backlog.md`
 
 ## 1) Delivery Scope
 Boards in scope:
 - overview, builder, run detail, provider health, portability analytics,
 - onboarding, component library, motion/state annotations,
 - roadmap phase board and supporting token sheets.
+
+MVP-P0 delivered in this iteration:
+- moodboard, token board, typography board, onboarding wizard.
 
 ## 2) Design Quality Goals
 - Improve hierarchy for dense operational data.
@@ -32,13 +35,11 @@ Stitch flow aligned:
 - asset traceability through `.stitch/metadata.json` and `docs/stitch/asset-register.md`.
 
 ## 4) Remaining Gaps to Address in Next Iteration
-1. raise typography contrast in secondary metadata lines.
-2. increase spacing rhythm consistency across high-density panels.
-3. improve visual distinction of actionable vs informational text.
-4. add explicit loading skeleton patterns on every operational screen.
-5. expand degraded-state exemplars in builder and analytics panels.
-6. add incident action rail and standardized status strip in all incident surfaces.
-7. normalize filter/query layout and semantics across analytics and provider views.
+1. add explicit in-screen state-pack variants (`empty/loading/degraded/error`) to onboarding wizard.
+2. instrument measurable `<= 10 minute` onboarding path checkpoints to run detail.
+3. add explicit 3-step symptom-to-root-cause path annotation in onboarding.
+4. align onboarding navigation labels to IA contracts for continuity.
+5. keep provider-neutral domain-safe copy for onboarding fallback examples.
 
 ## 5) Handoff Mapping
 - asset register: `docs/stitch/asset-register.md`

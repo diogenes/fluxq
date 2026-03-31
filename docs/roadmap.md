@@ -51,7 +51,7 @@ Deliver a polished local-first experience and foundational UX artifacts for fast
 - [ ] Docker-first local stack with seeded deterministic demo workflows.
 - [ ] Welcome/setup experience and dependency health checks.
 - [ ] Sitemap and navigation architecture implementation.
-- [ ] Stitch assets for moodboard, tokens, typography, onboarding wizard.
+- [x] Stitch assets for moodboard, tokens, typography, onboarding wizard.
 - [ ] UX copy for deterministic lane messaging (`fixture`, `live_smoke`, `live`).
 - [ ] Execute TRIAD-01 remediation item `UXR-005` (domain-safe copy enforcement).
 
