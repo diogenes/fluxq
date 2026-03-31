@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/ui/card';
+import { PortabilityDecisionFrame } from '@/components/runtime/PortabilityDecisionFrame';
 
 export function PortabilityAnalyticsBlock() {
   const { t } = useTranslation();
@@ -13,6 +14,7 @@ export function PortabilityAnalyticsBlock() {
         <div className="rounded-[var(--fxq-radius-md)] border border-white/8 p-3">{t('runtime.portability.confidence')}</div>
         <div className="rounded-[var(--fxq-radius-md)] border border-white/8 p-3">{t('runtime.portability.sampleQuality')}</div>
       </div>
+      <PortabilityDecisionFrame />
     </Card>
   );
 }
