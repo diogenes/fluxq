@@ -110,7 +110,54 @@ export const englishResources = {
       dialogDescription: 'This action attempts recovery without exposing provider-specific payload details.',
       sheetTitle: 'Incident action rail',
       dropdownLabel: 'Quick actions',
-      tooltipLabel: 'Correlation evidence is attached.'
+      tooltipLabel: 'Correlation evidence is attached.',
+      alertInfoTitle: 'Operational notice',
+      alertWarningTitle: 'Degradation detected',
+      alertErrorTitle: 'Incident requires action',
+      alertInfoBody: 'Filter updates are available for this surface.',
+      alertWarningBody: 'Latency drift is approaching configured threshold.',
+      alertErrorBody: 'Retry budget is nearly exhausted; review fallback policy.'
+    },
+    filters: {
+      title: 'Unified filter bar',
+      queryLabel: 'Query',
+      queryPlaceholder: 'Search run id, workflow, or correlation id',
+      laneLabel: 'Lane',
+      statusLabel: 'Status',
+      targetLabel: 'Execution target',
+      timeWindowLabel: 'Time window',
+      clear: 'Clear filters',
+      apply: 'Apply',
+      noActiveFilters: 'No active filters',
+      laneOptions: {
+        all: 'all lanes',
+        fixture: 'fixture',
+        live_smoke: 'live_smoke',
+        live: 'live'
+      },
+      statusOptions: {
+        all: 'all states',
+        queued: 'queued',
+        running: 'running',
+        retrying: 'retrying',
+        degraded: 'degraded',
+        timeout: 'timeout',
+        failed: 'failed',
+        cancelled: 'cancelled',
+        success_recovered: 'success_recovered'
+      },
+      targetOptions: {
+        all: 'all targets',
+        primary_route: 'primary_route',
+        fallback_route: 'fallback_route',
+        simulator: 'simulator'
+      },
+      timeOptions: {
+        '15m': 'last 15m',
+        '1h': 'last 1h',
+        '6h': 'last 6h',
+        '24h': 'last 24h'
+      }
     },
     runtime: {
       runDetail: {
@@ -121,12 +168,24 @@ export const englishResources = {
         logs: 'Logs',
         incidentRail: 'Incident rail'
       },
+      incidentRail: {
+        title: 'Incident action rail v2',
+        summaryTitle: 'Active incident',
+        summaryDescription: 'Retry pressure increased and fallback route may be required.'
+      },
       providerHealth: {
         title: 'Provider health',
         subtitle: 'Status strip and diagnostics panel.',
         status: 'Status strip',
         diagnostics: 'Diagnostics panel',
         actions: 'Action rail'
+      },
+      statusStrip: {
+        title: 'Operational status strip v2',
+        retryBudget: 'Retry budget',
+        timeoutPolicy: 'Timeout policy',
+        fallbackRoute: 'Fallback route',
+        terminalAttribution: 'Terminal attribution'
       },
       portability: {
         title: 'Portability analytics',
