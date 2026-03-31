@@ -61,6 +61,7 @@ Stitch flow aligned:
   - token fidelity with `.stitch/DESIGN.md`
   - accessibility-safe interaction and form patterns
   - state parity with designed operational states
+  - provider-neutral language per `docs/ux/language-governance.md`
 
 ## 7) MVP-P0 Handoff Map (shadcn + React + Phoenix)
 | Surface Module | shadcn Primitive | React Component Target | Phoenix Event / Contract Hint |
