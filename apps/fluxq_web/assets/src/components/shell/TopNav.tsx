@@ -61,7 +61,7 @@ export function TopNav({
           </label>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-3">
           <Badge tone={laneTone[lane]}>{t(`app.lane.${lane === 'live_smoke' ? 'liveSmoke' : lane}`)}</Badge>
           <Button size="sm" variant="secondary" className="hidden sm:inline-flex">
             {t('shell.topNav.primaryAction')}

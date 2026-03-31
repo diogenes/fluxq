@@ -19,3 +19,12 @@ export const Valid: Story = {
 export const Error: Story = {
   args: { validationState: 'error' }
 };
+
+export const Mobile: Story = {
+  args: { validationState: 'warning' },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1'
+    }
+  }
+};

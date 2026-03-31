@@ -11,8 +11,10 @@ import { PortabilityAnalyticsBlock } from '@/components/runtime/PortabilityAnaly
 import { LivebookLinkageBlock } from '@/components/runtime/LivebookLinkageBlock';
 import { OperationalStatusStripV2 } from '@/components/runtime/OperationalStatusStripV2';
 import { WorkflowBuilderScaffold } from '@/components/workflow/WorkflowBuilderScaffold';
+import { WorkflowBuilderAdvanced } from '@/components/workflow/WorkflowBuilderAdvanced';
 import { MotionStateContract } from '@/components/motion/MotionStateContract';
 import { TelemetryChartStub } from '@/components/charts/TelemetryChartStub';
+import { OperationalChartSuite } from '@/components/charts/OperationalChartSuite';
 import type { RuntimeLane } from '@/lib/domain';
 
 export interface FluxQWorkspacePageProps {
@@ -38,7 +40,9 @@ export default function FluxQWorkspacePage({
         <PortabilityAnalyticsBlock />
         <LivebookLinkageBlock />
         <WorkflowBuilderScaffold />
+        <WorkflowBuilderAdvanced />
         <MotionStateContract reducedMotion={false} />
+        <OperationalChartSuite />
         <TelemetryChartStub />
       </div>
     </AppShell>

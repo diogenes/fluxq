@@ -51,7 +51,7 @@ export function AppShell({
           'xl:grid-cols-[minmax(0,auto)_minmax(0,1fr)_minmax(0,auto)]'
         )}
       >
-        <div className="order-2 xl:order-1">
+        <div className="order-2 min-w-0 xl:order-1">
           <SideNav
             collapsed={sidebarCollapsed}
             onToggleCollapse={() => setSidebarCollapsed((value) => !value)}
@@ -65,7 +65,7 @@ export function AppShell({
           </ContentCanvas>
         </div>
 
-        <div className="order-3">
+        <div className="order-3 min-w-0">
           <DiagnosticsRail collapsed={diagnosticsCollapsed} items={diagnosticsRailItems} />
         </div>
       </div>

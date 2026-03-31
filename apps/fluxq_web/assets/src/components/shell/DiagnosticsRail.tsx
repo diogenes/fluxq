@@ -49,8 +49,8 @@ export function DiagnosticsRail({ items, collapsed }: Readonly<DiagnosticsRailPr
   return (
     <aside
       className={cn(
-        'fxq-panel-rail flex h-full flex-col gap-3 rounded-[24px] p-4',
-        collapsed ? 'w-[96px]' : 'w-[320px]'
+        'fxq-panel-rail flex h-full min-w-0 flex-col gap-3 rounded-[24px] p-4',
+        collapsed ? 'w-full xl:w-[96px]' : 'w-full xl:w-[320px]'
       )}
     >
       <div className="space-y-1">
@@ -60,7 +60,7 @@ export function DiagnosticsRail({ items, collapsed }: Readonly<DiagnosticsRailPr
         ) : null}
       </div>
 
-      <div className="space-y-3 overflow-y-auto">
+      <div className="min-w-0 space-y-3 overflow-y-auto">
         {items.map((item) => {
           const Icon = stateIcon[item.state];
 

@@ -25,3 +25,11 @@ export default meta;
 type Story = StoryObj<typeof RuntimeBlocksPreview>;
 
 export const Overview: Story = {};
+
+export const MobileOverview: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1'
+    }
+  }
+};

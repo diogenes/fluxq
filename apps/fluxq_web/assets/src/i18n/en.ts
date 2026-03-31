@@ -279,6 +279,30 @@ export const englishResources = {
         },
         validationError: 'validation failed: missing retry policy'
       },
+      workflowAdvanced: {
+        paletteTitle: 'Node palette',
+        canvasTitle: 'Workflow builder canvas',
+        validationState: 'validation: warning',
+        inspectorTitle: 'Inspector',
+        inspectorNode: 'node: quantum_step',
+        inspectorTimeout: 'timeout: 45s',
+        inspectorRetry: 'retry budget: 2/5',
+        inspectorFallback: 'fallback route: simulator',
+        validate: 'Run validation',
+        preview: 'Preview execution',
+        palette: {
+          quantumStep: 'quantum_step',
+          classicalStep: 'classical_step',
+          controlBranch: 'control_branch',
+          fallbackRoute: 'fallback_route'
+        },
+        nodes: {
+          intake: 'intake',
+          quantumStep: 'quantum_step',
+          portabilityCheck: 'portability_check',
+          fallbackRoute: 'fallback_route'
+        }
+      },
       motion: {
         title: 'Motion/state contract',
         reduced: 'reduced-motion',
@@ -296,6 +320,18 @@ export const englishResources = {
       telemetry: {
         title: 'Telemetry chart stubs',
         subtitle: 'Semantic placeholders aligned to approved design contracts.'
+      },
+      chartSuite: {
+        latencyTrendTitle: 'Latency trend',
+        latencyTrendSubtitle: 'P50-P95 latency envelope across the last 12 windows.',
+        latencyP95: 'p95 74ms',
+        latencyAria: 'Latency trend chart',
+        stateMixTitle: 'State mix by lane',
+        stateMixSubtitle: 'Relative distribution of recovered, degraded, and failed states.',
+        heatmapTitle: 'Throughput heatmap',
+        heatmapSubtitle: 'Step throughput density across workflow stages and recent windows.',
+        heatmapWindow: 'window: last 24h',
+        cellLabel: 'Cell'
       }
     }
   }

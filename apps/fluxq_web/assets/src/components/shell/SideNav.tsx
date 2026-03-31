@@ -76,8 +76,8 @@ export function SideNav({ collapsed, sections, onToggleCollapse }: Readonly<Side
   return (
     <aside
       className={cn(
-        'fxq-panel-rail relative flex h-full flex-col overflow-hidden rounded-[24px] p-3',
-        collapsed ? 'w-[92px]' : 'w-[280px]'
+        'fxq-panel-rail relative flex h-full min-w-0 flex-col overflow-hidden rounded-[24px] p-3',
+        collapsed ? 'w-full xl:w-[92px]' : 'w-full xl:w-[280px]'
       )}
     >
       <div className="flex items-center justify-between gap-3 px-1 pb-4">
