@@ -22,6 +22,7 @@ import { LivebookLinkageBlock } from '@/components/runtime/LivebookLinkageBlock'
 import { OperationalStatusStripV2 } from '@/components/runtime/OperationalStatusStripV2';
 import { WorkflowBuilderScaffold } from '@/components/workflow/WorkflowBuilderScaffold';
 import { WorkflowBuilderAdvanced } from '@/components/workflow/WorkflowBuilderAdvanced';
+import { WorkflowBuilderPro } from '@/components/workflow/WorkflowBuilderPro';
 import { MotionStateContract } from '@/components/motion/MotionStateContract';
 import { TelemetryChartStub } from '@/components/charts/TelemetryChartStub';
 import { OperationalChartSuite } from '@/components/charts/OperationalChartSuite';
@@ -65,6 +66,7 @@ export default function FluxQWorkspacePage({
         <LivebookLinkageBlock />
         <WorkflowBuilderScaffold />
         <WorkflowBuilderAdvanced />
+        <WorkflowBuilderPro lane={lane} />
         <MotionStateContract reducedMotion={false} />
         <OperationalChartSuite />
         <TelemetryChartStub />

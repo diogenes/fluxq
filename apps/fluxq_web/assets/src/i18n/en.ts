@@ -451,6 +451,28 @@ export const englishResources = {
           }
         }
       },
+      workflowPro: {
+        title: 'Workflow builder pro',
+        validationWarning: 'validation: warning',
+        undo: 'Undo',
+        redo: 'Redo',
+        addNode: 'Add node',
+        context: 'Context',
+        inspector: 'Inspector',
+        selected: 'selected node',
+        history: 'history',
+        minimap: 'minimap',
+        actions: {
+          duplicate: 'Duplicate',
+          delete: 'Delete'
+        },
+        nodes: {
+          intake: 'intake',
+          quantumStep: 'quantum_step',
+          portabilityCheck: 'portability_check',
+          fallback: 'fallback_route'
+        }
+      },
       cx: {
         kpi: {
           title: 'KPI + Metric Card Family',
