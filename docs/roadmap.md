@@ -95,6 +95,17 @@ This track runs in parallel with product phases to convert approved Stitch asset
 | UI-CX13 | Storybook Variant Matrix | Completed | Desktop/tablet/mobile + state-variant story coverage |
 | UI-CX14 | Hardening + Gate Closure | Completed | A11y/responsiveness/i18n/visual gate closure for extracted families |
 
+### UI-CY — Pre-Backend Component Contract Freeze
+
+| Milestone | Label | Status | Primary Outcome |
+|---|---|---|---|
+| UI-CY01 | Contract Freeze + DataBoundary | Completed | `ui-contract-v0.1` contract baseline and unified data-boundary wrapper |
+| UI-CY02 | TablePro + LogViewer | In Progress | Data-heavy table/log primitives with robust UI states |
+| UI-CY03 | TraceTreePro + Timeline Sync | Planned | Correlated trace/timeline interactions with selection sync |
+| UI-CY04 | WorkflowBuilderPro Interactions | Planned | Keyboard-safe and higher-fidelity workflow authoring interactions |
+| UI-CY05 | FormSystem + ActionGuard | Planned | Form validation and policy-aware action confirmation contracts |
+| UI-CY06 | TelemetryPro + Query-State Closure | Planned | Telemetry interaction primitives and contract freeze closure docs |
+
 ### Design Front Follow-through (Operator UX)
 - [x] DF-03 Expand semantic density token layer (row emphasis, severity bands, diagnostic contrast ramps).
 - [x] DF-04 Finalize runtime action interaction specs (retry/reroute/cancel confirmation and transition states).

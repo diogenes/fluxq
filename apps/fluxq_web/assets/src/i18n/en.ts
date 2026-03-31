@@ -77,6 +77,22 @@ export const englishResources = {
       successRecovered: {
         title: 'Recovered',
         description: 'The system returned to a healthy state.'
+      },
+      noAccess: {
+        title: 'Access unavailable',
+        description: 'You do not currently have access to this operational surface.'
+      },
+      policyBlocked: {
+        title: 'Policy blocked',
+        description: 'Current policy settings block this action at this time.'
+      },
+      readOnly: {
+        title: 'Read-only mode',
+        description: 'This surface is read-only. Editing actions are disabled.'
+      },
+      maintenance: {
+        title: 'Maintenance window',
+        description: 'This surface is temporarily limited during maintenance.'
       }
     },
     workspace: {
