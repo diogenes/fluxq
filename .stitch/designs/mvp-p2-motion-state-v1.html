@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FXQ_MVP-P2_MotionStateBoard_v1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#c6bfff",
+                        "primary-fixed-dim": "#cabeff",
+                        "tertiary-fixed-dim": "#c8bfff",
+                        "primary-container": "#947dff",
+                        "on-primary": "#31009a",
+                        "inverse-primary": "#603ce2",
+                        "tertiary-container": "#9185df",
+                        "on-secondary-container": "#bbb3ff",
+                        "on-tertiary": "#2f2077",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#1a0063",
+                        "outline": "#938ea1",
+                        "on-primary-fixed": "#1c0062",
+                        "on-error": "#690005",
+                        "surface": "#0f131e",
+                        "primary": "#cabeff",
+                        "secondary-container": "#4006e8",
+                        "on-tertiary-fixed-variant": "#46398f",
+                        "on-secondary-fixed-variant": "#3c00de",
+                        "on-background": "#dfe2f2",
+                        "inverse-on-surface": "#2c303c",
+                        "on-surface-variant": "#c9c4d8",
+                        "on-surface": "#dfe2f2",
+                        "background": "#0f131e",
+                        "on-primary-container": "#2a0088",
+                        "inverse-surface": "#dfe2f2",
+                        "surface-container-highest": "#313441",
+                        "secondary-fixed": "#e4dfff",
+                        "secondary": "#c6bfff",
+                        "surface-bright": "#353945",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e5deff",
+                        "tertiary": "#c8bfff",
+                        "on-secondary-fixed": "#160066",
+                        "surface-container-low": "#171b27",
+                        "surface-container": "#1b1f2b",
+                        "surface-tint": "#cabeff",
+                        "primary-fixed": "#e6deff",
+                        "surface-container-lowest": "#0a0e19",
+                        "on-secondary": "#2800a0",
+                        "surface-container-high": "#262a36",
+                        "on-tertiary-container": "#291870",
+                        "surface-variant": "#313441",
+                        "surface-dim": "#0f131e",
+                        "on-primary-fixed-variant": "#4816cb",
+                        "outline-variant": "#484555",
+                        "error-container": "#93000a"
+                    },
+                    fontFamily: {
+                        "headline": ["Sora"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["IBM Plex Mono"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-panel {
+            background: rgba(23, 27, 39, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .flux-glow {
+            box-shadow: 0 0 20px rgba(202, 190, 255, 0.15);
+        }
+        .success-glow {
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+        }
+        .error-inner-glow {
+            box-shadow: inset 0 0 12px rgba(239, 68, 68, 0.2);
+        }
+        /* Custom scrollbar for high-density feel */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #0a0e19; }
+        ::-webkit-scrollbar-thumb { background: #484555; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen pb-24">
+<!-- Top Navigation Shell -->
+<header class="bg-[#0a0e19]/80 backdrop-blur-xl border-b border-[#484555]/15 shadow-2xl shadow-black/40 docked full-width top-0 sticky z-50 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="font-['Sora'] font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#cabeff] to-[#947dff] tracking-tight text-xl">FluxQ</span>
+<div class="h-4 w-[1px] bg-outline-variant/30 mx-2"></div>
+<span class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase">Motion_Core v1.0</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[#c9c4d8] hover:bg-[#353945] transition-colors duration-200 p-2 rounded-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-[#c9c4d8] hover:bg-[#353945] transition-colors duration-200 p-2 rounded-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</header>
+<main class="px-4 py-6 space-y-8 max-w-lg mx-auto">
+<!-- Header Section -->
+<section class="space-y-2">
+<h1 class="font-headline font-semibold text-2xl tracking-tight text-on-surface">MotionStateBoard</h1>
+<p class="text-on-surface-variant text-sm leading-relaxed">Defining runtime UX behavior contracts for quantum orchestration nodes and state persistence.</p>
+</section>
+<!-- State Transition Matrix -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm">grid_view</span>
+<h2 class="font-headline text-xs font-bold uppercase tracking-[0.2em] text-primary/80">State Transition Matrix</h2>
+</div>
+<div class="grid gap-3">
+<!-- Retry State -->
+<div class="bg-surface-container-high rounded-xl p-4 border border-outline-variant/10 flux-glow">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<span class="font-mono text-[10px] text-primary uppercase">0x01_RETRY</span>
+<h3 class="font-headline font-semibold text-lg">Recursive Attempt</h3>
+</div>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">replay</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 text-[11px]">
+<div>
+<p class="text-on-surface-variant uppercase font-bold tracking-tighter mb-1">Trigger</p>
+<code class="font-mono text-on-surface bg-surface-container-lowest px-1 rounded">node_latency &gt; 450ms</code>
+</div>
+<div>
+<p class="text-on-surface-variant uppercase font-bold tracking-tighter mb-1">Timing</p>
+<code class="font-mono text-on-surface">300ms cubic-bezier</code>
+</div>
+<div class="col-span-2 bg-surface-container-low p-2 rounded border-l-2 border-primary">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-primary">motion_photos_on</span>
+<span class="font-mono text-on-surface">Animation: Pulse (Scale 1.02)</span>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-xs uppercase tracking-widest rounded-md hover:opacity-90 transition-all active:scale-95">
+                        Retry Run
+                    </button>
+</div>
+<!-- Degradation State -->
+<div class="bg-surface-container-high rounded-xl p-4 border border-outline-variant/10 error-inner-glow">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<span class="font-mono text-[10px] text-error uppercase">0x05_DEGRADE</span>
+<h3 class="font-headline font-semibold text-lg">System Degradation</h3>
+</div>
+<span class="material-symbols-outlined text-error bg-error/10 p-2 rounded-lg">warning</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 text-[11px]">
+<div>
+<p class="text-on-surface-variant uppercase font-bold tracking-tighter mb-1">Trigger</p>
+<code class="font-mono text-on-surface bg-surface-container-lowest px-1 rounded">packet_loss &gt; 2%</code>
+</div>
+<div>
+<p class="text-on-surface-variant uppercase font-bold tracking-tighter mb-1">Timing</p>
+<code class="font-mono text-on-surface">500ms ease-in-out</code>
+</div>
+<div class="col-span-2 bg-surface-container-low p-2 rounded border-l-2 border-error">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-error">vibration</span>
+<span class="font-mono text-on-surface">Animation: Horizontal Jitter</span>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2 bg-surface-container-highest border border-outline-variant/20 text-error font-bold text-xs uppercase tracking-widest rounded-md hover:bg-surface-bright transition-all active:scale-95">
+                        Reroute Traffic
+                    </button>
+</div>
+<!-- Success Recovery -->
+<div class="bg-surface-container-high rounded-xl p-4 border border-outline-variant/10 success-glow">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<span class="font-mono text-[10px] text-green-400 uppercase">0x06_SUCCESS_REC</span>
+<h3 class="font-headline font-semibold text-lg">State Recovery</h3>
+</div>
+<span class="material-symbols-outlined text-green-400 bg-green-400/10 p-2 rounded-lg">check_circle</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 text-[11px]">
+<div>
+<p class="text-on-surface-variant uppercase font-bold tracking-tighter mb-1">Trigger</p>
+<code class="font-mono text-on-surface bg-surface-container-lowest px-1 rounded">ack_received == true</code>
+</div>
+<div>
+<p class="text-on-surface-variant uppercase font-bold tracking-tighter mb-1">Timing</p>
+<code class="font-mono text-on-surface">200ms ease-out</code>
+</div>
+<div class="col-span-2 bg-surface-container-low p-2 rounded border-l-2 border-green-400">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-green-400">expand_circle_down</span>
+<span class="font-mono text-on-surface">Animation: Expansion Pop</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Deterministic Lane Differences -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm">lan</span>
+<h2 class="font-headline text-xs font-bold uppercase tracking-[0.2em] text-primary/80">Deterministic Lanes</h2>
+</div>
+<div class="space-y-3">
+<!-- Lane: Fixture -->
+<div class="p-4 rounded-xl border-2 border-dashed border-outline-variant/30 bg-surface-container-low">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-[12px] font-bold text-on-surface-variant uppercase">Fixture</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-[10px] font-mono">MOTION: NONE</span>
+</div>
+<p class="text-[11px] text-on-surface-variant italic">Static environment for historical audit trails. Visuals restricted to 0hz frequency.</p>
+</div>
+<!-- Lane: Live Smoke -->
+<div class="p-4 rounded-xl border border-primary/20 bg-surface-container-low relative overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-[12px] font-bold text-primary uppercase">Live_Smoke</span>
+<div class="flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] font-mono text-primary">LOW FREQ</span>
+</div>
+</div>
+<p class="text-[11px] text-on-surface-variant">Sampling monitoring. Soft pulsing indicators (0.5hz) with standard surface layering.</p>
+</div>
+<!-- Lane: Live -->
+<div class="p-4 rounded-xl border border-primary bg-surface-container-high flux-glow relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-[12px] font-bold text-primary uppercase">Live</span>
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#cabeff]"></div>
+<span class="text-[10px] font-mono text-primary">HIGH FREQ</span>
+</div>
+</div>
+<p class="text-[11px] text-on-surface-variant">Active quantum execution. High-frequency glow effects, vibrating signals, and neon accents.</p>
+</div>
+</div>
+</section>
+<!-- Accessibility & Implementation -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm">terminal</span>
+<h2 class="font-headline text-xs font-bold uppercase tracking-[0.2em] text-primary/80">Accessibility &amp; Implementation</h2>
+</div>
+<div class="bg-surface-container-highest/50 border border-outline-variant/10 rounded-xl overflow-hidden">
+<div class="p-4 space-y-4">
+<!-- Reduced Motion -->
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">settings_accessibility</span>
+<span class="font-headline text-sm font-semibold">Reduced Motion Fallback</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                            If <code class="bg-black/30 px-1 rounded">prefers-reduced-motion</code> is true, all semantic animations (pulses, jitters) are replaced with instantaneous color state swaps.
+                        </p>
+</div>
+<!-- Shadcn Mapping -->
+<div class="space-y-3 pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">data_object</span>
+<span class="font-headline text-sm font-semibold">Component Mapping</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px] font-mono bg-black/20 p-2 rounded">
+<span class="text-on-surface-variant">AnimatePresence</span>
+<span class="text-primary">mode="wait"</span>
+</div>
+<div class="flex justify-between items-center text-[10px] font-mono bg-black/20 p-2 rounded">
+<span class="text-on-surface-variant">Motion.div</span>
+<span class="text-primary">layoutId="node_state"</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="bg-[#0a0e19]/80 backdrop-blur-xl fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-2 pb-6 z-50 border-t border-[#484555]/15 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+<button class="flex flex-col items-center justify-center text-[#c9c4d8] opacity-60 hover:opacity-100 hover:bg-white/5 p-2 transition-all tap-highlight-transparent active:scale-90">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-wider mt-1">Orchestrate</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#cabeff] bg-[#cabeff]/10 rounded-xl py-1 px-3 transition-all tap-highlight-transparent active:scale-90">
+<span class="material-symbols-outlined" data-weight="fill">monitoring</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-wider mt-1">Observe</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#c9c4d8] opacity-60 hover:opacity-100 hover:bg-white/5 p-2 transition-all tap-highlight-transparent active:scale-90">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-wider mt-1">Provenance</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#c9c4d8] opacity-60 hover:opacity-100 hover:bg-white/5 p-2 transition-all tap-highlight-transparent active:scale-90">
+<span class="material-symbols-outlined">emergency_home</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-wider mt-1">Incidents</span>
+</button>
+</nav>
+</body></html>

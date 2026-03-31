@@ -96,7 +96,7 @@ Add provider operations visibility and portability analytics while connecting Li
 - [ ] Drift threshold rules and anomaly surfacing.
 - [ ] Livebook run launch linkage and provenance tracking.
 - [ ] Alert rule baseline and incident feed.
-- [ ] Stitch assets for provider health, portability analytics, Livebook linkage, motion/state board.
+- [x] Stitch assets for provider health, portability analytics, Livebook linkage, motion/state board.
 - [ ] Execute TRIAD-01 remediation items `UXR-006`, `UXR-008`, `UXR-009`, `UXR-012`.
 
 ### Milestone F3 Gate

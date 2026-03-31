@@ -154,6 +154,82 @@
       "localHtml": ".stitch/designs/mvp-p1-component-library-v2.html",
       "localPng": ".stitch/designs/mvp-p1-component-library-v2.png",
       "status": "approved"
+    },
+    "mvp-p2-provider-health-v1": {
+      "id": "2c94b582cb014bd0a2b4605245d5b38f",
+      "sourceScreen": "projects/5264572250204306984/screens/2c94b582cb014bd0a2b4605245d5b38f",
+      "width": 780,
+      "height": 2974,
+      "localHtml": ".stitch/designs/mvp-p2-provider-health-v1.html",
+      "localPng": ".stitch/designs/mvp-p2-provider-health-v1.png",
+      "status": "superseded",
+      "supersededBy": "mvp-p2-provider-health-v2"
+    },
+    "mvp-p2-provider-health-v2": {
+      "id": "cb465f7649dc4de1bc05efd1b7ce1ca8",
+      "sourceScreen": "projects/5264572250204306984/screens/cb465f7649dc4de1bc05efd1b7ce1ca8",
+      "width": 2720,
+      "height": 2160,
+      "localHtml": ".stitch/designs/mvp-p2-provider-health-v2.html",
+      "localPng": ".stitch/designs/mvp-p2-provider-health-v2.png",
+      "status": "approved"
+    },
+    "mvp-p2-portability-v1": {
+      "id": "9a28637c91c940d3ab427256c43186d4",
+      "sourceScreen": "projects/5264572250204306984/screens/9a28637c91c940d3ab427256c43186d4",
+      "width": 780,
+      "height": 2504,
+      "localHtml": ".stitch/designs/mvp-p2-portability-v1.html",
+      "localPng": ".stitch/designs/mvp-p2-portability-v1.png",
+      "status": "superseded",
+      "supersededBy": "mvp-p2-portability-v2"
+    },
+    "mvp-p2-portability-v2": {
+      "id": "09361087386c409981ae359b3c6c6f40",
+      "sourceScreen": "projects/5264572250204306984/screens/09361087386c409981ae359b3c6c6f40",
+      "width": 2560,
+      "height": 3190,
+      "localHtml": ".stitch/designs/mvp-p2-portability-v2.html",
+      "localPng": ".stitch/designs/mvp-p2-portability-v2.png",
+      "status": "approved"
+    },
+    "mvp-p2-livebook-linkage-v1": {
+      "id": "6c29a070bbc345ac98070731255531f2",
+      "sourceScreen": "projects/5264572250204306984/screens/6c29a070bbc345ac98070731255531f2",
+      "width": 780,
+      "height": 3104,
+      "localHtml": ".stitch/designs/mvp-p2-livebook-linkage-v1.html",
+      "localPng": ".stitch/designs/mvp-p2-livebook-linkage-v1.png",
+      "status": "superseded",
+      "supersededBy": "mvp-p2-livebook-linkage-v2"
+    },
+    "mvp-p2-livebook-linkage-v2": {
+      "id": "4b56f9d8d8414ff09765fee3e8d268d7",
+      "sourceScreen": "projects/5264572250204306984/screens/4b56f9d8d8414ff09765fee3e8d268d7",
+      "width": 2560,
+      "height": 2048,
+      "localHtml": ".stitch/designs/mvp-p2-livebook-linkage-v2.html",
+      "localPng": ".stitch/designs/mvp-p2-livebook-linkage-v2.png",
+      "status": "approved"
+    },
+    "mvp-p2-motion-state-v1": {
+      "id": "efa06db5952840b08b9d0c132482f92b",
+      "sourceScreen": "projects/5264572250204306984/screens/efa06db5952840b08b9d0c132482f92b",
+      "width": 780,
+      "height": 3512,
+      "localHtml": ".stitch/designs/mvp-p2-motion-state-v1.html",
+      "localPng": ".stitch/designs/mvp-p2-motion-state-v1.png",
+      "status": "superseded",
+      "supersededBy": "mvp-p2-motion-state-v2"
+    },
+    "mvp-p2-motion-state-v2": {
+      "id": "920e3d3e03a04c4a9a84f7e0d1d1c2f3",
+      "sourceScreen": "projects/5264572250204306984/screens/920e3d3e03a04c4a9a84f7e0d1d1c2f3",
+      "width": 2560,
+      "height": 3030,
+      "localHtml": ".stitch/designs/mvp-p2-motion-state-v2.html",
+      "localPng": ".stitch/designs/mvp-p2-motion-state-v2.png",
+      "status": "approved"
     }
   }
 }

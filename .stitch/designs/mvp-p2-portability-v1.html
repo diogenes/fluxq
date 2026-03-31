@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FluxQ Portability Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed": "#e6deff",
+                        "on-tertiary-container": "#291870",
+                        "surface-container": "#1b1f2b",
+                        "primary-container": "#947dff",
+                        "surface-container-lowest": "#0a0e19",
+                        "outline": "#938ea1",
+                        "tertiary-container": "#9185df",
+                        "tertiary": "#c8bfff",
+                        "primary-fixed-dim": "#cabeff",
+                        "secondary-fixed": "#e4dfff",
+                        "on-primary-fixed-variant": "#4816cb",
+                        "surface-tint": "#cabeff",
+                        "tertiary-fixed": "#e5deff",
+                        "background": "#0f131e",
+                        "secondary-container": "#4006e8",
+                        "inverse-primary": "#603ce2",
+                        "secondary": "#c6bfff",
+                        "on-secondary-fixed": "#160066",
+                        "on-primary-container": "#2a0088",
+                        "outline-variant": "#484555",
+                        "on-secondary": "#2800a0",
+                        "surface-container-high": "#262a36",
+                        "secondary-fixed-dim": "#c6bfff",
+                        "surface-dim": "#0f131e",
+                        "surface-container-highest": "#313441",
+                        "on-tertiary-fixed": "#1a0063",
+                        "error": "#ffb4ab",
+                        "primary": "#cabeff",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#1c0062",
+                        "on-tertiary-fixed-variant": "#46398f",
+                        "surface": "#0f131e",
+                        "on-surface": "#dfe2f2",
+                        "on-background": "#dfe2f2",
+                        "inverse-surface": "#dfe2f2",
+                        "on-tertiary": "#2f2077",
+                        "surface-variant": "#313441",
+                        "on-surface-variant": "#c9c4d8",
+                        "on-secondary-fixed-variant": "#3c00de",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "surface-container-low": "#171b27",
+                        "on-secondary-container": "#bbb3ff",
+                        "on-primary": "#31009a",
+                        "inverse-on-surface": "#2c303c",
+                        "tertiary-fixed-dim": "#c8bfff",
+                        "surface-bright": "#353945"
+                    },
+                    fontFamily: {
+                        "headline": ["Sora", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["IBM Plex Mono", "monospace"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .flux-gradient {
+            background: linear-gradient(135deg, #cabeff 0%, #947dff 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .custom-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body select-none">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0a0e19]/80 backdrop-blur-xl border-b border-[#484555]/15 shadow-2xl shadow-black/40 flex items-center justify-between px-4 h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#cabeff]">hub</span>
+<h1 class="font-['Sora'] font-semibold tracking-tight text-[#dfe2f2] text-lg">FluxQ Portability</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Technical profile avatar for Site Reliability Engineer with dark sleek aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCdYJ-njHA-1OGBOcXDv2ht6Cgkbi4Lvt90RWdsYOc9zApe6hd9fD7UdvWfwh8DodSWcUhdUTLy22DhF6D2tiPq9z8FCYr2qI0wT_YCjEiSGWneUWgd9uin3_wkPWc7VsFzsXSAtDt-o8BhEsRBbncFMIK9xuSxbRoEWf9OlQv0LvPztZZnQ-4VUktFKwFfy8pzou4o9cCLM_5P0MufI8AK7z-bcVyLTrYSOHiFoL5kjOt3Ed3zjabbVCcjUzFLfJoRdl772MUNXQ"/>
+</div>
+</header>
+<main class="pt-20 pb-28 px-4 max-w-md mx-auto space-y-6">
+<!-- Section 1: Operational State-Pack Chips -->
+<section>
+<div class="flex overflow-x-auto gap-2 py-2 custom-scrollbar">
+<div class="flex-shrink-0 px-3 py-1.5 rounded-full border border-outline-variant/20 bg-surface-container-low text-on-surface-variant text-[10px] font-semibold uppercase tracking-wider flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span> empty
+                </div>
+<div class="flex-shrink-0 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-semibold uppercase tracking-wider flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> loading
+                </div>
+<div class="flex-shrink-0 px-3 py-1.5 rounded-full border border-secondary/30 bg-secondary/10 text-secondary text-[10px] font-semibold uppercase tracking-wider flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> degraded
+                </div>
+<div class="flex-shrink-0 px-3 py-1.5 rounded-full border border-error/30 bg-error/10 text-error text-[10px] font-semibold uppercase tracking-wider flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> error
+                </div>
+<div class="flex-shrink-0 px-3 py-1.5 rounded-full border border-outline-variant/20 bg-surface-container-low text-on-surface-variant text-[10px] font-semibold uppercase tracking-wider flex items-center gap-2 opacity-50">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span> cancelled
+                </div>
+</div>
+</section>
+<!-- Section 2: Lane Selector -->
+<section class="bg-surface-container-low p-1 rounded-xl flex">
+<button class="flex-1 py-2 text-xs font-semibold rounded-lg transition-colors text-on-surface-variant hover:text-on-surface">fixture</button>
+<button class="flex-1 py-2 text-xs font-semibold rounded-lg transition-colors bg-surface-container-high text-primary shadow-sm">live_smoke</button>
+<button class="flex-1 py-2 text-xs font-semibold rounded-lg transition-colors text-on-surface-variant hover:text-on-surface">live</button>
+</section>
+<!-- Section 3: Baseline Run Pinning -->
+<section>
+<div class="bg-surface-container-high p-4 rounded-xl border border-outline-variant/10 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3 opacity-10">
+<span class="material-symbols-outlined text-4xl">push_pin</span>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">push_pin</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Pinned Baseline</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<div class="font-mono text-lg text-primary mb-1">RUN-4402-QX</div>
+<div class="text-[11px] text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">cloud</span> GCP-EAST-1-FLUX
+                        </div>
+</div>
+<div class="text-right">
+<div class="text-[10px] font-mono text-on-surface-variant uppercase">Timestamp</div>
+<div class="text-xs font-medium">Oct 24, 09:42:11</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Incompatibility Warnings (Alerts) -->
+<section>
+<div class="bg-error/10 border-l-2 border-error p-3 rounded-r-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-lg">warning</span>
+<div>
+<h4 class="text-xs font-bold text-error uppercase tracking-tight">Drift Threshold Violation</h4>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">Latency Delta exceeding 45ms in AWS-WEST-2 cluster. Auto-remediation recommended.</p>
+</div>
+</div>
+</section>
+<!-- Section 4 & 5: Comparability Matrix -->
+<section class="space-y-4">
+<h3 class="font-headline font-semibold text-sm px-1 flex items-center justify-between">
+                Comparability Matrix
+                <span class="text-[10px] font-normal text-on-surface-variant">2 Active Providers</span>
+</h3>
+<!-- Card 1 -->
+<div class="bg-surface-container p-4 rounded-xl space-y-4 hover:bg-surface-bright transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-xs font-bold text-on-surface mb-0.5">AWS-WEST-2-QM</h4>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
+<span class="text-[10px] text-on-surface-variant uppercase font-mono tracking-tighter">Half-Open Circuit</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<div class="text-[9px] text-on-surface-variant uppercase font-bold">Sample Quality</div>
+<div class="text-[10px] font-semibold text-secondary">Medium</div>
+</div>
+<div class="h-8 w-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-1/2 w-full bg-secondary"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-2 border-y border-outline-variant/10">
+<div>
+<div class="text-[9px] text-on-surface-variant uppercase font-bold mb-1">Queue Wait</div>
+<div class="font-mono text-sm text-on-surface">12.45<span class="text-[10px] ml-0.5 opacity-60">ms</span></div>
+</div>
+<div>
+<div class="text-[9px] text-on-surface-variant uppercase font-bold mb-1">Execution</div>
+<div class="font-mono text-sm text-on-surface">342.10<span class="text-[10px] ml-0.5 opacity-60">ms</span></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px]">
+<span class="text-on-surface-variant">Confidence Band</span>
+<span class="font-mono text-primary">88.2%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 88%"></div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 pt-1">
+<div class="text-center p-2 rounded bg-surface-container-low border border-outline-variant/5">
+<div class="text-[8px] text-on-surface-variant uppercase mb-1">Lat. Delta</div>
+<div class="font-mono text-[10px] text-error">+42ms</div>
+</div>
+<div class="text-center p-2 rounded bg-surface-container-low border border-outline-variant/5">
+<div class="text-[8px] text-on-surface-variant uppercase mb-1">Exp. Delta</div>
+<div class="font-mono text-[10px] text-on-surface">0.02</div>
+</div>
+<div class="text-center p-2 rounded bg-surface-container-low border border-outline-variant/5">
+<div class="text-[8px] text-on-surface-variant uppercase mb-1">KL Div.</div>
+<div class="font-mono text-[10px] text-on-surface">0.14</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container p-4 rounded-xl space-y-4 hover:bg-surface-bright transition-colors cursor-pointer">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-xs font-bold text-on-surface mb-0.5">GCP-EAST-1-FLUX</h4>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] text-on-surface-variant uppercase font-mono tracking-tighter">Closed Circuit (Optimal)</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<div class="text-[9px] text-on-surface-variant uppercase font-bold">Sample Quality</div>
+<div class="text-[10px] font-semibold text-emerald-400">High</div>
+</div>
+<div class="h-8 w-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full w-full bg-emerald-500"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-2 border-y border-outline-variant/10">
+<div>
+<div class="text-[9px] text-on-surface-variant uppercase font-bold mb-1">Queue Wait</div>
+<div class="font-mono text-sm text-on-surface">2.11<span class="text-[10px] ml-0.5 opacity-60">ms</span></div>
+</div>
+<div>
+<div class="text-[9px] text-on-surface-variant uppercase font-bold mb-1">Execution</div>
+<div class="font-mono text-sm text-on-surface">298.44<span class="text-[10px] ml-0.5 opacity-60">ms</span></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px]">
+<span class="text-on-surface-variant">Confidence Band</span>
+<span class="font-mono text-primary">99.4%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 99%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: Anomaly-to-Action Panel -->
+<section class="space-y-4">
+<h3 class="font-headline font-semibold text-sm px-1">Anomaly Timeline</h3>
+<div class="space-y-3 relative before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[1px] before:bg-outline-variant/30">
+<div class="relative pl-8 pb-4">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-error">priority_high</span>
+</div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-mono text-[10px] text-on-surface-variant uppercase tracking-wider">T-04:22:10</span>
+<a class="text-[10px] text-primary hover:underline" href="#">Remediate</a>
+</div>
+<p class="text-[11px] font-medium">Spike in KL Divergence Detected</p>
+<p class="text-[10px] text-on-surface-variant">Cluster: AWS-WEST-2-QM</p>
+</div>
+<div class="relative pl-8 pb-4">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-secondary">bolt</span>
+</div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-mono text-[10px] text-on-surface-variant uppercase tracking-wider">T-04:25:44</span>
+<a class="text-[10px] text-primary hover:underline" href="#">View Log</a>
+</div>
+<p class="text-[11px] font-medium">Circuit State Changed: Half-Open</p>
+<p class="text-[10px] text-on-surface-variant">Provider self-throttling active.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-[#0a0e19]/90 backdrop-blur-lg border-t border-[#484555]/15 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] flex justify-around items-center h-20 pb-safe px-6">
+<button class="flex flex-col items-center justify-center text-[#c9c4d8] opacity-60 hover:opacity-100 hover:bg-[#1b1f2b] active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined mb-1">alt_route</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Reroute</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#c9c4d8] opacity-60 hover:opacity-100 hover:bg-[#1b1f2b] active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined mb-1">replay</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Retry</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#947dff]/10 text-[#cabeff] rounded-xl py-1 px-3 active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Logs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#c9c4d8] opacity-60 hover:opacity-100 hover:bg-[#1b1f2b] active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined mb-1">ios_share</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Export</span>
+</button>
+</nav>
+</body></html>
