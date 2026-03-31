@@ -30,6 +30,7 @@ This documentation set is organized for product, UX, architecture, and implement
 ## Stitch
 - [Stitch Asset Plan and Phase Mapping](./stitch/assets-and-phase-plan.md)
 - [Stitch Asset Register](./stitch/asset-register.md)
+- [Stitch MCP Setup and Verification Guide](./stitch/stitch-mcp-setup.md)
 - `.stitch/designs/` exports are generated artifacts and are usually excluded from git.
 
 ## Engineering
