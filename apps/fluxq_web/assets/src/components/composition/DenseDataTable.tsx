@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Table, DenseRow } from '@/components/ui/table';
 import type { OperationalState } from '@/lib/domain';
@@ -13,7 +14,8 @@ interface DenseRowModel {
   readonly retryBudget: string;
   readonly terminalAttribution: string;
   readonly comparability: 'green' | 'amber' | 'red';
-  readonly updated: string;
+  readonly updatedLabel: string;
+  readonly updatedAgoSeconds: number;
 }
 
 const rows: DenseRowModel[] = [
@@ -25,9 +27,10 @@ const rows: DenseRowModel[] = [
     queueWaitMs: 820,
     executionDurationMs: 14210,
     retryBudget: '2 / 5',
-    terminalAttribution: 'provider_timeout',
+    terminalAttribution: 'timeout_signal',
     comparability: 'amber',
-    updated: '12s ago'
+    updatedLabel: '12s ago',
+    updatedAgoSeconds: 12
   },
   {
     id: 'run-041',
@@ -37,9 +40,10 @@ const rows: DenseRowModel[] = [
     queueWaitMs: 210,
     executionDurationMs: 9800,
     retryBudget: '0 / 5',
-    terminalAttribution: 'success',
+    terminalAttribution: 'success_recovered',
     comparability: 'green',
-    updated: '1m ago'
+    updatedLabel: '1m ago',
+    updatedAgoSeconds: 60
   },
   {
     id: 'run-040',
@@ -49,9 +53,10 @@ const rows: DenseRowModel[] = [
     queueWaitMs: 1540,
     executionDurationMs: 45600,
     retryBudget: '5 / 5',
-    terminalAttribution: 'timeout',
+    terminalAttribution: 'timeout_exceeded',
     comparability: 'red',
-    updated: '2m ago'
+    updatedLabel: '2m ago',
+    updatedAgoSeconds: 120
   }
 ];
 
@@ -76,6 +81,7 @@ const toneByComparability: Record<DenseRowModel['comparability'], 'success' | 'w
 };
 
 export function DenseDataTable() {
+  const { t } = useTranslation();
   const [sort, setSort] = useState<{ key: SortKey; direction: 'asc' | 'desc' }>({
     key: 'updated',
     direction: 'asc'
@@ -87,7 +93,7 @@ export function DenseDataTable() {
       const multiplier = sort.direction === 'asc' ? 1 : -1;
 
       if (sort.key === 'updated') {
-        return a.updated.localeCompare(b.updated) * multiplier;
+        return (a.updatedAgoSeconds - b.updatedAgoSeconds) * multiplier;
       }
 
       return ((a[sort.key] as number) - (b[sort.key] as number)) * multiplier;
@@ -106,29 +112,34 @@ export function DenseDataTable() {
     });
   };
 
+  const sortAttrFor = (key: SortKey) => {
+    if (sort.key !== key) return 'none';
+    return sort.direction === 'asc' ? 'ascending' : 'descending';
+  };
+
   return (
     <Table>
       <thead>
         <tr className="border-b border-white/8 text-xs uppercase tracking-wide text-[color:var(--fxq-text-secondary)]">
-          <th className="sticky left-0 bg-[color:var(--fxq-background-surface-low)] px-3 py-2">workflow/run</th>
-          <th className="px-3 py-2">lane</th>
-          <th className="px-3 py-2">status</th>
-          <th className="px-3 py-2">
+          <th className="sticky left-0 bg-[color:var(--fxq-background-surface-low)] px-3 py-2">{t('runtime.denseTable.headers.workflowRun')}</th>
+          <th className="px-3 py-2">{t('runtime.denseTable.headers.lane')}</th>
+          <th className="px-3 py-2">{t('runtime.denseTable.headers.status')}</th>
+          <th className="px-3 py-2" aria-sort={sortAttrFor('queueWaitMs')}>
             <button type="button" className="text-inherit" onClick={() => toggleSort('queueWaitMs')}>
-              queue wait (ms)
+              {t('runtime.denseTable.headers.queueWait')}
             </button>
           </th>
-          <th className="px-3 py-2">
+          <th className="px-3 py-2" aria-sort={sortAttrFor('executionDurationMs')}>
             <button type="button" className="text-inherit" onClick={() => toggleSort('executionDurationMs')}>
-              execution duration (ms)
+              {t('runtime.denseTable.headers.executionDuration')}
             </button>
           </th>
-          <th className="px-3 py-2">retry budget</th>
-          <th className="px-3 py-2">terminal attribution</th>
-          <th className="px-3 py-2">comparability</th>
-          <th className="px-3 py-2">
+          <th className="px-3 py-2">{t('runtime.denseTable.headers.retryBudget')}</th>
+          <th className="px-3 py-2">{t('runtime.denseTable.headers.terminalAttribution')}</th>
+          <th className="px-3 py-2">{t('runtime.denseTable.headers.comparability')}</th>
+          <th className="px-3 py-2" aria-sort={sortAttrFor('updated')}>
             <button type="button" className="text-inherit" onClick={() => toggleSort('updated')}>
-              updated
+              {t('runtime.denseTable.headers.updated')}
             </button>
           </th>
         </tr>
@@ -142,9 +153,9 @@ export function DenseDataTable() {
             <td className="px-3 py-2 fxq-mono">{row.queueWaitMs}</td>
             <td className="px-3 py-2 fxq-mono">{row.executionDurationMs}</td>
             <td className="px-3 py-2">{row.retryBudget}</td>
-            <td className="px-3 py-2">{row.terminalAttribution}</td>
+            <td className="px-3 py-2">{t(`runtime.denseTable.terminalAttribution.${row.terminalAttribution}`)}</td>
             <td className="px-3 py-2"><Badge tone={toneByComparability[row.comparability]}>{row.comparability}</Badge></td>
-            <td className="px-3 py-2">{row.updated}</td>
+            <td className="px-3 py-2">{row.updatedLabel}</td>
           </DenseRow>
         ))}
       </tbody>

@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 
 type CorrelatedEvent = {
@@ -10,34 +11,37 @@ type CorrelatedEvent = {
   readonly severity: 'info' | 'warning' | 'error';
 };
 
-const events: CorrelatedEvent[] = [
-  {
-    id: 'evt-1',
-    timestamp: '10:12:04',
-    title: 'Step queued',
-    span: 'nxq.workflow.run.queue',
-    logExcerpt: 'queue wait started for run-042',
-    severity: 'info'
-  },
-  {
-    id: 'evt-2',
-    timestamp: '10:12:08',
-    title: 'Retry triggered',
-    span: 'nxq.provider.submit.retry',
-    logExcerpt: 'retry policy invoked after transient timeout',
-    severity: 'warning'
-  },
-  {
-    id: 'evt-3',
-    timestamp: '10:12:15',
-    title: 'Fallback engaged',
-    span: 'nxq.provider.route.fallback',
-    logExcerpt: 'fallback route selected based on circuit state',
-    severity: 'error'
-  }
-];
-
 export function TimelineTraceCorrelation() {
+  const { t } = useTranslation();
+  const events = useMemo<CorrelatedEvent[]>(
+    () => [
+      {
+        id: 'evt-1',
+        timestamp: '10:12:04',
+        title: t('runtime.timelineTrace.events.stepQueued.title'),
+        span: t('runtime.timelineTrace.events.stepQueued.span'),
+        logExcerpt: t('runtime.timelineTrace.events.stepQueued.logExcerpt'),
+        severity: 'info'
+      },
+      {
+        id: 'evt-2',
+        timestamp: '10:12:08',
+        title: t('runtime.timelineTrace.events.retryTriggered.title'),
+        span: t('runtime.timelineTrace.events.retryTriggered.span'),
+        logExcerpt: t('runtime.timelineTrace.events.retryTriggered.logExcerpt'),
+        severity: 'warning'
+      },
+      {
+        id: 'evt-3',
+        timestamp: '10:12:15',
+        title: t('runtime.timelineTrace.events.fallbackEngaged.title'),
+        span: t('runtime.timelineTrace.events.fallbackEngaged.span'),
+        logExcerpt: t('runtime.timelineTrace.events.fallbackEngaged.logExcerpt'),
+        severity: 'error'
+      }
+    ],
+    [t]
+  );
   const [selectedId, setSelectedId] = useState(events[0].id);
 
   const selected = useMemo(
@@ -48,7 +52,7 @@ export function TimelineTraceCorrelation() {
   return (
     <section className="grid gap-3 rounded-[var(--fxq-radius-lg)] border border-white/10 bg-[color:var(--fxq-background-surface-low)] p-3 lg:grid-cols-[minmax(0,1fr)_320px]">
       <div className="space-y-2">
-        <h3 className="fxq-display text-base font-semibold">Timeline + trace correlation</h3>
+        <h3 className="fxq-display text-base font-semibold">{t('runtime.timelineTrace.title')}</h3>
         <div className="space-y-2">
           {events.map((event) => (
             <button
@@ -68,9 +72,9 @@ export function TimelineTraceCorrelation() {
       </div>
 
       <aside className="rounded-[var(--fxq-radius-md)] border border-white/8 p-3">
-        <div className="text-xs uppercase text-[color:var(--fxq-text-secondary)]">correlated span</div>
+        <div className="text-xs uppercase text-[color:var(--fxq-text-secondary)]">{t('runtime.timelineTrace.correlatedSpan')}</div>
         <div className="mt-1 fxq-mono text-sm">{selected.span}</div>
-        <div className="mt-3 text-xs uppercase text-[color:var(--fxq-text-secondary)]">log excerpt</div>
+        <div className="mt-3 text-xs uppercase text-[color:var(--fxq-text-secondary)]">{t('runtime.timelineTrace.logExcerpt')}</div>
         <div className="mt-1 text-sm">{selected.logExcerpt}</div>
       </aside>
     </section>

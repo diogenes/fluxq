@@ -153,6 +153,7 @@ export const englishResources = {
         simulator: 'simulator'
       },
       timeOptions: {
+        all: 'default window',
         '15m': 'last 15m',
         '1h': 'last 1h',
         '6h': 'last 6h',
@@ -182,10 +183,55 @@ export const englishResources = {
       },
       statusStrip: {
         title: 'Operational status strip v2',
+        laneValue: 'fixture',
         retryBudget: 'Retry budget',
+        retryBudgetValue: '2 / 5',
         timeoutPolicy: 'Timeout policy',
+        timeoutPolicyValue: '45s step / 120s run',
         fallbackRoute: 'Fallback route',
-        terminalAttribution: 'Terminal attribution'
+        fallbackRouteValue: 'simulator',
+        terminalAttribution: 'Terminal attribution',
+        terminalAttributionValue: 'timeout_signal'
+      },
+      denseTable: {
+        headers: {
+          workflowRun: 'workflow/run',
+          lane: 'lane',
+          status: 'status',
+          queueWait: 'queue wait (ms)',
+          executionDuration: 'execution duration (ms)',
+          retryBudget: 'retry budget',
+          terminalAttribution: 'terminal attribution',
+          comparability: 'comparability',
+          updated: 'updated'
+        },
+        terminalAttribution: {
+          timeout_signal: 'timeout_signal',
+          success_recovered: 'success_recovered',
+          timeout_exceeded: 'timeout_exceeded'
+        }
+      },
+      timelineTrace: {
+        title: 'Timeline + trace correlation',
+        correlatedSpan: 'correlated span',
+        logExcerpt: 'log excerpt',
+        events: {
+          stepQueued: {
+            title: 'Step queued',
+            span: 'control.run.queue',
+            logExcerpt: 'Queue wait started for run-042.'
+          },
+          retryTriggered: {
+            title: 'Retry triggered',
+            span: 'control.route.retry',
+            logExcerpt: 'Retry policy invoked after transient timeout signal.'
+          },
+          fallbackEngaged: {
+            title: 'Fallback engaged',
+            span: 'control.route.fallback',
+            logExcerpt: 'Fallback route selected based on current circuit state.'
+          }
+        }
       },
       portability: {
         title: 'Portability analytics',
@@ -193,6 +239,16 @@ export const englishResources = {
         matrix: 'Comparability matrix',
         confidence: 'Confidence band',
         sampleQuality: 'Sample quality'
+      },
+      portabilityDecision: {
+        confidenceBand: 'confidence band',
+        confidenceValue: '0.71',
+        confidenceHint: 'near threshold',
+        sampleQuality: 'sample quality',
+        sampleQualityValue: 'medium',
+        sampleCount: '1,200 samples',
+        recommendedAction: 'recommended action',
+        compareBaseline: 'Compare with fixture baseline'
       },
       livebook: {
         title: 'Livebook linkage',
@@ -205,7 +261,37 @@ export const englishResources = {
         title: 'Workflow builder scaffold',
         canvas: 'Canvas',
         palette: 'Node palette',
-        inspector: 'Inspector shell'
+        inspector: 'Inspector shell',
+        validation: {
+          valid: 'valid',
+          warning: 'warning',
+          error: 'error'
+        },
+        checks: {
+          retryPolicy: 'Validate retries/backoff before publish.',
+          timeoutFallback: 'Surface timeout and fallback policies.',
+          deterministicBaseline: 'Require deterministic baseline check.'
+        },
+        inspectorFields: {
+          nodeType: 'node type: quantum_step',
+          timeout: 'timeout: 45s',
+          fallback: 'fallback: simulator'
+        },
+        validationError: 'validation failed: missing retry policy'
+      },
+      motion: {
+        title: 'Motion/state contract',
+        reduced: 'reduced-motion',
+        standard: 'standard-motion',
+        transitionDuration: 'Transition duration',
+        policyMatrix: 'policy matrix',
+        transitions: {
+          none: 'none',
+          pulseIn: 'pulse-in',
+          attentionHighlight: 'attention-highlight',
+          routeShift: 'route-shift',
+          settleFade: 'settle-fade'
+        }
       },
       telemetry: {
         title: 'Telemetry chart stubs',

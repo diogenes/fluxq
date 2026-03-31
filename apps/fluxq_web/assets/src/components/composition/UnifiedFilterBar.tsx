@@ -23,7 +23,7 @@ const defaultValue: UnifiedFilterValue = {
   lane: 'all',
   status: 'all',
   target: 'all',
-  timeWindow: '1h'
+  timeWindow: 'all'
 };
 
 export function UnifiedFilterBar({ defaultValue: initial, onChange }: Readonly<UnifiedFilterBarProps>) {
@@ -98,6 +98,7 @@ export function UnifiedFilterBar({ defaultValue: initial, onChange }: Readonly<U
         </Select>
 
         <Select value={value.timeWindow} onChange={(event) => update('timeWindow', event.target.value)} aria-label={t('filters.timeWindowLabel')}>
+          <option value="all">{t('filters.timeOptions.all')}</option>
           <option value="15m">{t('filters.timeOptions.15m')}</option>
           <option value="1h">{t('filters.timeOptions.1h')}</option>
           <option value="6h">{t('filters.timeOptions.6h')}</option>
