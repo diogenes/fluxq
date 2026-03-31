@@ -72,3 +72,18 @@ export interface OnboardingStepContract {
   readonly state: 'pending' | 'active' | 'completed' | 'blocked';
   readonly requiredInputs?: ReadonlyArray<string>;
 }
+
+export interface TrendPointContract {
+  readonly value: number;
+}
+
+export interface LaneMixContract {
+  readonly lane: RuntimeLane;
+  readonly segments: readonly [number, number, number];
+}
+
+export interface HeatmapCellContract {
+  readonly row: number;
+  readonly column: number;
+  readonly intensity: number;
+}

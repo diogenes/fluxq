@@ -89,7 +89,7 @@ This track runs in parallel with product phases to convert approved Stitch asset
 | UI-CX07 | Timeline + Trace + Logs Blocks | In Progress | Correlated timeline/trace/log composition suite |
 | UI-CX08 | Action Rail + Inspector Panels | In Progress | Right-rail action groups and diagnostics inspector variants |
 | UI-CX09 | Workflow Builder Kit | Completed | Node palette, canvas, connector, inspector component kit |
-| UI-CX10 | Charting Primitive Set | In Progress | Trend/heatmap/distribution chart primitives for runtime surfaces |
+| UI-CX10 | Charting Primitive Set | Completed | Trend/heatmap/distribution chart primitives for runtime surfaces |
 | UI-CX11 | Onboarding Flow Kit | Planned | Stepper/progress/readiness form components |
 | UI-CX12 | Journey Composition Blueprints | In Progress | Journey-to-family mapping and composition contracts |
 | UI-CX13 | Storybook Variant Matrix | In Progress | Desktop/tablet/mobile + state-variant story coverage |
