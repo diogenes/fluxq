@@ -11,3 +11,19 @@ export default meta;
 type Story = StoryObj<typeof TimelineTraceLogsFamily>;
 
 export const Default: Story = {};
+
+export const Tablet: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'tablet'
+    }
+  }
+};
+
+export const Mobile: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1'
+    }
+  }
+};

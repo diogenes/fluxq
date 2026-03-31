@@ -21,3 +21,20 @@ export const Live: Story = {
     lane: 'live'
   }
 };
+
+export const LiveSmoke: Story = {
+  args: {
+    lane: 'live_smoke'
+  }
+};
+
+export const MobileFixture: Story = {
+  args: {
+    lane: 'fixture'
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1'
+    }
+  }
+};

@@ -455,6 +455,43 @@ export const englishResources = {
             retries: '2 / 5'
           }
         }
+      },
+      onboarding: {
+        title: 'Onboarding Flow Kit',
+        subtitle: 'Stepper and readiness checks for production-safe activation.',
+        status: {
+          ready: 'ready',
+          needsReview: 'needs review'
+        },
+        readinessTitle: 'readiness checks',
+        readiness: {
+          deterministic: 'Deterministic fixture lane configured.',
+          traceCorrelation: 'Trace and logs correlation enabled.',
+          fallbackPath: 'Fallback path validated.',
+          alertRouting: 'Alert routing configured.'
+        },
+        actions: {
+          continue: 'Continue setup',
+          openGuide: 'Open setup guide'
+        },
+        steps: {
+          connectTelemetry: {
+            title: 'Connect telemetry sources',
+            description: 'Attach runtime event streams and baseline metrics.'
+          },
+          configureLane: {
+            title: 'Configure deterministic lane',
+            description: 'Set fixture defaults for repeatable verification.'
+          },
+          runFixture: {
+            title: 'Run fixture validation',
+            description: 'Execute first fixture flow and confirm observability.'
+          },
+          reviewFallback: {
+            title: 'Review fallback policy',
+            description: 'Ensure timeout and fallback rules are operator-visible.'
+          }
+        }
       }
     }
   }

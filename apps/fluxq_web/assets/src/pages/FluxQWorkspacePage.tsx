@@ -10,6 +10,7 @@ import { KpiMetricCardFamily } from '@/components/families/KpiMetricCardFamily';
 import { FilterTabbedTableFamily } from '@/components/families/FilterTabbedTableFamily';
 import { TimelineTraceLogsFamily } from '@/components/families/TimelineTraceLogsFamily';
 import { ActionRailInspectorFamily } from '@/components/families/ActionRailInspectorFamily';
+import { OnboardingFlowKit } from '@/components/onboarding/OnboardingFlowKit';
 import { RunDetailBlock } from '@/components/runtime/RunDetailBlock';
 import { ProviderHealthBlock } from '@/components/runtime/ProviderHealthBlock';
 import { PortabilityAnalyticsBlock } from '@/components/runtime/PortabilityAnalyticsBlock';
@@ -43,6 +44,7 @@ export default function FluxQWorkspacePage({
         <FilterTabbedTableFamily />
         <TimelineTraceLogsFamily />
         <ActionRailInspectorFamily />
+        <OnboardingFlowKit />
         <OperationalStatePack />
         <CorePrimitivesShowcase />
         <RunDetailBlock />
