@@ -19,6 +19,12 @@ Build FluxQ as a trustworthy, observability-first, BEAM-native orchestration con
 | `ux-architect` | Information architecture, journeys, interaction model, decision hierarchy | UX Architecture Brief |
 | `senior-design-specialist` | Visual system, component/state language, and production-ready design boards | Design Delivery Packet |
 
+## Supplemental Implementation Roles
+| Agent | Primary responsibility | Must produce |
+| --- | --- | --- |
+| `frontend-react-inertia-specialist` | React + Inertia implementation of approved Stitch outputs with shadcn-aligned primitives | UI Implementation Packet |
+| `frontend-quality-specialist` | Accessibility/responsiveness/i18n and Storybook quality validation for UI milestones | UI Quality Gate Report |
+
 ## Mandatory Execution Order
 1. `quantum-ml-specialist` produces domain packet before UX synthesis.
 2. `ux-architect` converts domain packet into IA + journeys + interaction model.

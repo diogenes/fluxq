@@ -95,7 +95,63 @@ export const englishResources = {
       diagnostics: 'Diagnostics',
       toggleSidebar: 'Toggle sidebar',
       collapseSidebar: 'Collapse sidebar',
-      expandSidebar: 'Expand sidebar'
+      expandSidebar: 'Expand sidebar',
+      retry: 'Retry now',
+      reroute: 'Reroute',
+      acknowledge: 'Acknowledge'
+    },
+    primitives: {
+      inputPlaceholder: 'Search correlation id',
+      textareaPlaceholder: 'Add incident note',
+      selectDefault: 'Choose lane',
+      checkbox: 'Require deterministic baseline',
+      switch: 'Enable reduced motion',
+      dialogTitle: 'Confirm recovery action',
+      dialogDescription: 'This action attempts recovery without exposing provider-specific payload details.',
+      sheetTitle: 'Incident action rail',
+      dropdownLabel: 'Quick actions',
+      tooltipLabel: 'Correlation evidence is attached.'
+    },
+    runtime: {
+      runDetail: {
+        title: 'Run detail',
+        subtitle: 'Timeline, trace, logs, and incident context.',
+        timeline: 'Timeline',
+        trace: 'Trace',
+        logs: 'Logs',
+        incidentRail: 'Incident rail'
+      },
+      providerHealth: {
+        title: 'Provider health',
+        subtitle: 'Status strip and diagnostics panel.',
+        status: 'Status strip',
+        diagnostics: 'Diagnostics panel',
+        actions: 'Action rail'
+      },
+      portability: {
+        title: 'Portability analytics',
+        subtitle: 'Comparability matrix with confidence and sample quality.',
+        matrix: 'Comparability matrix',
+        confidence: 'Confidence band',
+        sampleQuality: 'Sample quality'
+      },
+      livebook: {
+        title: 'Livebook linkage',
+        subtitle: 'Provenance chain and reproducibility checklist.',
+        provenance: 'Provenance chain',
+        checklist: 'Reproducibility checklist',
+        bundle: 'Bundle actions'
+      },
+      workflowBuilder: {
+        title: 'Workflow builder scaffold',
+        canvas: 'Canvas',
+        palette: 'Node palette',
+        inspector: 'Inspector shell'
+      },
+      telemetry: {
+        title: 'Telemetry chart stubs',
+        subtitle: 'Semantic placeholders aligned to approved design contracts.'
+      }
     }
   }
 } as const;
