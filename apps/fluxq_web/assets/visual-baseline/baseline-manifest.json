@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-03-31T12:35:25.377Z",
-  "fileCount": 94,
-  "combinedHash": "6b8669dc951014017abc067a1aa88373e3829b4ba5910e644dd9ff473725a2a9",
+  "generatedAt": "2026-03-31T12:36:31.729Z",
+  "fileCount": 93,
+  "combinedHash": "1285d5ab623c51116a50b6e380e5c8a65fce9033c67aa789475da7e0424785fa",
   "files": [
     {
       "file": "assets/AppShell.stories-B4L1-pg4.js",
@@ -372,11 +372,6 @@
       "file": "nunito-sans-regular.woff2",
       "bytes": 47072,
       "sha256": "49fe05ec477bb0f2f815a7494c933070606b5c68e84f96e11374e07c59a64d61"
-    },
-    {
-      "file": "project.json",
-      "bytes": 698,
-      "sha256": "7808e860926039f53e7cbec5295f049c248605b6811caa6a7c7860daac63c248"
     },
     {
       "file": "sb-addons/a11y-8/manager-bundle.js",

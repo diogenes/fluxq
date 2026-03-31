@@ -28,7 +28,9 @@ async function listFilesRecursively(dir) {
 }
 
 async function buildManifest() {
-  const files = (await listFilesRecursively(storybookDir)).sort();
+  const files = (await listFilesRecursively(storybookDir))
+    .filter((file) => file.replace(`${storybookDir}/`, '') !== 'project.json')
+    .sort();
   const hashes = [];
 
   for (const file of files) {
