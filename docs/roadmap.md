@@ -79,7 +79,7 @@ This track runs in parallel with product phases to convert approved Stitch asset
 ### Design Front Follow-through (Operator UX)
 - [x] DF-03 Expand semantic density token layer (row emphasis, severity bands, diagnostic contrast ramps).
 - [x] DF-04 Finalize runtime action interaction specs (retry/reroute/cancel confirmation and transition states).
-- [ ] DF-06 Publish Stitch-to-code mapping packet for UI-M2/UI-M3 module buildout.
+- [x] DF-06 Publish Stitch-to-code mapping packet for UI-M2/UI-M3 module buildout.
 - [ ] DF-07 Add panel-level state recipes (`empty`, `degraded`, `error`) for resilience-first surfaces.
 - [ ] DF-08 Add language governance guide with provider-neutral do/don't examples.
 
