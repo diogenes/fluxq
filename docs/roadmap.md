@@ -76,6 +76,25 @@ This track runs in parallel with product phases to convert approved Stitch asset
 | UI-X09 | Motion Policy + Reduced Motion | Completed | Transition policy components with reduced-motion parity |
 | UI-X10 | Visual Regression Baseline | Completed | Storybook-based visual baseline artifacts + checks |
 
+### UI-CX — Cross-Journey Component Extraction (Stitch HTML Corpus)
+
+| Milestone | Label | Status | Primary Outcome |
+|---|---|---|---|
+| UI-CX01 | Corpus Index + Pattern Registry | Completed | Family inventory and extraction order from all `.stitch/designs/*.html` |
+| UI-CX02 | Token + Typography + Icon Contract | In Progress | Unified semantic token/icon wrapper contract for extracted families |
+| UI-CX03 | Shell Frame System | In Progress | Canonical top nav, left rail, right rail frame variants |
+| UI-CX04 | Lane + State Semantics Pack | In Progress | Canonical lane selectors and state-pack surface language |
+| UI-CX05 | KPI + Metric Card Family | Planned | Reusable KPI/status strip and metric card variants |
+| UI-CX06 | Filters + Tabbed Table System | Planned | Filter toolbars, tab controls, dense/sortable table primitives |
+| UI-CX07 | Timeline + Trace + Logs Blocks | Planned | Correlated timeline/trace/log composition suite |
+| UI-CX08 | Action Rail + Inspector Panels | Planned | Right-rail action groups and diagnostics inspector variants |
+| UI-CX09 | Workflow Builder Kit | In Progress | Node palette, canvas, connector, inspector component kit |
+| UI-CX10 | Charting Primitive Set | In Progress | Trend/heatmap/distribution chart primitives for runtime surfaces |
+| UI-CX11 | Onboarding Flow Kit | Planned | Stepper/progress/readiness form components |
+| UI-CX12 | Journey Composition Blueprints | In Progress | Journey-to-family mapping and composition contracts |
+| UI-CX13 | Storybook Variant Matrix | In Progress | Desktop/tablet/mobile + state-variant story coverage |
+| UI-CX14 | Hardening + Gate Closure | Planned | A11y/responsiveness/i18n/visual gate closure for extracted families |
+
 ### Design Front Follow-through (Operator UX)
 - [x] DF-03 Expand semantic density token layer (row emphasis, severity bands, diagnostic contrast ramps).
 - [x] DF-04 Finalize runtime action interaction specs (retry/reroute/cancel confirmation and transition states).
