@@ -4,38 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import type { DataBoundaryState } from '@/lib/ui-cx';
-
-const toneByState: Record<DataBoundaryState, 'neutral' | 'info' | 'warning' | 'error' | 'success'> = {
-  empty: 'neutral',
-  loading: 'info',
-  degraded: 'warning',
-  error: 'error',
-  retrying: 'info',
-  timeout: 'warning',
-  fallback_engaged: 'info',
-  cancelled: 'neutral',
-  success_recovered: 'success',
-  no_access: 'warning',
-  policy_blocked: 'error',
-  read_only: 'neutral',
-  maintenance: 'warning'
-};
-
-const keyForState: Record<DataBoundaryState, string> = {
-  empty: 'empty',
-  loading: 'loading',
-  degraded: 'degraded',
-  error: 'error',
-  retrying: 'retrying',
-  timeout: 'timeout',
-  fallback_engaged: 'fallbackEngaged',
-  cancelled: 'cancelled',
-  success_recovered: 'successRecovered',
-  no_access: 'noAccess',
-  policy_blocked: 'policyBlocked',
-  read_only: 'readOnly',
-  maintenance: 'maintenance'
-};
+import { boundaryStateToTranslationKey, boundaryToneByState } from '@/lib/ui-cx';
 
 export interface DataBoundaryProps extends PropsWithChildren {
   readonly state: DataBoundaryState;
@@ -52,7 +21,7 @@ export function DataBoundary({
   children
 }: Readonly<DataBoundaryProps>) {
   const { t } = useTranslation();
-  const stateKey = keyForState[state];
+  const stateKey = boundaryStateToTranslationKey(state);
   const title = t(`state.${stateKey}.title`);
   const description = t(`state.${stateKey}.description`);
 
@@ -65,7 +34,7 @@ export function DataBoundary({
         </div>
         <div className="flex items-center gap-2">
           <Badge tone="info">{lane}</Badge>
-          <Badge tone={toneByState[state]}>{state}</Badge>
+          <Badge tone={boundaryToneByState[state]}>{state}</Badge>
         </div>
       </div>
 

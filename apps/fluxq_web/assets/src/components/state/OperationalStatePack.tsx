@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import type { OperationalState } from '@/lib/domain';
 import { Badge } from '@/components/ui/badge';
+import { boundaryStateToTranslationKey, boundaryToneByState } from '@/lib/ui-cx';
 import { cn } from '@/lib/utils';
 
 const orderedStates: OperationalState[] = [
@@ -15,24 +16,6 @@ const orderedStates: OperationalState[] = [
   'success_recovered'
 ];
 
-const toneByState: Record<OperationalState, 'neutral' | 'info' | 'warning' | 'error' | 'success'> = {
-  empty: 'neutral',
-  loading: 'info',
-  degraded: 'warning',
-  error: 'error',
-  retrying: 'info',
-  timeout: 'warning',
-  fallback_engaged: 'info',
-  cancelled: 'neutral',
-  success_recovered: 'success'
-};
-
-function keyForState(state: OperationalState): string {
-  if (state === 'fallback_engaged') return 'fallbackEngaged';
-  if (state === 'success_recovered') return 'successRecovered';
-  return state;
-}
-
 export function OperationalStatePack() {
   const { t } = useTranslation();
 
@@ -41,7 +24,7 @@ export function OperationalStatePack() {
       <h3 className="fxq-display text-lg font-semibold">Operational state pack</h3>
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         {orderedStates.map((state) => {
-          const key = keyForState(state);
+          const key = boundaryStateToTranslationKey(state);
 
           return (
             <div
@@ -55,7 +38,7 @@ export function OperationalStatePack() {
             >
               <div className="flex items-center justify-between gap-2">
                 <div className="text-sm font-semibold">{t(`state.${key}.title`)}</div>
-                <Badge tone={toneByState[state]}>{state}</Badge>
+                <Badge tone={boundaryToneByState[state]}>{state}</Badge>
               </div>
               <div className="mt-2 text-sm text-[color:var(--fxq-text-secondary)]">
                 {t(`state.${key}.description`)}

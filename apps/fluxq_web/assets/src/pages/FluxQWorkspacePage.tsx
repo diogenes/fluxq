@@ -28,6 +28,7 @@ import { WorkflowBuilderPro } from '@/components/workflow/WorkflowBuilderPro';
 import { MotionStateContract } from '@/components/motion/MotionStateContract';
 import { TelemetryChartStub } from '@/components/charts/TelemetryChartStub';
 import { OperationalChartSuite } from '@/components/charts/OperationalChartSuite';
+import { TelemetryPro } from '@/components/charts/TelemetryPro';
 import type { RuntimeLane } from '@/lib/domain';
 
 export interface FluxQWorkspacePageProps {
@@ -73,6 +74,7 @@ export default function FluxQWorkspacePage({
         <WorkflowBuilderPro lane={lane} />
         <MotionStateContract reducedMotion={false} />
         <OperationalChartSuite />
+        <TelemetryPro />
         <TelemetryChartStub />
       </div>
     </AppShell>

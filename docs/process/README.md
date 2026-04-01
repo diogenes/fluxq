@@ -18,6 +18,7 @@ This folder contains the working documents exchanged by the multi-agent UX impro
 - `ui-cx-pattern-registry.md` — cross-journey component family registry extracted from Stitch HTML corpus.
 - `ui-cx-journey-mapping.md` — journey-to-component-family composition map for P0/P1/P2/operator surfaces.
 - `ui-contract-v0.1.md` — frozen UI contract baseline for pre-backend coupling.
+- `ui-contract-v0.2.md` — query-state closure and shared boundary-state mapping freeze.
 
 ## Process Order
 1. Update `domain-input-packet.md`

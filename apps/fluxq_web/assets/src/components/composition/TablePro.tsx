@@ -4,7 +4,13 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { DataBoundary } from '@/components/state/DataBoundary';
-import type { DataBoundaryState, Lane } from '@/lib/ui-cx';
+import {
+  normalizeQueryState,
+  queryStateToBoundaryState,
+  type DataBoundaryState,
+  type Lane,
+  type QueryStateContract
+} from '@/lib/ui-cx';
 
 interface TableProRow {
   readonly id: string;
@@ -34,12 +40,14 @@ type ColumnId = 'workflow' | 'lane' | 'state' | 'latencyMs' | 'updated';
 
 export interface TableProProps {
   readonly boundaryState?: DataBoundaryState;
+  readonly queryState?: QueryStateContract;
 }
 
-export function TablePro({ boundaryState = 'success_recovered' }: Readonly<TableProProps>) {
+export function TablePro({ boundaryState, queryState }: Readonly<TableProProps>) {
   const { t } = useTranslation();
-  const [query, setQuery] = useState('');
-  const [page, setPage] = useState(1);
+  const normalizedQueryState = normalizeQueryState(queryState);
+  const [query, setQuery] = useState(normalizedQueryState.query ?? '');
+  const [page, setPage] = useState(normalizedQueryState.page ?? 1);
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
   const [visibleColumns, setVisibleColumns] = useState<Record<ColumnId, boolean>>({
     workflow: true,
@@ -68,9 +76,13 @@ export function TablePro({ boundaryState = 'success_recovered' }: Readonly<Table
   };
 
   const isFilterZero = query.length > 0 && filtered.length === 0;
+  const resolvedBoundaryState = boundaryState ?? queryStateToBoundaryState(normalizedQueryState);
+  const lane: Lane = normalizedQueryState.lane && normalizedQueryState.lane !== 'all'
+    ? normalizedQueryState.lane
+    : 'live_smoke';
 
   return (
-    <DataBoundary state={boundaryState} lane="live_smoke" actionLabelKey="actions.review">
+    <DataBoundary state={resolvedBoundaryState} lane={lane} actionLabelKey="actions.review">
       <section className="space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h3 className="fxq-display text-base font-semibold">{t('runtime.cy.tablePro.title')}</h3>

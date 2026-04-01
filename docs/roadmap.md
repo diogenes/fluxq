@@ -104,7 +104,7 @@ This track runs in parallel with product phases to convert approved Stitch asset
 | UI-CY03 | TraceTreePro + Timeline Sync | Completed | Correlated trace/timeline interactions with selection sync |
 | UI-CY04 | WorkflowBuilderPro Interactions | Completed | Keyboard-safe and higher-fidelity workflow authoring interactions |
 | UI-CY05 | FormSystem + ActionGuard | Completed | Form validation and policy-aware action confirmation contracts |
-| UI-CY06 | TelemetryPro + Query-State Closure | Planned | Telemetry interaction primitives and contract freeze closure docs |
+| UI-CY06 | TelemetryPro + Query-State Closure | Completed | Telemetry interaction primitives and contract freeze closure docs |
 
 ### Design Front Follow-through (Operator UX)
 - [x] DF-03 Expand semantic density token layer (row emphasis, severity bands, diagnostic contrast ramps).

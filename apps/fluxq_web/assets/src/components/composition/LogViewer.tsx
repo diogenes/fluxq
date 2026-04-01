@@ -5,7 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
 import { DataBoundary } from '@/components/state/DataBoundary';
-import type { DataBoundaryState, StructuredLogRecordContract } from '@/lib/ui-cx';
+import {
+  normalizeQueryState,
+  queryStateToBoundaryState,
+  type DataBoundaryState,
+  type Lane,
+  type QueryStateContract,
+  type StructuredLogRecordContract
+} from '@/lib/ui-cx';
 
 const logRecords: StructuredLogRecordContract[] = [
   {
@@ -33,13 +40,19 @@ const logRecords: StructuredLogRecordContract[] = [
 
 export interface LogViewerProps {
   readonly boundaryState?: DataBoundaryState;
+  readonly queryState?: QueryStateContract;
 }
 
-export function LogViewer({ boundaryState = 'success_recovered' }: Readonly<LogViewerProps>) {
+export function LogViewer({ boundaryState, queryState }: Readonly<LogViewerProps>) {
   const { t } = useTranslation();
-  const [query, setQuery] = useState('');
+  const normalizedQueryState = normalizeQueryState(queryState);
+  const [query, setQuery] = useState(normalizedQueryState.query ?? '');
   const [level, setLevel] = useState<'all' | 'debug' | 'info' | 'warning' | 'error'>('all');
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const resolvedBoundaryState = boundaryState ?? queryStateToBoundaryState(normalizedQueryState);
+  const lane: Lane = normalizedQueryState.lane && normalizedQueryState.lane !== 'all'
+    ? normalizedQueryState.lane
+    : 'live_smoke';
 
   const filtered = useMemo(() => {
     return logRecords.filter((record) => {
@@ -54,7 +67,7 @@ export function LogViewer({ boundaryState = 'success_recovered' }: Readonly<LogV
   };
 
   return (
-    <DataBoundary state={boundaryState} lane="live_smoke" actionLabelKey="actions.export">
+    <DataBoundary state={resolvedBoundaryState} lane={lane} actionLabelKey="actions.export">
       <section className="space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h3 className="fxq-display text-base font-semibold">{t('runtime.cy.logViewer.title')}</h3>

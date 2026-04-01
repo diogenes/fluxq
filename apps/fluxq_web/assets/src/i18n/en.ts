@@ -446,6 +446,26 @@ export const englishResources = {
             maintenance: 'maintenance'
           }
         },
+        telemetryPro: {
+          title: 'TelemetryPro',
+          description: 'Query-state aware telemetry composition with explicit boundary-state semantics.',
+          views: {
+            trend: 'latency trend',
+            mix: 'lane state mix',
+            heatmap: 'throughput heatmap'
+          },
+          aria: {
+            trend: 'Telemetry latency trend chart'
+          },
+          query: {
+            lane: 'lane filter',
+            status: 'state filter',
+            sort: 'sort',
+            sortDirection: 'sort direction',
+            desc: 'newest first',
+            asc: 'oldest first'
+          }
+        },
         traceTree: {
           timelineTitle: 'Timeline to trace sync',
           traceTitle: 'Trace tree pro',
