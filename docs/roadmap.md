@@ -106,6 +106,8 @@ This track runs in parallel with product phases to convert approved Stitch asset
 | UI-CY05 | FormSystem + ActionGuard | Completed | Form validation and policy-aware action confirmation contracts |
 | UI-CY06 | TelemetryPro + Query-State Closure | Completed | Telemetry interaction primitives and contract freeze closure docs |
 
+- [x] UI-CY hardening sweep completed (`docs/process/storybook-responsive-qa.md`, `TRIAD-07`) before backend deep-dive.
+
 ### Design Front Follow-through (Operator UX)
 - [x] DF-03 Expand semantic density token layer (row emphasis, severity bands, diagnostic contrast ramps).
 - [x] DF-04 Finalize runtime action interaction specs (retry/reroute/cancel confirmation and transition states).

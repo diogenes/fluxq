@@ -13,6 +13,7 @@ This folder contains the working documents exchanged by the multi-agent UX impro
 - `triad-review-cycle-04-mvp-p1.md` — MVP-P1 Stitch asset gate closure.
 - `triad-review-cycle-05-mvp-p2.md` — MVP-P2 Stitch asset gate closure.
 - `triad-review-cycle-06-ui-implementation.md` — UI implementation track quality gate review (`S0` + `UI-M0..M3`).
+- `triad-review-cycle-07-ui-cy-closure.md` — UI-CY closure review, query-state freeze, and hardening pass.
 - `ui-remediation-backlog.md` — prioritized remediation backlog mapped to roadmap phases.
 - `ui-quality-gated-process.md` — human approval gates and pass/fail quality contract.
 - `ui-cx-pattern-registry.md` — cross-journey component family registry extracted from Stitch HTML corpus.
