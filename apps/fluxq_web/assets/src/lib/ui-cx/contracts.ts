@@ -151,3 +151,28 @@ export interface ActionGuardContract {
   readonly requiresConfirmation: boolean;
   readonly policyState?: Extract<DataBoundaryState, 'policy_blocked' | 'read_only' | 'maintenance'>;
 }
+
+export interface FormFieldValidationContract {
+  readonly required?: boolean;
+  readonly minLength?: number;
+  readonly maxLength?: number;
+  readonly pattern?: string;
+}
+
+export interface FormFieldContract {
+  readonly id: string;
+  readonly labelKey: string;
+  readonly descriptionKey?: string;
+  readonly kind: 'input' | 'select' | 'textarea' | 'checkbox' | 'switch';
+  readonly placeholderKey?: string;
+  readonly options?: ReadonlyArray<{ readonly value: string; readonly labelKey: string }>;
+  readonly validation?: FormFieldValidationContract;
+}
+
+export interface FormSystemContract {
+  readonly id: string;
+  readonly titleKey: string;
+  readonly lane: Lane;
+  readonly fields: ReadonlyArray<FormFieldContract>;
+  readonly actionGuards: ReadonlyArray<ActionGuardContract>;
+}

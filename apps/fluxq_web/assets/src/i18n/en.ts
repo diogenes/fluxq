@@ -379,6 +379,73 @@ export const englishResources = {
         }
       },
       cy: {
+        formSystem: {
+          title: 'FormSystem',
+          description: 'Validation-first operator forms aligned to deterministic lane semantics.',
+          clear: 'Clear fields',
+          submit: 'Save draft',
+          summary: 'contract summary',
+          saved: 'draft saved',
+          fields: {
+            workflowName: {
+              label: 'workflow id',
+              description: 'Use provider-neutral identifiers for operator clarity.',
+              placeholder: 'portability-check'
+            },
+            lane: {
+              label: 'lane'
+            },
+            timeoutMs: {
+              label: 'timeout (ms)',
+              placeholder: '45000'
+            },
+            retries: {
+              label: 'retry budget',
+              placeholder: '2'
+            },
+            notes: {
+              label: 'operator notes',
+              placeholder: 'Record rationale for policy changes.'
+            },
+            deterministic: {
+              label: 'Require deterministic fixture baseline'
+            },
+            reducedMotion: {
+              label: 'Enable reduced motion for operator context'
+            }
+          },
+          validation: {
+            workflowName: 'workflow id must be at least 3 characters.',
+            timeoutMs: 'timeout must be a number between 5000 and 300000.',
+            retries: 'retry budget must be a number between 0 and 5.',
+            notes: 'notes must be at most 240 characters.'
+          }
+        },
+        actionGuard: {
+          title: 'ActionGuard',
+          description: 'Policy-aware action execution with explicit confirmation for high-impact changes.',
+          idle: 'awaiting action',
+          execute: 'Execute',
+          safe: 'safe action',
+          requiresConfirmation: 'confirmation required',
+          lastAction: 'last action: {{id}}',
+          confirmTitle: 'Confirm guarded action',
+          confirmDescription: 'Type "{{token}}" to confirm this action.',
+          confirmPlaceholder: 'Type action id to confirm',
+          confirmLabel: 'confirmation input',
+          cancel: 'Cancel',
+          confirm: 'Confirm action',
+          actions: {
+            retryStep: 'Retry current step',
+            rerouteSafe: 'Reroute to safe fallback',
+            cancelRun: 'Cancel active run'
+          },
+          policies: {
+            policy_blocked: 'policy_blocked',
+            read_only: 'read_only',
+            maintenance: 'maintenance'
+          }
+        },
         traceTree: {
           timelineTitle: 'Timeline to trace sync',
           traceTitle: 'Trace tree pro',

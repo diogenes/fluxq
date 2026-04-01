@@ -8,6 +8,8 @@ import { UnifiedFilterBar } from '@/components/composition/UnifiedFilterBar';
 import { DenseDataTable } from '@/components/composition/DenseDataTable';
 import { TablePro } from '@/components/composition/TablePro';
 import { LogViewer } from '@/components/composition/LogViewer';
+import { FormSystem } from '@/components/composition/FormSystem';
+import { ActionGuard } from '@/components/composition/ActionGuard';
 import { JourneyCompositionMatrix } from '@/components/composition/JourneyCompositionMatrix';
 import { KpiMetricCardFamily } from '@/components/families/KpiMetricCardFamily';
 import { FilterTabbedTableFamily } from '@/components/families/FilterTabbedTableFamily';
@@ -46,6 +48,8 @@ export default function FluxQWorkspacePage({
         <DenseDataTable />
         <TablePro />
         <LogViewer />
+        <FormSystem />
+        <ActionGuard />
         <JourneyCompositionMatrix />
         <KpiMetricCardFamily lane={lane} />
         <FilterTabbedTableFamily />
